@@ -1,0 +1,148 @@
+Esta sección describe los detalles de la implementación del modelo del modelo U-Net para la recosntruccion de imagenes fotoacústicas. Se incluyen las especificaciones técnicas, hiperparámetros de entrenamiento, pipeline de entrenamiento y validación y pruebas realizadas.
+
+
+\section{Especificaciones Técnicas}
+Para la implementación del modelo U-Net se utilizó el framework de programación PyTorch. La implementación se realizó en Python 3.8.5 y se utilizó la versión 1.7.1 de PyTorch. El código fuente se encuentra disponible en el repositorio de GitHub.
+\subsection{Arquitectura del Sistema}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{llll}
+    \hline
+    \textbf{Sección} & \textbf{Capa} & \textbf{Operación} & \textbf{Canales (in/out)} \\
+    \hline
+    \multirow{4}{*}{Encoder} 
+    & enc1 & Double Conv + ReLU & 1 $\rightarrow$ 64 \\
+    & enc2 & MaxPool + Double Conv + ReLU & 64 $\rightarrow$ 128 \\
+    & enc3 & MaxPool + Double Conv + ReLU & 128 $\rightarrow$ 256 \\
+    & enc4 & MaxPool + Double Conv + ReLU & 256 $\rightarrow$ 512 \\
+    \hline
+    Bottleneck & bottleneck & MaxPool + Double Conv + ReLU & 512 $\rightarrow$ 1024 \\
+    \hline
+    \multirow{4}{*}{Decoder}
+    & dec4 & ConvTranspose + Concat + Double Conv & (1024+512) $\rightarrow$ 512 \\
+    & dec3 & ConvTranspose + Concat + Double Conv & (512+256) $\rightarrow$ 256 \\
+    & dec2 & ConvTranspose + Concat + Double Conv & (256+128) $\rightarrow$ 128 \\
+    & dec1 & ConvTranspose + Concat + Double Conv & (128+64) $\rightarrow$ 64 \\
+    \hline
+    Salida & final & Conv 1x1 & 64 $\rightarrow$ 1 \\
+    \hline
+    \end{tabular}
+    \caption{Arquitectura del modelo U-Net. Cada 'Double Conv' consiste en dos capas convolucionales 3x3 seguidas de BatchNorm y ReLU. Las operaciones ConvTranspose tienen kernel 2x2 y stride 2.}
+    \label{tab:unet_architecture}
+\end{table}
+
+\subsection{Hiperparámetros de Entrenamiento}
+Ya que el proceso esta divido en dos partes, preentrenamiento y fine-tuning, a continuación se presentan los hiperparámetros utilizados en el entrenamiento del modelo U-Net.
+
+\subsubsection{Preentrenamiento} \label{subsubsec:pretraining}
+
+El preentrenamiento tanto de la red constructora como la red supervisora se realizó con los siguientes hiperparámetros:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+    \hline
+    \textbf{Hiperparámetro} & \textbf{Valor} \\
+    \hline
+    Optimizador & Adam \\
+    Learning rate inicial & 0.001 \\
+    Batch size & Determinado por dataloader \\
+    Número de épocas & 150 (default) \\
+    Scheduler & ReduceLROnPlateau \\
+    Scheduler patience & 5 épocas \\
+    Scheduler factor & 0.5 \\
+    Función de pérdida & MSE \\
+    \hline
+    \end{tabular}
+    \caption{Hiperparámetros utilizados en el entrenamiento del modelo}
+    \label{tab:hyperparameters}
+\end{table}
+
+\subsubsection{Fine-tuning}
+
+Para el fine-tuning de la red constructora se utilizó el siguiente conjunto de hiperparámetros:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+    \hline
+    \textbf{Hiperparámetro} & \textbf{Valor} \\
+    \hline
+    Optimizador & Adam \\
+    Learning rate inicial & 0.001 \\
+    Número de épocas & 100 (default) \\
+    Scheduler & ReduceLROnPlateau \\
+    Scheduler patience & 5 épocas \\
+    Scheduler factor & 0.5 \\
+    Función de pérdida & MSE + Pérdida estructural + Pérdida física + Penalización similitud \\
+    \hline
+    \multicolumn{2}{l}{\textbf{Pesos de las pérdidas}} \\
+    $\lambda_{direct}$ & 1.0 \\
+    $\lambda_{physical}$ & 0.1 \\
+    $\lambda_{struct}$ & 2.0 \\
+    $\lambda_{similarity}$ & 0.3 \\
+    \hline
+    \textbf{Otros} & \\
+    Gradiente clipping & 1.0 \\
+    Seed & 42 \\
+    \hline
+    \end{tabular}
+    \caption{Hiperparámetros del entrenamiento supervisado}
+    \label{tab:hyperparameters_supervised}
+\end{table}
+
+
+\section{Pipeline de Entrenamiento}
+El pipeline de entrenamiento se dividió en dos fases: preentrenamiento y fine-tuning. Cada fase se realizó de manera independiente para las redes constructora y supervisora. A continuación se describen los detalles de cada fase.
+\subsection{Obtención de Datos}
+La obtención de datos experimentales fotoacústicos es un proceso complejo y costoso. Por ello, se implementó un pipeline de datos simulados para el preentrenamiento y fine-tuning del modelo. Este proceso involucra la generación de imágenes sintéticas y el cálculo de sus correspondientes señales fotoacústicas mediante un modelo físico (detallado en el Apéndice). Este enfoque permitió generar un conjunto de datos robusto para el entrenamiento y validación del modelo.
+\subsection{Preentrenamiento}
+El proceso de preentrenamiento se realizó de manera independiente para las redes constructora y supervisora:
+\begin{itemize}
+\item \textbf{Red Constructora:} Se utilizó un conjunto de 5000 pares de imágenes simuladas de 128×128 píxeles.
+\item \textbf{Red Supervisora:} Se emplearon 5000 pares de imágenes (128×128 píxeles) y sus correspondientes señales fotoacústicas.
+\end{itemize}
+En ambos casos, se implementó una división del dataset: 80\% para entrenamiento y 20\% para validación.
+\subsection{Fine-tuning}
+La fase de fine-tuning mantuvo la misma estructura de datos que el preentrenamiento, utilizando 5000 imágenes simuladas para cada red. La distribución del conjunto de datos se mantuvo en 80\% para entrenamiento y 20\% para validación, permitiendo una optimización específica de los pesos previamente entrenados.
+
+\section{Métricas de Evaluación} \label{sec:metrics}
+
+Para evaluar exhaustivamente el desempeño del modelo, utilizaremos métricas que cubren diferentes aspectos de la calidad de reconstrucción, eficiencia y significancia estadística:
+
+\subsection{Calidad de Reconstrucción}
+La calidad de las imágenes reconstruidas se evaluará mediante las siguientes métricas:
+
+\begin{itemize}
+    \item \textbf{Peak Signal-to-Noise Ratio (PSNR):} Mide la relación entre la máxima potencia posible de una señal y el ruido que afecta a su representación. Un PSNR más alto indica una mejor calidad de reconstrucción.
+    
+    \item \textbf{Normalized Root Mean Square Error (NRMSE):} Cuantifica la diferencia entre los valores predichos y observados, normalizada para facilitar comparaciones entre diferentes escalas de datos.
+    
+    \item \textbf{Structural Similarity Index (SSIM):} Evalúa la similitud estructural entre las imágenes reconstruidas y las originales, considerando luminancia, contraste y estructura.
+    
+    \item \textbf{Mean Absolute Error (MAE):} Proporciona una medida directa de la diferencia absoluta entre los valores predichos y reales.
+\end{itemize}
+
+\subsection{Rendimiento Computacional}
+El rendimiento computacional se evaluará considerando:
+
+\begin{itemize}
+    \item \textbf{Tiempo de Reconstrucción:} Medido en milisegundos por imagen, evaluando la eficiencia computacional del modelo en inferencia.
+    
+    \item \textbf{Uso de Memoria:} Cuantifica los recursos computacionales requeridos durante la reconstrucción.
+    
+    \item \textbf{FLOPs:} Mide el número de operaciones de punto flotante, proporcionando una métrica independiente del hardware para la complejidad computacional.
+\end{itemize}
+
+\subsection{Análisis Estadístico}
+Para validar la significancia y robustez de los resultados, implementaremos:
+
+\begin{itemize}
+    \item \textbf{Pruebas de Significancia:} Se utilizará la prueba t-pareada para comparar el rendimiento entre el preentrenamiento y fine-tuning, estableciendo un nivel de significancia $\alpha = 0.05$.
+    
+    \item \textbf{Intervalos de Confianza:} Se calcularán intervalos de confianza del 95% para todas las métricas de rendimiento, proporcionando una medida de la incertidumbre en nuestras estimaciones.
+    
+    \item \textbf{Pruebas de Normalidad:} Se aplicará el test Shapiro-Wilk para verificar la normalidad en la distribución de los errores de reconstrucción, validando los supuestos estadísticos de nuestros análisis.
+\end{itemize}
+
+Este conjunto integral de métricas nos permitirá evaluar no solo la calidad de las reconstrucciones y la eficiencia computacional, sino también la significancia estadística de las mejoras observadas, proporcionando una base sólida para la comparación con otros métodos de reconstrucción.

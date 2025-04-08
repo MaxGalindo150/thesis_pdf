@@ -1,0 +1,48 @@
+\subsection{Importancia de la Consistencia Física}
+
+La consistencia física en la reconstrucción de imágenes fotoacústicas es fundamental por múltiples razones que impactan tanto la calidad de la reconstrucción como la fiabilidad del resultado para aplicaciones prácticas:
+
+\subsubsection{Naturaleza del Problema Inverso}
+El problema inverso fotoacústico es inherentemente mal condicionado, lo que significa que pequeñas perturbaciones en los datos de entrada (señales acústicas) pueden resultar en grandes variaciones en la solución (imagen reconstruida). La incorporación de restricciones físicas actúa como una forma natural de regularización, ayudando a:
+
+\begin{itemize}
+    \item Reducir el espacio de soluciones posibles a aquellas que son físicamente plausibles
+    \item Estabilizar el proceso de reconstrucción frente al ruido y las incertidumbres en las mediciones
+    \item Mejorar la unicidad de la solución al incorporar información a priori sobre el comportamiento físico del sistema
+\end{itemize}
+
+\subsubsection{Garantías de Validez}
+La consistencia física proporciona garantías importantes sobre la validez de las reconstrucciones:
+
+\begin{itemize}
+    \item Asegura que las imágenes reconstruidas no solo sean visualmente plausibles, sino que también representen estados físicamente posibles del sistema
+    \item Permite verificar que la reconstrucción obedece las leyes fundamentales de la fotoacústica, como la ecuación de onda y las condiciones de contorno
+    \item Facilita la interpretación de los resultados en términos de propiedades físicas reales del tejido o material analizado
+\end{itemize}
+
+\subsubsection{Robustez y Generalización}
+La incorporación de la física del problema en el proceso de reconstrucción mejora la robustez y capacidad de generalización del método:
+
+\begin{itemize}
+    \item Las redes entrenadas con restricciones físicas tienden a generalizar mejor a casos no vistos durante el entrenamiento
+    \item Se reduce el riesgo de que la red aprenda correlaciones espurias en los datos de entrenamiento que no tienen base física
+    \item Mejora el comportamiento del método en situaciones donde los datos son limitados o ruidosos
+\end{itemize}
+
+\subsubsection{Importancia Práctica}
+En aplicaciones prácticas, especialmente en contextos médicos o de investigación científica:
+
+\begin{itemize}
+    \item La consistencia física permite realizar mediciones cuantitativas confiables sobre las imágenes reconstruidas
+    \item Facilita la comparación e integración con otros métodos de imagen que también se basan en principios físicos
+    \item Aumenta la confianza en el diagnóstico o análisis basado en las imágenes reconstruidas
+\end{itemize}
+
+\subsubsection{Ventajas en el Aprendizaje}
+La incorporación de la física en el proceso de aprendizaje ofrece ventajas significativas:
+
+\begin{itemize}
+    \item Proporciona una guía natural para el proceso de optimización, ayudando a la red a converger a soluciones más significativas
+    \item Reduce la dependencia de grandes conjuntos de datos de entrenamiento al incorporar conocimiento previo sobre la física del problema
+    \item Permite detectar y corregir reconstrucciones que, aunque visualmente plausibles, violan las leyes físicas fundamentales del sistema
+\end{itemize}

@@ -1,0 +1,22 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Efecto fotoacústico.\relax }}{5}{}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquitectura de la red propuesta. La red reconstructora se entrena para aprender el mapeo directo de señales acústicas a imágenes fotoacústicas. La red supervisora se entrena para emular el proceso físico de generación de señales acústicas a partir de una imagen dada. Durante el proceso de fine-tuning, la red reconstructora se entrena para generar imágenes que, al ser procesadas por la red supervisora, produzcan señales acústicas consistentes con las mediciones originales.\relax }}{13}{}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Evolución de la función de pérdida durante el preentrenamiento de la red reconstructora.\relax }}{21}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Evolución de la función de pérdida durante el preentrenamiento de la red supervisora.\relax }}{22}{}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Evolución de la función de pérdida durante el fine-tuning de la red reconstructora.\relax }}{22}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Evolución de la función de pérdida durante el fine-tuning de la red constructora eliminando la pérdida estructural.\relax }}{23}{}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Evolución de la función de pérdida durante el fine-tuning de la red constructora eliminando la pérdida física.\relax }}{23}{}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Análisis comparativo del Error Absoluto Medio (MAE) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{25}{}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Análisis comparativo del Error Cuadrático Medio (MSE) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{27}{}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Análisis comparativo del Error Relativo Medio Normalizado (NRMSE) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{29}{}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Análisis comparativo del Peak Signal-to-Noise Ratio (PSNR) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{31}{}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Análisis comparativo del Índice de Similitud Estructural (SSIM) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{33}{}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Ejemplos de predicciones realizadas por el modelo pre-entrenado y los modelos fine-tuned en el conjunto de datos de validación.\relax }}{36}{}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

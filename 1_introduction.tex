@@ -1,0 +1,59 @@
+\section{Introducción}
+
+En la actualidad, las técnicas de imagen médica no invasivas han revolucionado el diagnóstico y tratamiento de enfermedades. Entre estas técnicas emergentes, la imagen fotoacústica (PAI, por sus siglas en inglés) se destaca por su capacidad única de combinar el contraste óptico con la resolución ultrasónica, permitiendo visualizar estructuras biológicas con un nivel de detalle sin precedentes.
+
+La reconstrucción de imágenes fotoacústicas representa un desafío significativo debido a la complejidad de los fenómenos físicos involucrados y la presencia inherente de ruido en las señales adquiridas. Los métodos tradicionales de reconstrucción, basados en aproximaciones analíticas y técnicas iterativas, a menudo resultan computacionalmente costosos y pueden producir artefactos en las imágenes reconstruidas.
+
+En este contexto, las arquitecturas de aprendizaje profundo, específicamente las redes neuronales convolucionales (CNNs), han demostrado un potencial extraordinario para abordar estos desafíos. Sin embargo, un desafío fundamental persiste: la incorporación efectiva de las restricciones físicas del problema en el proceso de aprendizaje. Nuestro trabajo se centra en el desarrollo de un marco de trabajo innovador que permite a las redes neuronales aprender simultáneamente la reconstrucción de imágenes y mantener la consistencia física del problema.
+
+\section{Preguntas de Investigación y Contribuciones}
+\label{sec:prop}
+
+Este trabajo de investigación se centra en el desarrollo de un marco de trabajo de aprendizaje profundo que optimice simultáneamente la calidad de reconstrucción y la consistencia física en imágenes fotoacústicas. Para lograr este objetivo, se plantean las siguientes preguntas de investigación:
+
+\subsection{Preguntas de Investigación}
+\label{sec:ques}
+
+La pregunta principal de investigación es la siguiente:
+\begin{quote}
+\textit{¿Cómo podemos desarrollar un marco de trabajo de aprendizaje profundo que optimice simultáneamente la calidad de reconstrucción y la consistencia física en imágenes fotoacústicas?}
+\end{quote}
+
+Para abordar esta pregunta de manera sistemática, se han establecido las siguientes sub-preguntas:
+
+\begin{enumerate}[start=1,label={PI\arabic*:},wide = 0pt, leftmargin = 3em]
+\item \textit{¿Cómo podemos desarrollar una arquitectura de red neuronal que incorpore el conocimiento físico del proceso fotoacústico, considerando tanto la complejidad del entrenamiento como la eficiencia computacional que limita a los métodos PINN tradicionales?}
+\item \textit{¿Qué ventajas ofrece el aprendizaje del problema inverso en la consistencia física de la reconstrucción?}
+\item \textit{¿Cuál es el impacto del fine-tuning con restricciones físicas en la calidad final de la reconstrucción?}
+\item \textit{¿Cómo se comporta el método propuesto en términos de robustez y generalización?}
+\end{enumerate}
+
+\subsection{Contribuciones}
+\label{sec:cont}
+
+Esta investigación proporciona las siguientes contribuciones al conocimiento:
+
+\begin{enumerate}[start=1,label={C\arabic*:},wide = 0pt, leftmargin = 3em]
+\item Un marco de trabajo innovador que integra el aprendizaje de la física del problema mediante una arquitectura dual de redes U-Net.
+\item Una metodología de fine-tuning que balancea efectivamente la calidad de reconstrucción con la consistencia física, demostrada por mejoras cuantificables:
+    \begin{itemize}
+        \item Reducción del 18.6\% en MSE de reconstrucción
+        \item Mejora del 18.8\% en consistencia física de señales
+        \item Incremento en SSIM hasta 0.973
+    \end{itemize}
+\item Una implementación computacionalmente eficiente que aborda las limitaciones de los métodos PINN tradicionales mediante un enfoque de redes duales, reduciendo la complejidad del entrenamiento mientras preserva la consistencia física del problema.
+\item Un conjunto completo de experimentos y evaluaciones que validan la efectividad del método propuesto.
+\item Una implementación de código abierto del modelo propuesto y sus herramientas asociadas.
+\end{enumerate}
+
+\section{Estructura de la Tesis}
+\label{sec:thes}
+
+El formato de esta tesis es por publicación, por lo que se busca publicar esta investigación en los siguientes artículos:
+
+\begin{enumerate}[start=1,label={P\arabic*:},wide = 0pt, leftmargin = 3em]
+\item Un Marco de Trabajo Physics-Guided para la Reconstrucción de Imágenes Fotoacústicas (PI1; C1)
+\item Análisis del Impacto de la Consistencia Física en la Reconstrucción de PAI (PI2; C2)
+\item Optimización del Fine-tuning con Restricciones Físicas en PAI (PI3; C3, C4)
+\item Evaluación de Robustez y Generalización en Reconstrucción PAI con Guía Física (PI4; C5)
+\end{enumerate}

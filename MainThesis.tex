@@ -1,0 +1,117 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[utf8]{inputenc} % Cargar antes que babel si es necesario
+\usepackage[spanish]{babel}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{tabularx} 
+\input{LaTexPackages.tex}
+\input{CustomFunctions.tex}
+
+\begin{document}
+\begin{titlepage}
+    \centering  
+    \title{Reconstrucción Física-Guiada de Imágenes Fotoacústicas mediante Redes Neuronales Duales} 
+    \author{Maximiliano Galindo}
+    \qualifications{Licenciatura en Física, Maestría en Ciencias}
+    \degree{Maestría en Ciencias}
+    \institution{Universidad Nacional Autónoma de México}
+    \date{Enero 2022}
+\end{titlepage}
+
+\beginfrontmatter
+%%%%% --------- Abstract --------- %%%%%
+\frontmatter{Resumen}
+\input{000_abstract}
+
+%%%%% ----- Acknowledgements ----- %%%%%
+\frontmatter{Agradecimientos}
+\input{00_acknowledgements}
+
+%%%%% -- Contribution Statement -- %%%%%
+% \frontmatter{Contribución del autor}
+
+% \subsection*{Declaración del autor}\sectionisincomplete
+
+\subsection*{Supervisores}
+Dr. Luis Agustín Alvarez-Icaza Longoria \affil{1}, and Dr. Roberto Giovanni Ramírez Chavarría\affil{2}
+
+\makelongaffil{1}{Investigador Titular C}{Instituto de Ingeniería}{Universidad Nacional Autónoma de México}
+\makeshortaffil{2}{Investigador Titular C}{Instituto de Ingeniería}{Universidad Nacional Autónoma de México}
+
+
+%%%%% ----- Publications ----- %%%%%
+% \frontmatter{List of publications}
+% \sectionisincomplete
+
+% \subsection*{Publications included in this thesis}
+% \tobecompleted
+
+% \subsection*{Submitted manuscripts included in this thesis}
+% \tobecompleted
+
+% \subsection*{Other publications during candidature}
+% \tobecompleted
+
+
+% %%%%% ---- Ethics Statement ----- %%%%%
+% \frontmatter{Ethics approvals}
+% \sectionisincomplete
+
+%%%%% ---- Table of Contents ---- %%%%%
+\tableofcontents
+
+%%%%% ----- List of Figures ----- %%%%%
+\listoffigures
+
+%%%%% ----- List of Tables ------ %%%%%
+\listoftables
+
+%%%%% -- List of Abbreviations -- %%%%%
+\input{Abbreviations}
+\printnomenclature
+
+\beginmaincontent
+%%%%% ------ Introduction ------ %%%%%
+\maincontent{Introducción}
+\input{1_introduction}
+
+%%%%% ---- Literature Review ---- %%%%%
+\maincontent{Marco Teórico y Estado del Arte} % Modificado el título
+\input{2_LiteratureReview}
+
+%%%%% ------- Methodology ------- %%%%%
+\maincontent{Metodología}
+\input{3_Methodology}
+
+%%%%% ----- Implementation and Experiments ----- %%%%% % Separado en dos capítulos
+\maincontent{Implementación}
+\input{4_Implementation}
+
+\maincontent{Experimentos y Resultados} % Nuevo capítulo
+\input{5_Experiments}
+
+%%%%% -------- Analysis -------- %%%%%
+\maincontent{Análisis y Discusión} % Modificado para incluir discusión
+\input{6_Analysis}
+
+%%%%% ------ Conclusion ------ %%%%%
+\maincontent{Conclusiones y Trabajo Futuro}
+\input{7_Conclusion}
+
+%%%%% ------ Appendices ------ %%%%% % Añadido apéndices
+\appendix
+\maincontent{Apéndices}
+\input{8_Appendices}
+
+%%%%% ------ References ------ %%%%%
+\backmatter{Referencias}
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+% Ensure all citations are defined
+\nocite{*}
+
+\end{document}

@@ -1,0 +1,235 @@
+\begin{thebibliography}{10}
+
+\bibitem{antholzer2019deep}
+S.~Antholzer, M.~Haltmeier, and J.~Schwab.
+\newblock Deep learning for photoacoustic tomography from sparse data.
+\newblock {\em Inverse Problems in Science and Engineering}, 27(7):987--1005,
+  2019.
+
+\bibitem{arridge2016solving}
+S.~Arridge, P.~Maass, O.~Öktem, and C.-B. Schönlieb.
+\newblock Solving inverse problems using data-driven models.
+\newblock {\em Acta Numerica}, 2016.
+
+\bibitem{bell1880production}
+A.~G. Bell.
+\newblock On the production and reproduction of sound by light.
+\newblock {\em American Journal of Science}, 20(118):305--324, 1880.
+
+\bibitem{cox2009challenges}
+B.~Cox, J.~G. Laufer, P.~C. Beard, and S.~R. Arridge.
+\newblock Challenges for quantitative photoacoustic imaging.
+\newblock {\em Proceedings of SPIE}, 7177:717713, 2009.
+
+\bibitem{guan2020fully}
+S.~Guan, A.~A. Khan, S.~Sikdar, and P.~V. Chitnis.
+\newblock Fully dense unet for 2d sparse photoacoustic tomography artifact
+  removal.
+\newblock {\em IEEE Journal of Selected Topics in Quantum Electronics}, 2020.
+
+\bibitem{guo2020deep}
+B.~Guo, J.~Li, H.~Zmuda, and M.~Sheplak.
+\newblock Deep learning for photoacoustic imaging: A survey.
+\newblock {\em Neurocomputing}, 402:336--351, 2020.
+
+\bibitem{hauptmann2020deep}
+A.~Hauptmann and B.~T. Cox.
+\newblock Deep learning in photoacoustic tomography: current approaches and
+  future directions.
+\newblock {\em Journal of Biomedical Optics}, 25(11):112903, 2020.
+
+\bibitem{hauptmann2018model}
+A.~Hauptmann, F.~Lucka, M.~Betcke, N.~Huynh, J.~Adler, B.~Cox, P.~Beard,
+  S.~Ourselin, and S.~Arridge.
+\newblock Model-based learning for accelerated, limited-view 3-{D}
+  photoacoustic tomography.
+\newblock {\em IEEE transactions on medical imaging}, 2018.
+
+\bibitem{he2016deep}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
+\newblock Deep residual learning for image recognition.
+\newblock {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem{hoffer2019augmented}
+M.~Hoffer, A.~Pourshafeie, L.~Schmidt, I.~Shcherbatyi, and G.~Wolf.
+\newblock Augmented neural networks for modeling physical systems with
+  conservation laws.
+\newblock {\em arXiv preprint arXiv:1912.04405}, 2019.
+
+\bibitem{huang2013full}
+C.~Huang, K.~Wang, L.~Nie, et~al.
+\newblock Full-wave iterative image reconstruction in photoacoustic tomography
+  with acoustically inhomogeneous media.
+\newblock {\em IEEE transactions on medical imaging}, 32(6):1097--1110, 2013.
+
+\bibitem{huang2017densely}
+G.~Huang, Z.~Liu, L.~Van Der~Maaten, and K.~Q. Weinberger.
+\newblock Densely connected convolutional networks.
+\newblock {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4700--4708, 2017.
+
+\bibitem{kim2021clinical}
+C.~Kim, T.~N. Erpelding, K.~Maslov, et~al.
+\newblock Clinical photoacoustic imaging platforms.
+\newblock {\em Biomedical Engineering Letters}, 11:91--100, 2021.
+
+\bibitem{kuchment2008mathematics}
+P.~Kuchment and L.~Kunyansky.
+\newblock Mathematics of thermoacoustic tomography.
+\newblock {\em European Journal of Applied Mathematics}, 19(2):191--224, 2008.
+
+\bibitem{lee2019deep}
+J.-G. Lee, S.~Jun, Y.-W. Cho, H.~Lee, G.~B. Kim, J.~B. Seo, and N.~Kim.
+\newblock Deep learning in medical imaging: general overview.
+\newblock {\em Korean Journal of Radiology}, 20(7):1133--1142, 2019.
+
+\bibitem{li2021photoacoustic}
+L.~Li, L.~Zhu, C.~Ma, L.~Lin, J.~Yao, and L.~V. Wang.
+\newblock Photoacoustic tomography: principles and advances.
+\newblock {\em Progress in Biomedical Engineering}, 3(2):022003, 2021.
+
+\bibitem{lutzweiler2014photoacoustic}
+C.~Lutzweiler and D.~Razansky.
+\newblock Photoacoustic imaging and tomography: Current approaches and future
+  directions.
+\newblock {\em Current medical imaging reviews}, 10(4):305--313, 2014.
+
+\bibitem{maier2019gentle}
+A.~Maier, C.~Syben, T.~Lasser, and C.~Riess.
+\newblock A gentle introduction to deep learning in medical image processing.
+\newblock {\em Zeitschrift für Medizinische Physik}, 29(2):86--101, 2019.
+
+\bibitem{oktay2018attention}
+O.~Oktay, J.~Schlemper, L.~L. Folgoc, M.~Lee, M.~Heinrich, K.~Misawa, K.~Mori,
+  S.~McDonagh, N.~Y. Hammerla, B.~Kainz, B.~Glocker, and D.~Rueckert.
+\newblock Attention {U-Net}: Learning where to look for the pancreas.
+\newblock In {\em Medical Imaging with Deep Learning}. MIDL, 2018.
+
+\bibitem{Raissi2017Physics}
+M.~Raissi, P.~Perdikaris, and G.~E. Karniadakis.
+\newblock Physics informed deep learning ({Part I}): Data-driven solutions of
+  nonlinear partial differential equations.
+\newblock {\em arXiv preprint arXiv:1711.10561}, 2017.
+
+\bibitem{raissi2019physics}
+M.~Raissi, P.~Perdikaris, and G.~E. Karniadakis.
+\newblock Physics-informed neural networks: A deep learning framework for
+  solving forward and inverse problems involving nonlinear partial differential
+  equations.
+\newblock {\em Journal of Computational Physics}, 2019.
+
+\bibitem{reiter2017current}
+A.~Reiter and M.~A. Lediju~Bell.
+\newblock Current state of photoacoustic imaging.
+\newblock {\em Current opinion in biomedical engineering}, 3:94--100, 2017.
+
+\bibitem{ronneberger2015unet}
+O.~Ronneberger, P.~Fischer, and T.~Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em International Conference on Medical Image Computing and
+  Computer-Assisted Intervention}, volume 9351 of {\em Lecture Notes in
+  Computer Science}, pages 234--241. Springer, Springer International
+  Publishing, 2015.
+
+\bibitem{schlemper2019attention}
+J.~Schlemper, O.~Oktay, M.~Schaap, et~al.
+\newblock Attention gated networks: Learning to leverage salient regions in
+  medical images.
+\newblock {\em Medical image analysis}, 53:197--207, 2019.
+
+\bibitem{shan2019physics}
+T.~Shan and J.~Tang.
+\newblock Physics-based neural networks for inverse problems in imaging.
+\newblock {\em IEEE Transactions on Image Processing}, 2019.
+
+\bibitem{shen2017deep}
+D.~Shen, G.~Wu, and H.-I. Suk.
+\newblock Deep learning in medical image analysis.
+\newblock {\em Annual review of biomedical engineering}, 19:221--248, 2017.
+
+\bibitem{tick2016image}
+J.~Tick, A.~Pulkkinen, and T.~Tarvainen.
+\newblock Image reconstruction in photoacoustic tomography with variable speed
+  of sound using a higher-order geometrical acoustics approximation.
+\newblock {\em The Journal of the Acoustical Society of America},
+  139(3):1447--1459, 2016.
+
+\bibitem{valluru2016molecular}
+K.~S. Valluru and J.~K. Willmann.
+\newblock Molecular photoacoustic imaging using small molecule dyes.
+\newblock {\em Bioengineering}, 3(1):7, 2016.
+
+\bibitem{vaswani2017attention}
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
+  {\L}.~Kaiser, and I.~Polosukhin.
+\newblock Attention is all you need.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~30, pages 5998--6008. Curran Associates, Inc., 2017.
+
+\bibitem{wang2009inverse}
+L.~V. Wang.
+\newblock Photoacoustic tomography: fundamentals, advances and prospects.
+\newblock {\em Contrast media \& molecular imaging}, 2009.
+
+\bibitem{wang2012photoacoustic}
+L.~V. Wang and S.~Hu.
+\newblock Photoacoustic imaging in biomedicine.
+\newblock {\em Science}, 335(6075):1458--1462, 2012.
+
+\bibitem{wang2016review}
+Y.~Wang and L.~V. Wang.
+\newblock A review of photoacoustic tomography systems.
+\newblock {\em IEEE Journal of Selected Topics in Quantum Electronics},
+  22(3):1--15, 2016.
+
+\bibitem{xu2005universal}
+M.~Xu and L.~V. Wang.
+\newblock Universal back-projection algorithm for photoacoustic computed
+  tomography.
+\newblock {\em Physical Review E}, 71(1):016706, 2005.
+
+\bibitem{xu2006photoacoustic}
+M.~Xu and L.~V. Wang.
+\newblock Photoacoustic imaging in biomedicine.
+\newblock {\em Review of Scientific Instruments}, 77(4):041101, 2006.
+
+\bibitem{Yang2021}
+C.~Yang, H.~Lan, F.~Gao, and F.~Gao.
+\newblock Review of deep learning for photoacoustic imaging.
+\newblock {\em Photoacoustics}, 21:100215, 2021.
+
+\bibitem{yang2021physics}
+Y.~Yang, J.~Sun, L.~Li, and L.~V. Wang.
+\newblock Physics-informed deep learning for computational photoacoustic
+  imaging.
+\newblock {\em IEEE Transactions on Computational Imaging}, 2021.
+
+\bibitem{yi2019generative}
+X.~Yi, E.~Walia, and P.~Babyn.
+\newblock Generative adversarial networks in medical image analysis.
+\newblock {\em Medical image analysis}, 58:101552, 2019.
+
+\bibitem{zhang2020advances}
+H.~Zhang, J.~Xia, et~al.
+\newblock Advances in photoacoustic imaging: from bench to bedside.
+\newblock {\em Advanced Photonics}, 2(1):014001, 2020.
+
+\bibitem{Zhou2024DataGuided}
+W.~Zhou and Y.~Xu.
+\newblock Data-guided physics-informed neural networks for solving inverse
+  problems in partial differential equations.
+\newblock {\em arXiv preprint arXiv:2407.10836}, 2024.
+
+\bibitem{zhou2020physics}
+Y.~Zhou, J.~Gao, and D.~P. Papageorgiou.
+\newblock Physics-guided deep learning for inverse problems.
+\newblock {\em arXiv preprint arXiv:2020.xxxx}, 2020.
+
+\bibitem{zhou2019unet++}
+Z.~Zhou, M.~M. Rahman~Siddiquee, N.~Tajbakhsh, and J.~Liang.
+\newblock {UNet++}: Redesigning skip connections to exploit multiscale features
+  in image segmentation.
+\newblock {\em IEEE Transactions on Medical Imaging}, 39(6):1856--1867, 2019.
+
+\end{thebibliography}

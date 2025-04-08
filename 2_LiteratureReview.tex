@@ -1,0 +1,106 @@
+Esta revisión de literatura abarca dos áreas principales de investigación: la imagen fotoacústica y las técnicas de aprendizaje profundo para la reconstrucción de imágenes médicas \cite{valluru2016molecular}. El objetivo es establecer una base sólida para entender el estado actual de la tecnología fotoacústica y las aplicaciones más recientes de redes neuronales, específicamente las arquitecturas basadas en atención, en el campo de la reconstrucción de imágenes médicas.
+
+La revisión abarca publicaciones desde 2015 hasta 2024, con énfasis especial en los avances más recientes en arquitecturas de deep learning para procesamiento de imágenes médicas \cite{shen2017deep}. Se han incluido trabajos tanto teóricos como experimentales, con particular atención a aquellos que abordan los desafíos específicos de la reconstrucción fotoacústica \cite{antholzer2019deep}.
+\section{Imagen Fotoacústica: Fundamentos y Avances} \label{sec:lit:first}
+
+Para enteder la imagen fotoacústica, es necesario comprender los principios físicos y tecnológicos subyacentes, así como los métodos tradicionales de reconstrucción utilizados en la práctica clínica actual \cite{wang2012photoacoustic}. A continuación, se presentan los aspectos más relevantes de la imagen fotoacústica y su evolución en los últimos años.
+
+\subsection{Principios Físicos y Tecnológicos} \label{sec:lit:first:one}
+El efecto fotoacústico, descubierto por Alexander Graham Bell en 1880, se fundamenta en la generación de ondas acústicas mediante la absorción de energía electromagnética pulsada \cite{bell1880production}. En el contexto de imagen médica, este fenómeno permite obtener información tanto estructural como funcional del tejido biológico \cite{xu2006photoacoustic}. La técnica combina la alta resolución espacial de los ultrasonidos con el alto contraste de la imagen óptica, superando las limitaciones individuales de ambas modalidades \cite{wang2012photoacoustic}.
+
+Los sistemas modernos de imagen fotoacústica utilizan láseres pulsados de nanosegundos para generar ondas ultrasónicas en el tejido \cite{li2021photoacoustic}. La absorción de energía lumínica produce una expansión termoelástica local que genera ondas de presión detectables mediante transductores ultrasónicos \cite{wang2016review}. Esta información se procesa posteriormente para reconstruir la distribución espacial de los absorbentes ópticos en el tejido (ver Figura \ref{fig:efecto_fotoacustico}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/effect.pdf}
+    \caption{Efecto fotoacústico.}
+    \label{fig:efecto_fotoacustico}
+\end{figure}
+
+Las aplicaciones clínicas actuales incluyen la detección temprana de cáncer, imagen funcional cerebral, y caracterización vascular, entre otras \cite{kim2021clinical}. Los avances recientes en tecnología de sensores y sistemas de adquisición han mejorado significativamente la calidad y velocidad de adquisición de datos fotoacústicos \cite{zhang2020advances}.
+\subsection{Métodos Tradicionales de Reconstrucción} \label{sec:lit:first:two}
+Los métodos convencionales de reconstrucción fotoacústica se pueden clasificar en tres categorías principales \cite{kuchment2008mathematics}:
+
+Los métodos analíticos, como la retroproyección filtrada y las técnicas de transformada de Fourier, proporcionan soluciones directas basadas en la ecuación de onda fotoacústica \cite{xu2005universal}. Estos métodos son computacionalmente eficientes pero pueden generar artefactos significativos en condiciones no ideales.
+
+Los métodos iterativos, incluyendo técnicas de optimización variacional y métodos algebraicos, ofrecen mayor flexibilidad para incorporar información a priori y restricciones físicas \cite{huang2013full}. Sin embargo, su alto costo computacional limita su aplicabilidad en escenarios clínicos en tiempo real.
+
+Los métodos basados en modelos incorporan explícitamente la física del problema mediante simulaciones numéricas detalladas \cite{cox2009challenges}. Aunque precisos, estos métodos requieren un conocimiento exacto de los parámetros físicos del medio y son computacionalmente intensivos.
+
+% -----------------------------------------------------
+\section{Importancia de la Consistencia Física en Reconstrucción Fotoacústica}
+
+La consistencia física en la reconstrucción de imágenes fotoacústicas ha emergido como un aspecto crítico para obtener resultados robustos y fiables \cite{hauptmann2018model}. Esta importancia se fundamenta en múltiples aspectos que impactan tanto la calidad de la reconstrucción como la fiabilidad del resultado para aplicaciones prácticas.
+
+
+\subsection{Naturaleza del Problema Inverso}
+El problema inverso fotoacústico es inherentemente mal condicionado \cite{wang2009inverse}, lo que significa que pequeñas perturbaciones en los datos de entrada (señales acústicas) pueden resultar en grandes variaciones en la solución. La incorporación de restricciones físicas actúa como una forma natural de regularización \cite{arridge2016solving}, ayudando a:
+
+\begin{itemize}
+    \item Reducir el espacio de soluciones posibles a aquellas que son físicamente plausibles.
+    \item Estabilizar el proceso de reconstrucción frente al ruido y las incertidumbres en las mediciones \cite{antholzer2019deep}.
+    \item Mejorar la unicidad de la solución al incorporar información a priori sobre el comportamiento físico del sistema.
+\end{itemize}
+
+\subsection{Garantías de Validez y Robustez}
+La consistencia física proporciona garantías importantes sobre la validez de las reconstrucciones \cite{shan2019physics}:
+
+\begin{itemize}
+    \item Asegura que las imágenes reconstruidas no solo sean visualmente plausibles, sino que también representen estados físicamente posibles del sistema.
+    \item Permite verificar que la reconstrucción obedece las leyes fundamentales de la fotoacústica, como la ecuación de onda y las condiciones de contorno \cite{tick2016image}.
+    \item Mejora la robustez del método, especialmente en casos con datos limitados o ruidosos \cite{hauptmann2020deep}.
+\end{itemize}
+
+\subsection{Ventajas en el Aprendizaje Profundo}
+En el contexto del aprendizaje profundo, la incorporación de la física ofrece ventajas significativas \cite{raissi2019physics}:
+
+\begin{itemize}
+    \item Reduce la dependencia de grandes conjuntos de datos de entrenamiento al incorporar conocimiento previo sobre la física del problema \cite{hoffer2019augmented}.
+    \item Proporciona una guía natural para el proceso de optimización, ayudando a la red a converger a soluciones más significativas \cite{zhou2020physics}.
+    \item Permite detectar y corregir reconstrucciones que, aunque visualmente plausibles, violan las leyes físicas fundamentales del sistema.
+\end{itemize}
+
+
+\section{Deep Learning en Reconstrucción de Imágenes Fotoacústicas}
+
+El aprendizaje profundo ha demostrado un éxito extraordinario en reconstrucción de imágenes fotoacústicas, particularmente con la arquitectura U-Net. Sin embargo, un desafío fundamental persiste: cómo incorporar efectivamente el conocimiento físico del problema en el proceso de aprendizaje.
+
+\subsection{Evolución de Métodos de Reconstrucción con Deep Learning}
+
+Las primeras aproximaciones utilizaban redes neuronales como post-procesamiento para mejorar imágenes reconstruidas con métodos tradicionales. Sin embargo, trabajos recientes como el de Guan et al. \cite{guan2020fully}, han demostrado que las arquitecturas densamente conectadas pueden abordar directamente el problema de reconstrucción, especialmente en casos de muestreo disperso donde los métodos tradicionales generan artefactos significativos.
+
+\subsection{Incorporación de Física en Redes Neuronales}
+
+La incorporación de conocimiento físico en redes neuronales ha seguido principalmente dos enfoques:
+
+\begin{itemize}
+\item \textbf{Physics-Informed Neural Networks (PINNs):} Incorporan directamente las ecuaciones diferenciales en la función de pérdida. Sin embargo, como se discute en \cite{Zhou2024DataGuided}, estos métodos pueden enfrentar desafíos durante el entrenamiento debido al desbalance entre los términos de pérdida física y de datos.
+
+\item \textbf{Data-Guided Physics-Informed Approaches:} Propuestos más recientemente, estos métodos buscan un balance entre el aprendizaje basado en datos y las restricciones físicas. El trabajo de Zhou et al. \cite{Zhou2024DataGuided} introduce un marco de trabajo en dos fases que primero optimiza la pérdida de datos y luego incorpora gradualmente las restricciones físicas.
+\end{itemize}
+
+\subsection{Desafíos en la Incorporación de Física}
+
+La incorporación de restricciones físicas en redes neuronales para reconstrucción fotoacústica presenta varios desafíos únicos:
+
+\begin{itemize}
+\item \textbf{Complejidad Computacional:} Los métodos PINN tradicionales requieren la evaluación de derivadas durante el entrenamiento, lo que aumenta significativamente el costo computacional.
+
+\item \textbf{Balance de Pérdidas:} Como se evidencia en \cite{Zhou2024DataGuided}, mantener un balance adecuado entre la pérdida de datos y las restricciones físicas es crucial para el entrenamiento efectivo.
+
+\item \textbf{Naturaleza Mal Condicionada:} El problema inverso en fotoacústica es inherentemente mal condicionado, lo que complica la incorporación de restricciones físicas.
+\end{itemize}
+
+\section{Limitaciones y Desafíos Actuales}
+
+Los métodos actuales de incorporación de física en redes neuronales enfrentan varios desafíos:
+
+\begin{itemize}
+\item \textbf{Eficiencia Computacional:} Los PINN tradicionales son computacionalmente costosos, limitando su aplicabilidad en escenarios clínicos.
+
+\item \textbf{Generalización:} La mayoría de los conjuntos de datos son simulados, planteando preguntas sobre la generalización a casos reales.
+
+\item \textbf{Validación:} La evaluación de la consistencia física en las reconstrucciones requiere métricas específicas que van más allá de las medidas de calidad de imagen tradicionales.
+\end{itemize}
+
+Estos desafíos motivan la búsqueda de nuevos enfoques que puedan mantener la consistencia física mientras son computacionalmente eficientes y robustos en aplicaciones reales.

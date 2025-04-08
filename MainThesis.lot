@@ -1,0 +1,14 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Arquitectura del modelo U-Net. Cada 'Double Conv' consiste en dos capas convolucionales 3x3 seguidas de BatchNorm y ReLU. Las operaciones ConvTranspose tienen kernel 2x2 y stride 2.\relax }}{16}{}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Hiperparámetros utilizados en el entrenamiento del modelo\relax }}{17}{}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Hiperparámetros del entrenamiento supervisado\relax }}{17}{}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Configuraciones de los experimentos de ablación. Cada experimento evalúa la importancia de un componente específico de la función de pérdida al eliminarlo del entrenamiento mientras mantiene los demás términos constantes.\relax }}{20}{}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Métricas de evaluación de las imágenes generadas por la red reconstructora en el conjunto de prueba. Los valores incluyen las desviaciones estándar.\relax }}{24}{}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

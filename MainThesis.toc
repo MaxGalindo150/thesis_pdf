@@ -1,0 +1,81 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Introducción}{2}{}%
+\contentsline {section}{\numberline {1.1}Introducción}{2}{}%
+\contentsline {section}{\numberline {1.2}Preguntas de Investigación y Contribuciones}{2}{}%
+\contentsline {subsection}{\numberline {1.2.1}Preguntas de Investigación}{2}{}%
+\contentsline {subsection}{\numberline {1.2.2}Contribuciones}{3}{}%
+\contentsline {section}{\numberline {1.3}Estructura de la Tesis}{3}{}%
+\contentsline {chapter}{\numberline {2}Marco Teórico y Estado del Arte}{4}{}%
+\contentsline {section}{\numberline {2.1}Imagen Fotoacústica: Fundamentos y Avances}{4}{}%
+\contentsline {subsection}{\numberline {2.1.1}Principios Físicos y Tecnológicos}{4}{}%
+\contentsline {subsection}{\numberline {2.1.2}Métodos Tradicionales de Reconstrucción}{5}{}%
+\contentsline {section}{\numberline {2.2}Importancia de la Consistencia Física en Reconstrucción Fotoacústica}{6}{}%
+\contentsline {subsection}{\numberline {2.2.1}Naturaleza del Problema Inverso}{6}{}%
+\contentsline {subsection}{\numberline {2.2.2}Garantías de Validez y Robustez}{6}{}%
+\contentsline {subsection}{\numberline {2.2.3}Ventajas en el Aprendizaje Profundo}{6}{}%
+\contentsline {section}{\numberline {2.3}Deep Learning en Reconstrucción de Imágenes Fotoacústicas}{7}{}%
+\contentsline {subsection}{\numberline {2.3.1}Evolución de Métodos de Reconstrucción con Deep Learning}{7}{}%
+\contentsline {subsection}{\numberline {2.3.2}Incorporación de Física en Redes Neuronales}{7}{}%
+\contentsline {subsection}{\numberline {2.3.3}Desafíos en la Incorporación de Física}{7}{}%
+\contentsline {section}{\numberline {2.4}Limitaciones y Desafíos Actuales}{8}{}%
+\contentsline {chapter}{\numberline {3}Metodología}{9}{}%
+\contentsline {section}{\numberline {3.1}Fundamentos Teóricos}{9}{}%
+\contentsline {subsection}{\numberline {3.1.1}Efecto Fotoacústico}{9}{}%
+\contentsline {subsection}{\numberline {3.1.2}Ecuación de Onda Fotoacústica}{10}{}%
+\contentsline {subsection}{\numberline {3.1.3}Problema Inverso del Efecto Fotoacústico}{10}{}%
+\contentsline {subsection}{\numberline {3.1.4}Deep Learning en Reconstrucción Fotoacústica}{11}{}%
+\contentsline {section}{\numberline {3.2}Enfoque Propuesto}{12}{}%
+\contentsline {subsection}{\numberline {3.2.1}Arquitectura del Sistema}{12}{}%
+\contentsline {subsection}{\numberline {3.2.2}Preentrenamiento Individual}{12}{}%
+\contentsline {subsubsection}{Red Reconstructora}{14}{}%
+\contentsline {subsubsection}{Red Supervisora}{14}{}%
+\contentsline {subsection}{\numberline {3.2.3}Flujo de Datos}{14}{}%
+\contentsline {subsection}{\numberline {3.2.4}Fine-tuning con Supervisión Física}{15}{}%
+\contentsline {chapter}{\numberline {4}Implementación}{16}{}%
+\contentsline {section}{\numberline {4.1}Especificaciones Técnicas}{16}{}%
+\contentsline {subsection}{\numberline {4.1.1}Arquitectura del Sistema}{16}{}%
+\contentsline {subsection}{\numberline {4.1.2}Hiperparámetros de Entrenamiento}{16}{}%
+\contentsline {subsubsection}{Preentrenamiento}{17}{}%
+\contentsline {subsubsection}{Fine-tuning}{17}{}%
+\contentsline {section}{\numberline {4.2}Pipeline de Entrenamiento}{17}{}%
+\contentsline {subsection}{\numberline {4.2.1}Obtención de Datos}{18}{}%
+\contentsline {subsection}{\numberline {4.2.2}Preentrenamiento}{18}{}%
+\contentsline {subsection}{\numberline {4.2.3}Fine-tuning}{18}{}%
+\contentsline {section}{\numberline {4.3}Métricas de Evaluación}{18}{}%
+\contentsline {subsection}{\numberline {4.3.1}Calidad de Reconstrucción}{18}{}%
+\contentsline {subsection}{\numberline {4.3.2}Rendimiento Computacional}{19}{}%
+\contentsline {subsection}{\numberline {4.3.3}Análisis Estadístico}{19}{}%
+\contentsline {chapter}{\numberline {5}Experimentos y Resultados}{20}{}%
+\contentsline {section}{\numberline {5.1}Experimentos}{20}{}%
+\contentsline {section}{\numberline {5.2}Resultados}{20}{}%
+\contentsline {subsection}{\numberline {5.2.1}Preentrenamiento}{20}{}%
+\contentsline {subsubsection}{Red Reconstructora}{21}{}%
+\contentsline {subsubsection}{Red Supervisora}{21}{}%
+\contentsline {subsection}{\numberline {5.2.2}Fine-tuning}{22}{}%
+\contentsline {subsubsection}{Metodología propuesta vs. U-Net}{22}{}%
+\contentsline {subsubsection}{Ablación de componentes de la función de pérdida}{23}{}%
+\contentsline {subsection}{\numberline {5.2.3}Metricas de evaluación}{24}{}%
+\contentsline {subsubsection}{Error Absoluto Medio (MAE)}{24}{}%
+\contentsline {paragraph}{Fine-tuning Completo (FT)}{25}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{25}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{26}{}%
+\contentsline {subsubsection}{Error Cuadrático Medio (MSE)}{26}{}%
+\contentsline {paragraph}{Fine-tuning Completo (FT)}{26}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{26}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{28}{}%
+\contentsline {subsubsection}{Error Relativo Medio Normalizado (NRMSE)}{28}{}%
+\contentsline {paragraph}{Fine-tuning Completo (FT)}{29}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{30}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{30}{}%
+\contentsline {subsubsection}{Peak Signal-to-Noise Ratio (PSNR)}{31}{}%
+\contentsline {paragraph}{Fine-tuning Completo (FT)}{31}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{32}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{32}{}%
+\contentsline {subsubsection}{Índice de Similitud Estructural (SSIM)}{33}{}%
+\contentsline {paragraph}{Fine-tuning Completo (FT)}{34}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{34}{}%
+\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{35}{}%
+\contentsline {subsection}{\numberline {5.2.4}Predicciones}{35}{}%
+\contentsline {chapter}{\numberline {6}Análisis y Discusión}{37}{}%
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{38}{}%
+\contentsline {chapter}{\numberline {A}Apéndices}{39}{}%
