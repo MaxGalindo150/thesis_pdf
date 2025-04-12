@@ -79,6 +79,12 @@ P.~Kuchment and L.~Kunyansky.
 \newblock Mathematics of thermoacoustic tomography.
 \newblock {\em European Journal of Applied Mathematics}, 19(2):191--224, 2008.
 
+\bibitem{Lang2017}
+O.~Lang, P.~Kovacs, C.~Motz, M.~Huemer, T.~Berer, and P.~Burgholzer.
+\newblock A linear state space model for photoacoustic imaging in an acoustic
+  attenuating media.
+\newblock {\em arXiv preprint}, 1808.00218v1, 2017.
+
 \bibitem{lee2019deep}
 J.-G. Lee, S.~Jun, Y.-W. Cho, H.~Lee, G.~B. Kim, J.~B. Seo, and N.~Kim.
 \newblock Deep learning in medical imaging: general overview.

@@ -2,30 +2,32 @@
 
 En la actualidad, las técnicas de imagen médica no invasivas han revolucionado el diagnóstico y tratamiento de enfermedades. Entre estas técnicas emergentes, la imagen fotoacústica (PAI, por sus siglas en inglés) se destaca por su capacidad única de combinar el contraste óptico con la resolución ultrasónica, permitiendo visualizar estructuras biológicas con un nivel de detalle sin precedentes.
 
-La reconstrucción de imágenes fotoacústicas representa un desafío significativo debido a la complejidad de los fenómenos físicos involucrados y la presencia inherente de ruido en las señales adquiridas. Los métodos tradicionales de reconstrucción, basados en aproximaciones analíticas y técnicas iterativas, a menudo resultan computacionalmente costosos y pueden producir artefactos en las imágenes reconstruidas.
+La reconstrucción de imágenes fotoacústicas representa un problema inverso mal condicionado que ha sido abordado tradicionalmente mediante aproximaciones analíticas y técnicas iterativas. Estos métodos, aunque fundamentados en principios físicos sólidos, a menudo resultan computacionalmente costosos y pueden producir artefactos en las imágenes reconstruidas debido a la incertidumbre inherente en las mediciones.
 
-En este contexto, las arquitecturas de aprendizaje profundo, específicamente las redes neuronales convolucionales (CNNs), han demostrado un potencial extraordinario para abordar estos desafíos. Sin embargo, un desafío fundamental persiste: la incorporación efectiva de las restricciones físicas del problema en el proceso de aprendizaje. Nuestro trabajo se centra en el desarrollo de un marco de trabajo innovador que permite a las redes neuronales aprender simultáneamente la reconstrucción de imágenes y mantener la consistencia física del problema.
+El aprendizaje profundo ha emergido como una alternativa prometedora para estos desafíos, demostrando capacidad para aprender mapeos complejos directamente de los datos. Sin embargo, las arquitecturas convencionales de redes neuronales carecen de la capacidad para incorporar naturalmente el conocimiento físico subyacente, lo que puede comprometer la consistencia física de las reconstrucciones. Los métodos existentes que intentan integrar restricciones físicas, como las Physics-Informed Neural Networks (PINNs), introducen una alta complejidad computacional que limita su aplicabilidad práctica.
+
+Nuestro trabajo aborda esta brecha metodológica mediante el desarrollo de una estrategia de entrenamiento innovadora basada en redes duales con supervisión física. Utilizando la reconstrucción fotoacústica como caso de estudio, demostramos cómo este enfoque puede balancear efectivamente el aprendizaje basado en datos con la incorporación de conocimiento físico, sin incurrir en la complejidad computacional de los métodos PINN tradicionales. El énfasis principal no recae en alcanzar un nuevo estado del arte en reconstrucción fotoacústica específicamente, sino en establecer un paradigma de entrenamiento que podría extenderse a diversos problemas inversos mal condicionados en el campo de la imagen médica y más allá.
 
 \section{Preguntas de Investigación y Contribuciones}
 \label{sec:prop}
 
-Este trabajo de investigación se centra en el desarrollo de un marco de trabajo de aprendizaje profundo que optimice simultáneamente la calidad de reconstrucción y la consistencia física en imágenes fotoacústicas. Para lograr este objetivo, se plantean las siguientes preguntas de investigación:
+Este trabajo de investigación se centra en el desarrollo de una estrategia de entrenamiento dual físicamente guiada para redes neuronales profundas, utilizando la reconstrucción fotoacústica como caso de estudio. Para lograr este objetivo, se plantean las siguientes preguntas de investigación:
 
 \subsection{Preguntas de Investigación}
 \label{sec:ques}
 
 La pregunta principal de investigación es la siguiente:
 \begin{quote}
-\textit{¿Cómo podemos desarrollar un marco de trabajo de aprendizaje profundo que optimice simultáneamente la calidad de reconstrucción y la consistencia física en imágenes fotoacústicas?}
+\textit{¿Cómo podemos desarrollar una estrategia de entrenamiento para redes neuronales que equilibre efectivamente el aprendizaje basado en datos con la incorporación de conocimiento físico, sin incurrir en la complejidad computacional de los métodos tradicionales?}
 \end{quote}
 
 Para abordar esta pregunta de manera sistemática, se han establecido las siguientes sub-preguntas:
 
 \begin{enumerate}[start=1,label={PI\arabic*:},wide = 0pt, leftmargin = 3em]
-\item \textit{¿Cómo podemos desarrollar una arquitectura de red neuronal que incorpore el conocimiento físico del proceso fotoacústico, considerando tanto la complejidad del entrenamiento como la eficiencia computacional que limita a los métodos PINN tradicionales?}
-\item \textit{¿Qué ventajas ofrece el aprendizaje del problema inverso en la consistencia física de la reconstrucción?}
-\item \textit{¿Cuál es el impacto del fine-tuning con restricciones físicas en la calidad final de la reconstrucción?}
-\item \textit{¿Cómo se comporta el método propuesto en términos de robustez y generalización?}
+\item \textit{¿Cómo puede diseñarse una estrategia de entrenamiento dual que incorpore conocimiento físico en redes neuronales profundas sin recurrir a la complejidad de PINN tradicionales?}
+\item \textit{¿Qué ventajas ofrece el aprendizaje simultáneo del problema directo e inverso en la consistencia y robustez del entrenamiento?}
+\item \textit{¿Cuál es el impacto de diferentes componentes de la función de pérdida en la transferencia efectiva de conocimiento durante el fine-tuning?}
+\item \textit{¿Cómo se puede generalizar esta estrategia de entrenamiento a otros problemas inversos mal condicionados en imágenes médicas?}
 \end{enumerate}
 
 \subsection{Contribuciones}
@@ -34,26 +36,26 @@ Para abordar esta pregunta de manera sistemática, se han establecido las siguie
 Esta investigación proporciona las siguientes contribuciones al conocimiento:
 
 \begin{enumerate}[start=1,label={C\arabic*:},wide = 0pt, leftmargin = 3em]
-\item Un marco de trabajo innovador que integra el aprendizaje de la física del problema mediante una arquitectura dual de redes U-Net.
-\item Una metodología de fine-tuning que balancea efectivamente la calidad de reconstrucción con la consistencia física, demostrada por mejoras cuantificables:
+\item Una estrategia de entrenamiento innovadora basada en redes duales que permite la incorporación de conocimiento físico sin la complejidad computacional de los métodos PINN tradicionales.
+\item Un paradigma de fine-tuning con supervisión física que facilita la transferencia efectiva de conocimiento entre las redes reconstrucción y física, demostrado mediante:
     \begin{itemize}
-        \item Reducción del 18.6\% en MSE de reconstrucción
-        \item Mejora del 18.8\% en consistencia física de señales
-        \item Incremento en SSIM hasta 0.973
+        \item Mejora del 18.6\% en precisión de reconstrucción (MSE)
+        \item Aumento del 18.8\% en consistencia física de las soluciones
+        \item Incremento significativo en métricas perceptuales (SSIM hasta 0.973)
     \end{itemize}
-\item Una implementación computacionalmente eficiente que aborda las limitaciones de los métodos PINN tradicionales mediante un enfoque de redes duales, reduciendo la complejidad del entrenamiento mientras preserva la consistencia física del problema.
-\item Un conjunto completo de experimentos y evaluaciones que validan la efectividad del método propuesto.
-\item Una implementación de código abierto del modelo propuesto y sus herramientas asociadas.
+\item Un análisis exhaustivo de la contribución de diferentes componentes de la función de pérdida en la efectividad del entrenamiento, proporcionando directrices metodológicas para problemas similares.
+\item Evidencia empírica que demuestra cómo la incorporación de conocimiento físico actúa como regularizador implícito, mejorando la generalización en problemas inversos mal condicionados.
+\item Una implementación de código abierto que facilita la reproducibilidad y adaptación de la estrategia propuesta a otros dominios.
 \end{enumerate}
 
 \section{Estructura de la Tesis}
 \label{sec:thes}
 
-El formato de esta tesis es por publicación, por lo que se busca publicar esta investigación en los siguientes artículos:
+% El formato de esta tesis es por publicación, por lo que se busca publicar esta investigación en los siguientes artículos:
 
-\begin{enumerate}[start=1,label={P\arabic*:},wide = 0pt, leftmargin = 3em]
-\item Un Marco de Trabajo Physics-Guided para la Reconstrucción de Imágenes Fotoacústicas (PI1; C1)
-\item Análisis del Impacto de la Consistencia Física en la Reconstrucción de PAI (PI2; C2)
-\item Optimización del Fine-tuning con Restricciones Físicas en PAI (PI3; C3, C4)
-\item Evaluación de Robustez y Generalización en Reconstrucción PAI con Guía Física (PI4; C5)
-\end{enumerate}
+% \begin{enumerate}[start=1,label={P\arabic*:},wide = 0pt, leftmargin = 3em]
+% \item Estrategia de Entrenamiento Dual con Supervisión Física para Redes Neuronales Profundas (PI1; C1)
+% \item Análisis de la Transferencia de Conocimiento Físico en Arquitecturas Duales (PI2; C2)
+% \item Optimización del Fine-tuning en Estrategias de Entrenamiento Físicamente Guiadas (PI3; C3, C4)
+% \item Generalización de la Estrategia de Entrenamiento Dual a Diversos Problemas Inversos en Imagen Médica (PI4; C5)
+% \end{enumerate}

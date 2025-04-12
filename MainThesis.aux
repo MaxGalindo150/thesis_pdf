@@ -12,8 +12,8 @@
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Introducción}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Preguntas de Investigación y Contribuciones}{2}{}\protected@file@percent }
 \newlabel{sec:prop}{{1.2}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Preguntas de Investigación}{2}{}\protected@file@percent }
-\newlabel{sec:ques}{{1.2.1}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Preguntas de Investigación}{3}{}\protected@file@percent }
+\newlabel{sec:ques}{{1.2.1}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Contribuciones}{3}{}\protected@file@percent }
 \newlabel{sec:cont}{{1.2.2}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}Estructura de la Tesis}{3}{}\protected@file@percent }
@@ -118,111 +118,80 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Calidad de Reconstrucción}{18}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Rendimiento Computacional}{19}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Análisis Estadístico}{19}{}\protected@file@percent }
+\citation{Lang2017}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Experimentos y Resultados}{20}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Experimentos}{20}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Configuraciones de los experimentos de ablación. Cada experimento evalúa la importancia de un componente específico de la función de pérdida al eliminarlo del entrenamiento mientras mantiene los demás términos constantes.\relax }}{20}{}\protected@file@percent }
-\newlabel{tab:experiments}{{5.1}{20}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Resultados}{20}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Preentrenamiento}{20}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Red Reconstructora}{21}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Evolución de la función de pérdida durante el preentrenamiento de la red reconstructora.\relax }}{21}{}\protected@file@percent }
-\newlabel{fig:reconstructor_pretraining}{{5.1}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{Red Supervisora}{21}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Evolución de la función de pérdida durante el preentrenamiento de la red supervisora.\relax }}{22}{}\protected@file@percent }
-\newlabel{fig:supervisor_pretraining}{{5.2}{22}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Fine-tuning}{22}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Metodología propuesta vs. U-Net}{22}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Evolución de la función de pérdida durante el fine-tuning de la red reconstructora.\relax }}{22}{}\protected@file@percent }
-\newlabel{fig:reconstructor_finetuning}{{5.3}{22}}
-\@writefile{toc}{\contentsline {subsubsection}{Ablación de componentes de la función de pérdida}{23}{}\protected@file@percent }
-\newlabel{subsec:ablation}{{5.2.2}{23}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Evolución de la función de pérdida durante el fine-tuning de la red constructora eliminando la pérdida estructural.\relax }}{23}{}\protected@file@percent }
-\newlabel{fig:ablation_no_struct}{{5.4}{23}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Evolución de la función de pérdida durante el fine-tuning de la red constructora eliminando la pérdida física.\relax }}{23}{}\protected@file@percent }
-\newlabel{fig:ablation_no_phys}{{5.5}{23}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Metricas de evaluación}{24}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Métricas de evaluación de las imágenes generadas por la red reconstructora en el conjunto de prueba. Los valores incluyen las desviaciones estándar.\relax }}{24}{}\protected@file@percent }
-\newlabel{tab:metricas}{{5.2}{24}}
-\@writefile{toc}{\contentsline {subsubsection}{Error Absoluto Medio (MAE)}{24}{}\protected@file@percent }
-\newlabel{fig:mae_hist}{{5.6a}{25}}
-\newlabel{sub@fig:mae_hist}{{a}{25}}
-\newlabel{fig:mae_violin}{{5.6b}{25}}
-\newlabel{sub@fig:mae_violin}{{b}{25}}
-\newlabel{fig:mae_box}{{5.6c}{25}}
-\newlabel{sub@fig:mae_box}{{c}{25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Análisis comparativo del Error Absoluto Medio (MAE) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{25}{}\protected@file@percent }
-\newlabel{fig:mae_analysis}{{5.6}{25}}
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning Completo (FT)}{25}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{25}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{26}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Error Cuadrático Medio (MSE)}{26}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning Completo (FT)}{26}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{26}{}\protected@file@percent }
-\newlabel{fig:mse_completo}{{5.7a}{27}}
-\newlabel{sub@fig:mse_completo}{{a}{27}}
-\newlabel{fig:mse_no_struct}{{5.7b}{27}}
-\newlabel{sub@fig:mse_no_struct}{{b}{27}}
-\newlabel{fig:mse_no_phy}{{5.7c}{27}}
-\newlabel{sub@fig:mse_no_phy}{{c}{27}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Análisis comparativo del Error Cuadrático Medio (MSE) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{27}{}\protected@file@percent }
-\newlabel{fig:mse_analysis}{{5.7}{27}}
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{28}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Error Relativo Medio Normalizado (NRMSE)}{28}{}\protected@file@percent }
-\newlabel{fig:nrmse_hist}{{5.8a}{29}}
-\newlabel{sub@fig:nrmse_hist}{{a}{29}}
-\newlabel{fig:nrmse_violin}{{5.8b}{29}}
-\newlabel{sub@fig:nrmse_violin}{{b}{29}}
-\newlabel{fig:nrmse_box}{{5.8c}{29}}
-\newlabel{sub@fig:nrmse_box}{{c}{29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Análisis comparativo del Error Relativo Medio Normalizado (NRMSE) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{29}{}\protected@file@percent }
-\newlabel{fig:nrmse_analysis}{{5.8}{29}}
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning Completo (FT)}{29}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{30}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{30}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Peak Signal-to-Noise Ratio (PSNR)}{31}{}\protected@file@percent }
-\newlabel{fig:psnr_hist}{{5.9a}{31}}
-\newlabel{sub@fig:psnr_hist}{{a}{31}}
-\newlabel{fig:psnr_violin}{{5.9b}{31}}
-\newlabel{sub@fig:psnr_violin}{{b}{31}}
-\newlabel{fig:psnr_box}{{5.9c}{31}}
-\newlabel{sub@fig:psnr_box}{{c}{31}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Análisis comparativo del Peak Signal-to-Noise Ratio (PSNR) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{31}{}\protected@file@percent }
-\newlabel{fig:psnr_analysis}{{5.9}{31}}
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning Completo (FT)}{31}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{32}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{32}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Índice de Similitud Estructural (SSIM)}{33}{}\protected@file@percent }
-\newlabel{fig:ssim_hist}{{5.10a}{33}}
-\newlabel{sub@fig:ssim_hist}{{a}{33}}
-\newlabel{fig:ssim_violin}{{5.10b}{33}}
-\newlabel{sub@fig:ssim_violin}{{b}{33}}
-\newlabel{fig:ssim_box}{{5.10c}{33}}
-\newlabel{sub@fig:ssim_box}{{c}{33}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Análisis comparativo del Índice de Similitud Estructural (SSIM) entre el modelo pre-entrenado y las variantes de fine-tuning implementadas. a) Comparación entre fine-tuning sin componente física y modelo pre-entrenado. b) Comparación entre fine-tuning sin componente estructural y modelo pre-entrenado. c) Comparación entre fine-tuning completo y modelo pre-entrenado.\relax }}{33}{}\protected@file@percent }
-\newlabel{fig:ssim_analysis}{{5.10}{33}}
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning Completo (FT)}{34}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Física (FT No-Physical)}{34}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Fine-tuning sin Componente Estructural (FT No-Structural)}{35}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.4}Predicciones}{35}{}\protected@file@percent }
-\newlabel{fig:sample_solo}{{5.11a}{36}}
-\newlabel{sub@fig:sample_solo}{{a}{36}}
-\newlabel{fig:sample_sup}{{5.11b}{36}}
-\newlabel{sub@fig:sample_sup}{{b}{36}}
-\newlabel{fig:sample_no_struct}{{5.11c}{36}}
-\newlabel{sub@fig:sample_no_struct}{{c}{36}}
-\newlabel{fig:sample_no_phy}{{5.11d}{36}}
-\newlabel{sub@fig:sample_no_phy}{{d}{36}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Ejemplos de predicciones realizadas por el modelo pre-entrenado y los modelos fine-tuned en el conjunto de datos de validación.\relax }}{36}{}\protected@file@percent }
-\newlabel{fig:sample_analysis}{{5.11}{36}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Análisis y Discusión}{37}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Experimentos y Resultados}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Diseño Experimental}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Conjunto de Datos}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Configuración de Experimentos}{20}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Configuraciones experimentales para evaluar la estrategia de entrenamiento propuesta y sus componentes.\relax }}{21}{}\protected@file@percent }
+\newlabel{tab:experiments}{{5.1}{21}}
+\@writefile{toc}{\contentsline {subsubsection}{Métricas de Evaluación}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Análisis del Proceso de Entrenamiento Dual}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Dinámica del Preentrenamiento}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Fase 1: Adquisición de Capacidades Básicas}{21}{}\protected@file@percent }
+\newlabel{fig:reconstructor_pretraining}{{5.1a}{22}}
+\newlabel{sub@fig:reconstructor_pretraining}{{a}{22}}
+\newlabel{fig:supervisor_pretraining}{{5.1b}{22}}
+\newlabel{sub@fig:supervisor_pretraining}{{b}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Evolución de las pérdidas durante el preentrenamiento independiente de las redes duales. Nótese las diferentes dinámicas de convergencia: la red reconstructora (a) muestra una convergencia más estable y una brecha menor entre las pérdidas de entrenamiento y validación, mientras que la red supervisora (b) presenta más fluctuaciones y una brecha más pronunciada, indicando la mayor complejidad del problema físico inverso.\relax }}{22}{}\protected@file@percent }
+\newlabel{fig:pretraining_dynamics}{{5.1}{22}}
+\@writefile{toc}{\contentsline {paragraph}{Análisis Comparativo de Estabilidad}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Dinámica de Transferencia de Conocimiento en el Fine-tuning}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Evolución de la Supervisión Física}{22}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Evolución de las componentes de pérdida durante el fine-tuning completo. Obsérvese cómo la pérdida física inicialmente alta se reduce progresivamente mientras la red aprende a incorporar el conocimiento físico sin comprometer la calidad de reconstrucción directa.\relax }}{23}{}\protected@file@percent }
+\newlabel{fig:finetuning_dynamics}{{5.2}{23}}
+\@writefile{toc}{\contentsline {paragraph}{Análisis de Radar Multimétrica}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Contribución de Componentes Específicos en la Estrategia de Entrenamiento}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Impacto del Componente de Supervisión Física}{24}{}\protected@file@percent }
+\newlabel{fig:ablation_no_phys}{{5.3a}{24}}
+\newlabel{sub@fig:ablation_no_phys}{{a}{24}}
+\newlabel{fig:reconstructed_signals}{{5.3b}{24}}
+\newlabel{sub@fig:reconstructed_signals}{{b}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Análisis del impacto de la supervisión física en el proceso de fine-tuning. (a) Evolución de las pérdidas al eliminar la componente física, mostrando un comportamiento significativamente diferente. (b) Comparación directa de las señales fotoacústicas reconstruidas por los diferentes modelos, evidenciando la mejora en la consistencia física.\relax }}{24}{}\protected@file@percent }
+\newlabel{fig:physical_supervision_impact}{{5.3}{24}}
+\@writefile{toc}{\contentsline {subsubsection}{Rol del Componente Estructural en la Transferencia de Conocimiento}{24}{}\protected@file@percent }
+\newlabel{fig:ablation_no_struct}{{5.4a}{24}}
+\newlabel{sub@fig:ablation_no_struct}{{a}{24}}
+\newlabel{fig:ssim_heatmap}{{5.4b}{24}}
+\newlabel{sub@fig:ssim_heatmap}{{b}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Análisis del impacto del componente estructural en la estrategia de entrenamiento. (a) Evolución de las pérdidas al eliminar la componente estructural, mostrando una dinámica altamente inestable con valores de pérdida física iniciales extremadamente altos. (b) Mapa de calor de SSIM regional comparando los diferentes modelos, revelando patrones de deterioro estructural específicos cuando se elimina esta componente.\relax }}{24}{}\protected@file@percent }
+\newlabel{fig:structural_component_impact}{{5.4}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}Análisis Comparativo Integral}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Perfil de Mejora Multimétrico}{25}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Análisis comparativo del porcentaje de mejora/deterioro en las diferentes métricas para cada configuración experimental, tomando como referencia el modelo pre-entrenado (Baseline). Las barras positivas indican mejora, mientras que las negativas representan deterioro.\relax }}{25}{}\protected@file@percent }
+\newlabel{fig:comparative_improvement}{{5.5}{25}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Análisis comparativo integral de las métricas de evaluación para los diferentes modelos. Los valores en \leavevmode {\color  [rgb]{0.0, 0.5, 0.0}verde} indican mejora porcentual respecto al modelo Baseline, mientras que los valores en \leavevmode {\color  [rgb]{0.5, 0.0, 0.0}rojo} indican deterioro. El mejor rendimiento para cada métrica está en \textbf  {negrita}.\relax }}{25}{}\protected@file@percent }
+\newlabel{tab:metricas_comparativas}{{5.2}{25}}
+\@writefile{toc}{\contentsline {subsubsection}{Análisis de Dispersión de Casos}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.5}Visualización de Resultados}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Ejemplos Representativos de Reconstrucción}{26}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Ejemplos de reconstrucciones obtenidas con el modelo fine-tuned completo. Se muestran: (a) Imagen original, (b) Señal fotoacústica de entrada, (c) Reconstrucción obtenida, (d) Error absoluto. Nótese la preservación de detalles estructurales finos y la consistencia en las reconstrucciones.\relax }}{26}{}\protected@file@percent }
+\newlabel{fig:reconstruction_examples}{{5.6}{26}}
+\@writefile{toc}{\contentsline {subsubsection}{Análisis Comparativo Visual}{26}{}\protected@file@percent }
+\newlabel{fig:sample_baseline}{{5.7a}{27}}
+\newlabel{sub@fig:sample_baseline}{{a}{27}}
+\newlabel{fig:sample_ft}{{5.7b}{27}}
+\newlabel{sub@fig:sample_ft}{{b}{27}}
+\newlabel{fig:sample_ft_no_physical}{{5.7c}{27}}
+\newlabel{sub@fig:sample_ft_no_physical}{{c}{27}}
+\newlabel{fig:sample_ft_no_structural}{{5.7d}{27}}
+\newlabel{sub@fig:sample_ft_no_structural}{{d}{27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Análisis comparativo visual de reconstrucciones obtenidas con los diferentes modelos. Obsérvese cómo: (1) El modelo con fine-tuning completo (b) mejora la nitidez y detalle respecto al baseline (a), (2) La eliminación del componente físico (c) introduce sutiles inconsistencias, y (3) La eliminación del componente estructural (d) produce degradación severa de la calidad visual.\relax }}{27}{}\protected@file@percent }
+\newlabel{fig:comparative_reconstruction}{{5.7}{27}}
+\@writefile{toc}{\contentsline {paragraph}{Hallazgos Clave del Análisis Visual}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.6}Análisis de Eficiencia Computacional y Práctica}{27}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Análisis comparativo de eficiencia computacional entre la estrategia de entrenamiento propuesta y métodos alternativos. La estrategia dual propuesta logra un balance favorable entre incorporación de física y eficiencia computacional.\relax }}{28}{}\protected@file@percent }
+\newlabel{tab:computational_efficiency}{{5.3}{28}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Análisis y Discusión}{29}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{30}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Apéndices}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Apéndices}{31}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibstyle{abbrv}
@@ -241,33 +210,34 @@
 \bibcite{huang2017densely}{{12}{}{{}}{{}}}
 \bibcite{kim2021clinical}{{13}{}{{}}{{}}}
 \bibcite{kuchment2008mathematics}{{14}{}{{}}{{}}}
-\bibcite{lee2019deep}{{15}{}{{}}{{}}}
-\bibcite{li2021photoacoustic}{{16}{}{{}}{{}}}
-\bibcite{lutzweiler2014photoacoustic}{{17}{}{{}}{{}}}
-\bibcite{maier2019gentle}{{18}{}{{}}{{}}}
-\bibcite{oktay2018attention}{{19}{}{{}}{{}}}
-\bibcite{Raissi2017Physics}{{20}{}{{}}{{}}}
-\bibcite{raissi2019physics}{{21}{}{{}}{{}}}
-\bibcite{reiter2017current}{{22}{}{{}}{{}}}
-\bibcite{ronneberger2015unet}{{23}{}{{}}{{}}}
-\bibcite{schlemper2019attention}{{24}{}{{}}{{}}}
-\bibcite{shan2019physics}{{25}{}{{}}{{}}}
-\bibcite{shen2017deep}{{26}{}{{}}{{}}}
-\bibcite{tick2016image}{{27}{}{{}}{{}}}
-\bibcite{valluru2016molecular}{{28}{}{{}}{{}}}
-\bibcite{vaswani2017attention}{{29}{}{{}}{{}}}
-\bibcite{wang2009inverse}{{30}{}{{}}{{}}}
-\bibcite{wang2012photoacoustic}{{31}{}{{}}{{}}}
-\bibcite{wang2016review}{{32}{}{{}}{{}}}
-\bibcite{xu2005universal}{{33}{}{{}}{{}}}
-\bibcite{xu2006photoacoustic}{{34}{}{{}}{{}}}
-\bibcite{Yang2021}{{35}{}{{}}{{}}}
-\bibcite{yang2021physics}{{36}{}{{}}{{}}}
-\bibcite{yi2019generative}{{37}{}{{}}{{}}}
-\bibcite{zhang2020advances}{{38}{}{{}}{{}}}
-\bibcite{Zhou2024DataGuided}{{39}{}{{}}{{}}}
-\bibcite{zhou2020physics}{{40}{}{{}}{{}}}
-\bibcite{zhou2019unet++}{{41}{}{{}}{{}}}
+\bibcite{Lang2017}{{15}{}{{}}{{}}}
+\bibcite{lee2019deep}{{16}{}{{}}{{}}}
+\bibcite{li2021photoacoustic}{{17}{}{{}}{{}}}
+\bibcite{lutzweiler2014photoacoustic}{{18}{}{{}}{{}}}
+\bibcite{maier2019gentle}{{19}{}{{}}{{}}}
+\bibcite{oktay2018attention}{{20}{}{{}}{{}}}
+\bibcite{Raissi2017Physics}{{21}{}{{}}{{}}}
+\bibcite{raissi2019physics}{{22}{}{{}}{{}}}
+\bibcite{reiter2017current}{{23}{}{{}}{{}}}
+\bibcite{ronneberger2015unet}{{24}{}{{}}{{}}}
+\bibcite{schlemper2019attention}{{25}{}{{}}{{}}}
+\bibcite{shan2019physics}{{26}{}{{}}{{}}}
+\bibcite{shen2017deep}{{27}{}{{}}{{}}}
+\bibcite{tick2016image}{{28}{}{{}}{{}}}
+\bibcite{valluru2016molecular}{{29}{}{{}}{{}}}
+\bibcite{vaswani2017attention}{{30}{}{{}}{{}}}
+\bibcite{wang2009inverse}{{31}{}{{}}{{}}}
+\bibcite{wang2012photoacoustic}{{32}{}{{}}{{}}}
+\bibcite{wang2016review}{{33}{}{{}}{{}}}
+\bibcite{xu2005universal}{{34}{}{{}}{{}}}
+\bibcite{xu2006photoacoustic}{{35}{}{{}}{{}}}
+\bibcite{Yang2021}{{36}{}{{}}{{}}}
+\bibcite{yang2021physics}{{37}{}{{}}{{}}}
+\bibcite{yi2019generative}{{38}{}{{}}{{}}}
+\bibcite{zhang2020advances}{{39}{}{{}}{{}}}
+\bibcite{Zhou2024DataGuided}{{40}{}{{}}{{}}}
+\bibcite{zhou2020physics}{{41}{}{{}}{{}}}
+\bibcite{zhou2019unet++}{{42}{}{{}}{{}}}
 \citation{*}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{50}
+\gdef \@abspage@last{42}

@@ -7,8 +7,9 @@
 \contentsline {table}{\numberline {4.2}{\ignorespaces Hiperparámetros utilizados en el entrenamiento del modelo\relax }}{17}{}%
 \contentsline {table}{\numberline {4.3}{\ignorespaces Hiperparámetros del entrenamiento supervisado\relax }}{17}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Configuraciones de los experimentos de ablación. Cada experimento evalúa la importancia de un componente específico de la función de pérdida al eliminarlo del entrenamiento mientras mantiene los demás términos constantes.\relax }}{20}{}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Métricas de evaluación de las imágenes generadas por la red reconstructora en el conjunto de prueba. Los valores incluyen las desviaciones estándar.\relax }}{24}{}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Configuraciones experimentales para evaluar la estrategia de entrenamiento propuesta y sus componentes.\relax }}{21}{}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Análisis comparativo integral de las métricas de evaluación para los diferentes modelos. Los valores en \leavevmode {\color [rgb]{0.0, 0.5, 0.0}verde} indican mejora porcentual respecto al modelo Baseline, mientras que los valores en \leavevmode {\color [rgb]{0.5, 0.0, 0.0}rojo} indican deterioro. El mejor rendimiento para cada métrica está en \textbf {negrita}.\relax }}{25}{}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Análisis comparativo de eficiencia computacional entre la estrategia de entrenamiento propuesta y métodos alternativos. La estrategia dual propuesta logra un balance favorable entre incorporación de física y eficiencia computacional.\relax }}{28}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
