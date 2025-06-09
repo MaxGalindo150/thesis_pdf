@@ -1,10 +1,24 @@
-Esta sección describe los detalles de la implementación del modelo del modelo U-Net para la recosntruccion de imagenes fotoacústicas. Se incluyen las especificaciones técnicas, hiperparámetros de entrenamiento, pipeline de entrenamiento y validación y pruebas realizadas.
-
+Este capitulo describe detalladamente la implementación del sistema de redes neuronales duales propuesto para la reconstrucción de imágenes fotoacústicas. Se presentan las especificaciones técnicas de las arquitecturas utilizadas, los hiperparámetros de entrenamiento seleccionados, el pipeline completo de adquisición y procesamiento de datos, y las métricas de evaluación empleadas para validar el enfoque propuesto.
 
 \section{Especificaciones Técnicas}
-Para la implementación del modelo U-Net se utilizó el framework de programación PyTorch. La implementación se realizó en Python 3.8.5 y se utilizó la versión 1.7.1 de PyTorch. El código fuente se encuentra disponible en el repositorio de GitHub.
+
+El desarrollo e implementación del sistema se realizó utilizando PyTorch 1.7.1 como framework principal, ejecutándose sobre Python 3.8.5. Esta combinación proporciona un equilibrio óptimo entre flexibilidad para el diseño arquitectónico y eficiencia computacional durante las fases de entrenamiento e inferencia. El código fuente completo, incluyendo los scripts de procesamiento de datos, entrenamiento y evaluación, se encuentra disponible en un repositorio público de GitHub para facilitar la reproducibilidad de los resultados.
+
 \subsection{Arquitectura del Sistema}
-\begin{table}[H]
+
+Para ambas redes neuronales ---reconstructora y supervisora--- se implementó una arquitectura U-Net modificada. Esta elección se fundamenta en la capacidad demostrada de U-Net para preservar información contextual y detalles estructurales finos simultáneamente, características particularmente relevantes para la reconstrucción de imágenes fotoacústicas donde las estructuras vasculares representan elementos críticos.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/arq.pdf}
+    \caption{Arquitectura de la red propuesta.}
+    \label{fig:fine-tuning-imp}
+\end{figure}
+
+
+La arquitectura específica implementada se detalla en la Tabla~\ref{tab:unet_architecture}, donde cada ``Double Conv'' consiste en dos capas convolucionales consecutivas con kernels 3×3, seguidas de normalización por lotes (BatchNorm) y activación ReLU. Esta configuración permite la extracción progresiva de características a múltiples escalas mientras mantiene un campo receptivo creciente.
+
+\begin{table}[htbp]
     \centering
     \begin{tabular}{llll}
     \hline
@@ -31,14 +45,19 @@ Para la implementación del modelo U-Net se utilizó el framework de programaci�
     \label{tab:unet_architecture}
 \end{table}
 
+El encoder está compuesto por cuatro bloques convolucionales con reducción progresiva de resolución espacial mediante operaciones de max-pooling, permitiendo capturar características cada vez más abstractas. En el punto de máxima compresión, el bottleneck concentra la información en 1024 canales antes de comenzar el proceso de upsampling. El decoder, por su parte, incorpora conexiones de salto (skip connections) que concatenan características correspondientes del encoder, preservando así información espacial crítica que podría perderse durante la compresión.
+
+Esta estructura permite a la red aprender representaciones jerárquicas, como se evidencia en el análisis visual de los mapas de activación presentados en la sección de Resultados (Figura~\ref{fig:feature_maps}), donde se observa una especialización progresiva desde patrones generales hasta estructuras específicas. Los mapas de atención (Figura~\ref{fig:attention_maps}) muestran que en las capas profundas del decodificador el modelo presta atención a características globales, mientras que en las capas superficiales se enfoca en detalles locales y bordes.
+
 \subsection{Hiperparámetros de Entrenamiento}
-Ya que el proceso esta divido en dos partes, preentrenamiento y fine-tuning, a continuación se presentan los hiperparámetros utilizados en el entrenamiento del modelo U-Net.
 
-\subsubsection{Preentrenamiento} \label{subsubsec:pretraining}
+Dada la naturaleza dual del proceso de entrenamiento propuesto, los hiperparámetros se configuraron específicamente para cada fase: preentrenamiento individual y fine-tuning con supervisión física.
 
-El preentrenamiento tanto de la red constructora como la red supervisora se realizó con los siguientes hiperparámetros:
+\paragraph{Preentrenamiento}
 
-\begin{table}[H]
+Durante la fase de preentrenamiento, tanto la red reconstructora como la supervisora se entrenaron de manera independiente utilizando los hiperparámetros detallados en la Tabla~\ref{tab:hyperparameters}. El optimizador Adam fue seleccionado por su capacidad para adaptar dinámicamente las tasas de aprendizaje a las características específicas del gradiente, facilitando una convergencia más rápida y estable.
+
+\begin{table}[htbp]
     \centering
     \begin{tabular}{ll}
     \hline
@@ -58,11 +77,15 @@ El preentrenamiento tanto de la red constructora como la red supervisora se real
     \label{tab:hyperparameters}
 \end{table}
 
-\subsubsection{Fine-tuning}
+El scheduler ReduceLROnPlateau se configuró para monitorear la pérdida de validación, reduciendo el learning rate por un factor de 0.5 después de 5 épocas sin mejora significativa. Esta estrategia adaptativa permite que el entrenamiento supere mesetas de convergencia local, manteniendo una tasa de aprendizaje óptima a lo largo del proceso de optimización.
 
-Para el fine-tuning de la red constructora se utilizó el siguiente conjunto de hiperparámetros:
+Como se observa en los perfiles de entrenamiento (Figura~\ref{fig:pretraining_dynamics}), la dinámica de aprendizaje difiere significativamente entre ambas redes. La red reconstructora presenta una rápida convergencia inicial ($>$85\% en las primeras 20 épocas), mientras que la red supervisora muestra una convergencia más lenta y valores de pérdida finales aproximadamente 8 veces mayores (MSE validación: 0.0588 vs 0.0070). Esta asimetría evidencia la mayor dificultad inherente al problema inverso de supervisión, justificando el enfoque de entrenamiento dual propuesto.
 
-\begin{table}[H]
+\paragraph{Fine-tuning}
+
+La fase crítica de fine-tuning, donde se incorpora la supervisión física, utilizó una configuración más elaborada (Tabla~\ref{tab:hyperparameters_supervised}) que incluye múltiples componentes en la función de pérdida para guiar el proceso de optimización hacia soluciones físicamente consistentes.
+
+\begin{table}[htbp]
     \centering
     \begin{tabular}{ll}
     \hline
@@ -91,58 +114,131 @@ Para el fine-tuning de la red constructora se utilizó el siguiente conjunto de 
     \label{tab:hyperparameters_supervised}
 \end{table}
 
+La función de pérdida compuesta incorpora cuatro componentes con pesos específicos:
+
+\begin{enumerate}
+    \item Pérdida directa (MSE entre la imagen reconstruida y el objetivo): $L_{recon} = MSE(\hat{I}, I)$
+    \item Pérdida física (consistencia con el modelo fotoacústico): $L_{physics} = MSE(\hat{S}, S)$
+    \item Pérdida estructural (basada en SSIM): $L_{struct} = 1 - SSIM(\hat{I}, I)$
+    \item Penalización de similitud (previene atajos durante el aprendizaje): $P_{sim} = cos\_similarity(\hat{I}, S)$
+\end{enumerate}
+
+Los pesos fueron determinados mediante experimentación exhaustiva, priorizando la pérdida estructural ($\lambda_{struct}=2.0$) para preservar detalles finos mientras se mantiene un balance con las restricciones físicas ($\lambda_{physical}=0.1$).
+
+Esta configuración permite observar patrones de transferencia de conocimiento secuencial durante el fine-tuning (Figura~\ref{fig:finetuning_dynamics}): una fase inicial (épocas 1-20) con alta volatilidad en la pérdida física, una fase de estabilización (épocas 20-60) con reducción gradual de la pérdida física, y una fase de convergencia (épocas 60-100) donde todas las componentes se estabilizan, demostrando un equilibrio efectivo entre reconstrucción visual y consistencia física.
 
 \section{Pipeline de Entrenamiento}
-El pipeline de entrenamiento se dividió en dos fases: preentrenamiento y fine-tuning. Cada fase se realizó de manera independiente para las redes constructora y supervisora. A continuación se describen los detalles de cada fase.
+
+El proceso completo de entrenamiento se estructuró como un pipeline secuencial con fases claramente definidas, desde la adquisición y preprocesamiento de datos hasta el fine-tuning con supervisión física.
+
 \subsection{Obtención de Datos}
-La obtención de datos experimentales fotoacústicos es un proceso complejo y costoso. Por ello, se implementó un pipeline de datos simulados para el preentrenamiento y fine-tuning del modelo. Este proceso involucra la generación de imágenes sintéticas y el cálculo de sus correspondientes señales fotoacústicas mediante un modelo físico (detallado en el Apéndice). Este enfoque permitió generar un conjunto de datos robusto para el entrenamiento y validación del modelo.
+
+Para superar las limitaciones en la obtención de datos experimentales fotoacústicos (equipamiento especializado de alto costo y protocolos experimentales complejos), se implementó un pipeline de simulación física basado en el modelo de espacio de estados propuesto por Lang et al. para la propagación de ondas acústicas en medios heterogéneos.
+
+El procedimiento específico involucró:
+
+\begin{enumerate}
+    \item Selección de un dataset público de imágenes de retina con diferentes patrones vasculares
+    \item Ampliación mediante técnicas de aumento de datos hasta obtener 13,000 muestras
+    \item Generación de señales fotoacústicas correspondientes utilizando el modelo físico de espacio de estados
+\end{enumerate}
+
+Este enfoque permitió crear un conjunto de datos sintético de 5,000 imágenes de 128$\times$128 píxeles, proporcionando una base sólida para el entrenamiento y validación del modelo propuesto.
+
 \subsection{Preentrenamiento}
-El proceso de preentrenamiento se realizó de manera independiente para las redes constructora y supervisora:
+
+El preentrenamiento de ambas redes se realizó de manera independiente utilizando conjuntos de datos específicos para cada una:
+
 \begin{itemize}
-\item \textbf{Red Constructora:} Se utilizó un conjunto de 5000 pares de imágenes simuladas de 128×128 píxeles.
-\item \textbf{Red Supervisora:} Se emplearon 5000 pares de imágenes (128×128 píxeles) y sus correspondientes señales fotoacústicas.
+    \item \textbf{Red reconstructora}: Se entrenó con pares compuestos por señales fotoacústicas simuladas (entrada) e imágenes originales (objetivo), aprendiendo el mapeo directo del dominio de señales al dominio de imágenes.
+    \item \textbf{Red supervisora}: Se entrenó con el mapeo inverso ---imágenes como entrada y señales fotoacústicas como objetivo--- aprendiendo a emular el proceso físico de generación de señales.
 \end{itemize}
-En ambos casos, se implementó una división del dataset: 80\% para entrenamiento y 20\% para validación.
+
+En ambos casos, se implementó una división del dataset en proporción 80\%-20\% para entrenamiento y validación, respectivamente. El proceso de entrenamiento se monitorizó mediante múltiples métricas para evaluar el progreso cualitativo y cuantitativo.
+
 \subsection{Fine-tuning}
-La fase de fine-tuning mantuvo la misma estructura de datos que el preentrenamiento, utilizando 5000 imágenes simuladas para cada red. La distribución del conjunto de datos se mantuvo en 80\% para entrenamiento y 20\% para validación, permitiendo una optimización específica de los pesos previamente entrenados.
 
-\section{Métricas de Evaluación} \label{sec:metrics}
+La fase crítica de fine-tuning constituye la contribución metodológica central de este trabajo. Durante esta fase, la red reconstructora previamente entrenada se refina mediante un proceso que incorpora la supervisión física proporcionada por la red supervisora, cuyas ponderaciones se mantienen fijas.
 
-Para evaluar exhaustivamente el desempeño del modelo, utilizaremos métricas que cubren diferentes aspectos de la calidad de reconstrucción, eficiencia y significancia estadística:
+Como se evidencia en los experimentos de ablación (Figuras~\ref{fig:ablation_no_phys} y \ref{fig:ablation_no_struct}), la eliminación de cualquiera de los componentes principales (físico o estructural) resulta en un deterioro sustancial del rendimiento:
+
+\begin{itemize}
+    \item \textbf{Sin componente físico}: La reconstrucción muestra una convergencia extremadamente rápida pero artificial, con una brecha sustancial entre entrenamiento y validación que sugiere optimización para características superficiales.
+    \item \textbf{Sin componente estructural}: Se observa la dinámica más inestable de todos los experimentos, con fluctuaciones pronunciadas durante las primeras 20 épocas y una pérdida física que inicia en valores extremadamente altos (cercanos a 2.0).
+\end{itemize}
+
+Estos resultados confirman la importancia crítica de ambos componentes en el proceso de fine-tuning, demostrando su naturaleza complementaria y sinérgica.
+
+\section{Métricas de Evaluación}
+
+Para evaluar exhaustivamente el desempeño del modelo propuesto, se implementó un conjunto integral de métricas que abordan diferentes aspectos de la calidad de reconstrucción, eficiencia computacional y significancia estadística, alineadas con las utilizadas en el análisis de resultados del Capítulo 5.
 
 \subsection{Calidad de Reconstrucción}
-La calidad de las imágenes reconstruidas se evaluará mediante las siguientes métricas:
 
-\begin{itemize}
-    \item \textbf{Peak Signal-to-Noise Ratio (PSNR):} Mide la relación entre la máxima potencia posible de una señal y el ruido que afecta a su representación. Un PSNR más alto indica una mejor calidad de reconstrucción.
-    
-    \item \textbf{Normalized Root Mean Square Error (NRMSE):} Cuantifica la diferencia entre los valores predichos y observados, normalizada para facilitar comparaciones entre diferentes escalas de datos.
-    
-    \item \textbf{Structural Similarity Index (SSIM):} Evalúa la similitud estructural entre las imágenes reconstruidas y las originales, considerando luminancia, contraste y estructura.
-    
-    \item \textbf{Mean Absolute Error (MAE):} Proporciona una medida directa de la diferencia absoluta entre los valores predichos y reales.
-\end{itemize}
+La evaluación primaria de la calidad de las imágenes reconstruidas se realizó mediante un conjunto de métricas complementarias:
 
-\subsection{Rendimiento Computacional}
-El rendimiento computacional se evaluará considerando:
+\textbf{Peak Signal-to-Noise Ratio (PSNR)} mide la relación entre la máxima potencia posible de una señal y el ruido que afecta a su representación:
 
-\begin{itemize}
-    \item \textbf{Tiempo de Reconstrucción:} Medido en milisegundos por imagen, evaluando la eficiencia computacional del modelo en inferencia.
-    
-    \item \textbf{Uso de Memoria:} Cuantifica los recursos computacionales requeridos durante la reconstrucción.
-    
-    \item \textbf{FLOPs:} Mide el número de operaciones de punto flotante, proporcionando una métrica independiente del hardware para la complejidad computacional.
-\end{itemize}
+\begin{equation}
+\text{PSNR} = 10 \cdot \log_{10}\left(\frac{\text{MAX}^2}{\text{MSE}}\right)
+\end{equation}
 
-\subsection{Análisis Estadístico}
-Para validar la significancia y robustez de los resultados, implementaremos:
+donde MAX representa el valor máximo posible del píxel (1.0 en imágenes normalizadas).
 
-\begin{itemize}
-    \item \textbf{Pruebas de Significancia:} Se utilizará la prueba t-pareada para comparar el rendimiento entre el preentrenamiento y fine-tuning, estableciendo un nivel de significancia $\alpha = 0.05$.
-    
-    \item \textbf{Intervalos de Confianza:} Se calcularán intervalos de confianza del 95% para todas las métricas de rendimiento, proporcionando una medida de la incertidumbre en nuestras estimaciones.
-    
-    \item \textbf{Pruebas de Normalidad:} Se aplicará el test Shapiro-Wilk para verificar la normalidad en la distribución de los errores de reconstrucción, validando los supuestos estadísticos de nuestros análisis.
-\end{itemize}
+\textbf{Mean Square Error (MSE)} cuantifica la diferencia cuadrática promedio entre las imágenes reconstruidas y las originales:
 
-Este conjunto integral de métricas nos permitirá evaluar no solo la calidad de las reconstrucciones y la eficiencia computacional, sino también la significancia estadística de las mejoras observadas, proporcionando una base sólida para la comparación con otros métodos de reconstrucción.
+\begin{equation}
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n}(y_i - \hat{y}_i)^2
+\end{equation}
+
+\textbf{Normalized Root Mean Square Error (NRMSE)} proporciona una versión normalizada del RMSE para facilitar comparaciones entre diferentes escalas:
+
+\begin{equation}
+\text{NRMSE} = \frac{\sqrt{\text{MSE}}}{y_{\max} - y_{\min}}
+\end{equation}
+
+\textbf{Structural Similarity Index (SSIM)} evalúa la similitud estructural entre las imágenes reconstruidas y las originales, considerando luminancia, contraste y estructura:
+
+\begin{equation}
+\text{SSIM}(x,y) = [l(x,y)]^{\alpha} \cdot [c(x,y)]^{\beta} \cdot [s(x,y)]^{\gamma}
+\end{equation}
+
+donde $l$, $c$ y $s$ representan comparaciones de luminancia, contraste y estructura respectivamente.
+
+\textbf{Mean Absolute Error (MAE)} proporciona una medida directa de la diferencia absoluta entre los valores predichos y reales:
+
+\begin{equation}
+\text{MAE} = \frac{1}{n} \cdot \sum_{i=1}^{n}|y_i - \hat{y}_i|
+\end{equation}
+
+Como se demuestra en los resultados experimentales (Figuras~\ref{fig:comparative_improvement} y \ref{fig:metrics_comparative}), estas métricas capturan diferentes aspectos de la calidad de reconstrucción, con mejoras sustanciales en el modelo de fine-tuning completo: reducción del 30.7\% en MSE, mejora del 18.9\% en MAE y aumento del 14.5\% en SSIM.
+
+\subsection{Análisis Visuales Específicos}
+
+Además de las métricas cuantitativas, se implementaron análisis visuales específicos que posteriormente resultaron fundamentales para la evaluación cualitativa de los resultados:
+
+\textbf{Mapas de error absoluto}: Visualizan la distribución espacial del error, permitiendo identificar regiones problemáticas en la reconstrucción (Figura~\ref{fig:spatial_comparison}, fila superior).
+
+\textbf{Mapas de SSIM local}: Representan la similitud estructural localizada, revelando áreas donde se preservan mejor las características estructurales (Figura~\ref{fig:spatial_comparison}, fila inferior).
+
+\textbf{Perfiles de intensidad}: Muestran cortes transversales de la intensidad a lo largo de líneas específicas, permitiendo comparar la fidelidad en la reconstrucción de estructuras finas (Figura~\ref{fig:intensity_profile}).
+
+\textbf{Mapas de activación de características}: Visualizan las representaciones intermedias aprendidas por las redes, revelando la especialización progresiva desde patrones generales hasta estructuras específicas (Figura~\ref{fig:feature_maps}).
+
+\textbf{Mapas de atención}: Ilustran las regiones con mayor influencia en la salida del modelo, demostrando cómo diferentes capas atienden a características globales o locales (Figura~\ref{fig:attention_maps}).
+
+\subsection{Análisis Estadístico y Correlación}
+
+Para validar la significancia y robustez de los resultados, se implementaron rigurosos análisis estadísticos:
+
+\textbf{Pruebas de significancia estadística}: Se aplicó la prueba t-pareada para comparar el rendimiento entre configuraciones, estableciendo un nivel de significancia $\alpha = 0.05$.
+
+\textbf{Intervalos de confianza del 95\%}: Calculados para todas las métricas de rendimiento, proporcionando una medida de la incertidumbre en las estimaciones.
+
+\textbf{Análisis de correlación}: Se realizaron análisis de dispersión correlacionando características de complejidad de las imágenes (entropía, densidad de bordes) con la mejora relativa en métricas de calidad (Figura~\ref{fig:scatter_plot_analysis}), revelando patrones fundamentales sobre la robustez y adaptabilidad de la estrategia propuesta.
+
+\textbf{Tamaño del efecto}: Se calculó la d de Cohen para cuantificar no solo la significancia estadística sino también la magnitud práctica de las mejoras observadas.
+
+Estos análisis demostraron que la incorporación de conocimiento físico no solo mejora la calidad de reconstrucción sino que también actúa como un regularizador implícito, estabilizando el proceso de aprendizaje. La red con componente físico mostró una correlación negativa menos pronunciada con la entropía de imagen (r=-0.16) comparada con el modelo sin componente física (r=-0.31, p<0.001), evidenciando mayor robustez frente a escenarios complejos.
+
+Este conjunto integral de métricas y análisis proporciona una base sólida para la evaluación exhaustiva del enfoque propuesto, permitiendo comparaciones objetivas con métodos alternativos de reconstrucción y fundamentando rigurosamente las conclusiones extraídas en el Capítulo 5.

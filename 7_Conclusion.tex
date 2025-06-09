@@ -1,1 +1,113 @@
-\sectionisblank
+Esta investigación ha abordado el desafío de incorporar conocimiento físico en redes neuronales para la reconstrucción de imágenes fotoacústicas, proponiendo una estrategia de entrenamiento dual física-guiada que equilibra eficientemente el aprendizaje basado en datos con restricciones físicas. En este capítulo final, presentamos las conclusiones principales de nuestro trabajo y delineamos direcciones prometedoras para investigación futura.
+
+\section{Conclusiones}
+
+La investigación realizada ha permitido desarrollar un nuevo paradigma para la reconstrucción física-guiada de imágenes fotoacústicas, del cual pueden extraerse las siguientes conclusiones fundamentales:
+
+\subsection{Sobre la Estrategia de Entrenamiento Dual}
+
+Nuestros experimentos confirman que la estrategia de entrenamiento dual propuesta constituye un enfoque efectivo para incorporar conocimiento físico en redes neuronales profundas, sin la complejidad computacional asociada a los métodos PINN tradicionales. Este hallazgo responde directamente a nuestra primera pregunta de investigación (PI1), demostrando múltiples ventajas del enfoque propuesto.
+
+La separación del problema en dos redes complementarias (reconstructora y supervisora) permite una división natural del trabajo, donde cada red puede especializarse en su tarea específica. Esta especialización facilita el aprendizaje, ya que cada red puede adaptar su arquitectura y proceso de optimización a las particularidades de su objetivo concreto. Adicionalmente, esta separación proporciona mayor flexibilidad arquitectónica y conceptual que los enfoques monolíticos tradicionales.
+
+El proceso de fine-tuning con supervisión física facilita la transferencia efectiva de conocimiento físico, como lo evidencia la mejora del 30.7\% en MSE y del 14.5\% en SSIM respecto al modelo baseline. Esta transferencia de conocimiento ocurre de manera gradual y estable, como se observó en el análisis de las dinámicas de entrenamiento, donde identificamos tres fases distintivas: inicial, estabilización y convergencia. Esta progresión estructurada permite que la red reconstructora incorpore paulatinamente las restricciones físicas sin comprometer la calidad visual de las reconstrucciones.
+
+Un aspecto particularmente destacable es que el enfoque propuesto mantiene una eficiencia computacional comparable a métodos puramente basados en datos, mientras incorpora restricciones físicas significativas. A diferencia de los PINN tradicionales, que requieren la evaluación explícita de derivadas durante el entrenamiento, nuestro método aprende implícitamente la física del problema a través de la red supervisora, evitando así la sobrecarga computacional asociada al cálculo de derivadas.
+
+\subsection{Sobre el Aprendizaje Simultáneo de Problemas Directo e Inverso}
+
+En relación a nuestra segunda pregunta de investigación (PI2), los resultados demuestran que el aprendizaje simultáneo del problema directo e inverso ofrece ventajas sustanciales para la reconstrucción fotoacústica. Esta aproximación bilateral al problema permite capturar las complejidades de ambas direcciones del fenómeno físico, enriqueciendo el proceso de aprendizaje y mejorando la calidad de las reconstrucciones.
+
+La red supervisora, al aprender el problema directo (generación de señales fotoacústicas), captura implícitamente las complejidades físicas del fenómeno sin necesidad de modelarlas explícitamente mediante ecuaciones diferenciales. Este aprendizaje implícito representa una ventaja significativa frente a métodos que requieren una formulación matemática precisa del problema, ya que permite adaptarse a fenómenos cuya descripción analítica puede ser compleja o computacionalmente intensiva.
+
+El conocimiento físico capturado por la red supervisora, cuando se transfiere a la red reconstructora durante el fine-tuning, actúa como un regularizador implícito que guía el proceso de aprendizaje hacia soluciones físicamente plausibles. Esta guía física resulta crucial para abordar la naturaleza mal condicionada del problema inverso fotoacústico, reduciendo el espacio de soluciones posibles a aquellas que son consistentes con los principios físicos subyacentes.
+
+Un beneficio adicional observado es la mejora significativa en la robustez del entrenamiento, evidenciada por la menor sensibilidad a la complejidad de la imagen en el modelo completo comparado con las variantes ablativas. Esta característica es particularmente relevante para aplicaciones clínicas, donde la variabilidad anatómica y las condiciones de adquisición pueden generar escenarios de reconstrucción desafiantes.
+
+\subsection{Sobre la Contribución de los Componentes de la Función de Pérdida}
+
+Nuestros experimentos de ablación proporcionan respuestas claras a nuestra tercera pregunta de investigación (PI3), revelando roles complementarios pero fundamentalmente diferentes para los componentes de la función de pérdida. Esta diferenciación funcional constituye un hallazgo importante que puede informar el diseño de funciones de pérdida para problemas similares.
+
+El componente físico actúa principalmente como regularizador y estabilizador del proceso de aprendizaje, mejorando la robustez frente a variaciones en la complejidad de las imágenes. Como se observó en el análisis de correlación, el modelo sin componente físico mostró una mayor sensibilidad a la entropía de la imagen ($r=-0.31$, $p<0.001$) comparado con el modelo completo ($r=-0.16$), evidenciando que la restricción física incrementa la robustez frente a escenarios complejos. Este efecto estabilizador sugiere que la física actúa como una guía que mantiene el proceso de optimización en una trayectoria consistente incluso cuando la complejidad visual de las imágenes aumenta.
+
+Por otro lado, el componente estructural demostró ser crucial para la preservación de detalles finos y características perceptuales. La drástica caída en SSIM, de una mejora del 14.5\% a apenas 0.5\% cuando se elimina este componente, evidencia su papel fundamental en la calidad visual de las reconstrucciones. Esta preservación de detalles estructurales es particularmente relevante en el contexto de imágenes vasculares, donde las estructuras finas pueden contener información diagnóstica crítica.
+
+Quizás el hallazgo más significativo es la interacción sinérgica entre ambos componentes, que produce un efecto multiplicativo en lugar de meramente aditivo. Esta sinergia se manifiesta claramente en los resultados experimentales, donde la mejora del modelo completo (30.7\% en MSE) supera ampliamente la suma de las mejoras individuales de los modelos ablacionados (2.8\% + 2.1\%). Este comportamiento sugiere que ambos componentes no solo son complementarios, sino que se potencian mutuamente, creando un sistema de supervisión dual donde las restricciones físicas y estructurales se refuerzan recíprocamente.
+
+\subsection{Sobre la Generalización del Enfoque Metodológico}
+
+En cuanto a nuestra cuarta pregunta de investigación (PI4), si bien este trabajo se centró en la reconstrucción fotoacústica, nuestros hallazgos sugieren que el enfoque metodológico propuesto posee un potencial de generalización considerable a otros problemas inversos mal condicionados en imagen médica y más allá.
+
+La arquitectura dual propuesta no depende fundamentalmente de características específicas del problema fotoacústico, sino que aborda desafíos generales de los problemas inversos mal condicionados como la unicidad de la solución, la estabilidad frente al ruido y la incorporación de conocimiento previo. Este carácter general del enfoque facilita su adaptación a otros dominios donde se enfrentan desafíos similares.
+
+El paradigma de transferencia de conocimiento físico mediante una red supervisora representa un marco conceptual adaptable a diversos contextos donde existe un modelo físico subyacente. Esta transferencia de conocimiento podría implementarse en cualquier dominio donde sea posible simular o modelar el proceso físico directo, incluso cuando el proceso inverso sea matemáticamente complejo o mal condicionado.
+
+Los principios de balance entre restricciones físicas y estructurales, identificados como elementos clave de nuestro enfoque, podrían aplicarse en dominios tan diversos como la tomografía computarizada, la imagen por resonancia magnética o la tomografía por impedancia eléctrica. En cada caso, las restricciones específicas del dominio podrían incorporarse mediante una red supervisora adaptada al fenómeno físico correspondiente, mientras que los principios generales de transferencia de conocimiento y fine-tuning supervisado se mantendrían consistentes.
+
+\subsection{Conclusiones Generales}
+
+Como conclusión general, esta investigación demuestra que la incorporación adecuada de conocimiento físico en arquitecturas de deep learning puede mejorar significativamente la calidad de reconstrucción en problemas inversos mal condicionados. El enfoque propuesto logra un equilibrio efectivo entre el aprendizaje basado en datos y la incorporación de restricciones físicas, sin incurrir en la complejidad computacional de los métodos tradicionales como PINN.
+
+La estrategia de entrenamiento dual desarrollada ofrece ventajas tanto en calidad de reconstrucción como en consistencia física, posicionándose como una alternativa viable a los métodos existentes en el campo de la reconstrucción fotoacústica. Las mejoras cuantitativas observadas se traducen en beneficios cualitativos significativos, particularmente en la preservación de estructuras finas y la reducción de artefactos, aspectos críticos para la aplicabilidad clínica de la imagen fotoacústica.
+
+Estas conclusiones subrayan la importancia de considerar tanto los principios físicos fundamentales como los avances en aprendizaje profundo al abordar problemas inversos complejos en imagen médica. La integración sinérgica de ambos enfoques, como la implementada en este trabajo, representa un paradigma prometedor que podría extenderse a numerosos dominios donde la física del problema proporciona restricciones valiosas pero computacionalmente desafiantes.
+
+\section{Trabajo Futuro}
+
+A partir de los resultados obtenidos y las limitaciones identificadas, proponemos varias direcciones prometedoras para investigación futura que podrían extender y refinar los hallazgos de este trabajo.
+
+\subsection{Validación con Datos Reales}
+
+Una extensión natural y prioritaria de este trabajo sería validar la metodología propuesta utilizando datos fotoacústicos reales adquiridos en entornos clínicos o experimentales. Esta validación permitiría evaluar la robustez del método frente a las complejidades adicionales presentes en datos reales, como el ruido experimental, artefactos de adquisición y variaciones en las propiedades del tejido que no están completamente modelados en las simulaciones actuales.
+
+Un aspecto crucial de esta validación sería determinar si las mejoras observadas en datos simulados se traducen efectivamente en beneficios clínicos tangibles. La traducción de mejoras cuantitativas en métricas como MSE o SSIM a beneficios diagnósticos reales requeriría estudios de validación clínica en colaboración con especialistas médicos, quienes podrían evaluar el impacto de las mejoras en la calidad de imagen sobre la precisión diagnóstica.
+
+Para facilitar esta transición de datos simulados a reales, sería necesario desarrollar estrategias de adaptación domain-specific que mejoren la transferencia entre ambos dominios. Técnicas como domain adaptation o transfer learning podrían emplearse para adaptar modelos preentrenados con datos simulados a las características específicas de datos reales, permitiendo aprovechar el conocimiento adquirido durante la fase de simulación mientras se ajustan los modelos a las particularidades de los datos experimentales.
+
+\subsection{Avances Arquitectónicos}
+
+La exploración de arquitecturas más avanzadas representa otra dirección prometedora que podría potenciar aún más los beneficios del enfoque propuesto. La incorporación de mecanismos de atención \cite{oktay2018attention,schlemper2019attention} permitiría a la red enfocarse en características físicamente relevantes del problema, mejorando la eficiencia del aprendizaje y la calidad de las reconstrucciones. Estos mecanismos podrían ser particularmente útiles para identificar y preservar estructuras anatómicas críticas en las imágenes reconstruidas.
+
+El campo podría beneficiarse también de la exploración de arquitecturas densamente conectadas \cite{huang2017densely} o residuales para mejorar el flujo de gradientes y facilitar el entrenamiento de redes más profundas. Estas arquitecturas han demostrado su efectividad en diversos problemas de visión por computador y podrían adaptarse al contexto específico de la reconstrucción fotoacústica para mejorar el rendimiento y la estabilidad del entrenamiento.
+
+Un área particularmente prometedora sería el desarrollo de arquitecturas específicamente diseñadas para capturar las características multiescala del fenómeno fotoacústico. Inspiradas en representaciones multiresolución como wavelets o pirámides laplacianas, estas arquitecturas podrían adaptarse mejor a la naturaleza del problema físico, donde diferentes escalas espaciales contienen información complementaria sobre la estructura de los tejidos.
+
+\subsection{Extensión a Reconstrucción Tridimensional}
+
+La extensión del enfoque propuesto a reconstrucción tridimensional representaría un avance significativo hacia aplicaciones clínicas avanzadas. Esta extensión requeriría adaptar la arquitectura dual para procesar datos volumétricos, considerando las restricciones de memoria y computación asociadas al manejo de datos 3D. Estrategias como el procesamiento por parches o técnicas de atención selectiva podrían emplearse para manejar eficientemente estos datos de alta dimensionalidad.
+
+El desarrollo de estrategias de visualización y análisis específicas para datos fotoacústicos tridimensionales constituiría otro aspecto importante de esta extensión. La visualización efectiva de estructuras vasculares tridimensionales facilitaría la interpretación clínica de las reconstrucciones y potenciaría el valor diagnóstico de la técnica.
+
+Para abordar los desafíos computacionales asociados a la reconstrucción 3D, sería valioso explorar enfoques de reconstrucción incremental o por parches. Estas estrategias permitirían procesar volúmenes de datos que exceden la capacidad de memoria disponible, haciendo viable la aplicación del método a reconstrucciones de alta resolución espacial en tres dimensiones.
+
+\subsection{Refinamiento de Modelos Físicos}
+
+El refinamiento de los modelos físicos utilizados tanto en la generación de datos como en la red supervisora podría mejorar significativamente la fidelidad de las reconstrucciones, especialmente en la transición a datos reales. La incorporación de modelos más complejos que consideren factores como la heterogeneidad del tejido, la atenuación acústica y los efectos de refracción permitiría simular con mayor precisión el proceso fotoacústico real, mejorando así la capacidad de la red supervisora para capturar la física relevante del problema.
+
+El desarrollo de arquitecturas híbridas que combinen componentes basados en ecuaciones diferenciales parciales con capas convolucionales podría proporcionar una representación más rica de la física del problema. Estas arquitecturas podrían beneficiarse tanto del rigor matemático de los modelos basados en ecuaciones diferenciales como de la flexibilidad y capacidad de aprendizaje de las redes convolucionales.
+
+La exploración de técnicas de optimización bayesiana o aprendizaje por refuerzo para adaptar dinámicamente los parámetros físicos durante el entrenamiento constituiría otra dirección prometedora. Estas técnicas permitirían ajustar automáticamente la complejidad del modelo físico basándose en las características específicas de los datos, optimizando el balance entre fidelidad física y eficiencia computacional.
+
+\subsection{Aplicación a Otros Problemas Inversos}
+
+La metodología propuesta posee un potencial considerable para ser adaptada a otros problemas inversos mal condicionados en imagen médica y más allá. En tomografía computarizada de dosis reducida, las restricciones físicas implementadas mediante la red supervisora podrían compensar la limitada información disponible, permitiendo reconstrucciones de alta calidad a partir de proyecciones subsampladas y reduciendo así la exposición del paciente a radiación.
+
+Para imagen por resonancia magnética subsamplada, donde la física de la adquisición impone restricciones específicas en el espacio k, nuestro enfoque podría adaptarse para incorporar estas restricciones a través de la red supervisora. Esta aplicación permitiría reducir significativamente los tiempos de adquisición mientras se mantiene la calidad diagnóstica de las imágenes.
+
+La tomografía por impedancia eléctrica, un problema notoriamente mal condicionado, podría beneficiarse particularmente del enfoque de supervisión física propuesto. La extrema sensibilidad de este problema a variaciones en los parámetros y condiciones de contorno lo hace especialmente adecuado para métodos que incorporan restricciones físicas como regularizadores implícitos.
+
+Otras aplicaciones potenciales incluyen la reconstrucción en microscopía óptica de super-resolución, donde las restricciones físicas de difracción podrían incorporarse mediante la red supervisora para superar los límites de resolución convencionales, y la reconstrucción acústica en entornos complejos, donde la física de propagación de ondas impone restricciones significativas.
+
+\subsection{Investigación en Transferencia de Conocimiento Físico}
+
+El paradigma de transferencia de conocimiento físico mediante redes duales merece una exploración más profunda desde perspectivas tanto teóricas como prácticas. El desarrollo de métricas específicas para evaluar la consistencia física de las reconstrucciones, más allá de las métricas visuales tradicionales, permitiría una evaluación más precisa de la efectividad del método en preservar las propiedades físicas relevantes.
+
+La exploración de estrategias de curriculum learning que introduzcan gradualmente la complejidad física durante el entrenamiento podría mejorar la estabilidad y eficiencia del proceso de aprendizaje. Estas estrategias podrían comenzar con modelos físicos simplificados y progresar hacia representaciones más complejas a medida que avanza el entrenamiento, facilitando así la incorporación de restricciones físicas complejas sin comprometer la estabilidad del aprendizaje.
+
+La investigación de métodos para formalizar y visualizar el conocimiento físico transferido constituiría otra área prometedora. Técnicas de interpretabilidad o explicabilidad de redes neuronales podrían emplearse para comprender mejor qué aspectos específicos de la física del problema están siendo capturados por la red supervisora y transferidos a la red reconstructora. Esta comprensión profundizaría nuestro conocimiento teórico del proceso de transferencia y podría informar mejoras en la metodología.
+
+\section{Consideraciones Finales}
+
+Esta tesis ha demostrado que la integración adecuada de principios físicos en arquitecturas de deep learning ofrece un camino prometedor para mejorar la reconstrucción de imágenes fotoacústicas. El enfoque propuesto, basado en redes neuronales duales con supervisión física, representa una contribución significativa al campo, equilibrando efectivamente el aprendizaje basado en datos con la incorporación de conocimiento físico.
+
+Las direcciones de investigación futura delineadas en este capítulo tienen el potencial de extender y refinar estos hallazgos, acercando aún más las técnicas de imagen fotoacústica a su aplicación clínica generalizada. En última instancia, esperamos que este trabajo contribuya a un paradigma más amplio donde los principios físicos fundamentales y los avances en aprendizaje profundo se integren sinérgicamente para abordar problemas complejos en ciencia e ingeniería.

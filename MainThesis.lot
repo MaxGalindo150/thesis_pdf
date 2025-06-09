@@ -1,15 +1,14 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Comparación de modalidades de imagen médica\relax }}{8}{}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Parámetros utilizados para el modelo de espacio de estados en la simulación de señales fotoacústicas.\relax }}{25}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Arquitectura del modelo U-Net. Cada 'Double Conv' consiste en dos capas convolucionales 3x3 seguidas de BatchNorm y ReLU. Las operaciones ConvTranspose tienen kernel 2x2 y stride 2.\relax }}{16}{}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Hiperparámetros utilizados en el entrenamiento del modelo\relax }}{17}{}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Hiperparámetros del entrenamiento supervisado\relax }}{17}{}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Arquitectura del modelo U-Net. Cada 'Double Conv' consiste en dos capas convolucionales 3x3 seguidas de BatchNorm y ReLU. Las operaciones ConvTranspose tienen kernel 2x2 y stride 2.\relax }}{27}{}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Hiperparámetros utilizados en el entrenamiento del modelo\relax }}{28}{}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Hiperparámetros del entrenamiento supervisado\relax }}{29}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Configuraciones experimentales para evaluar la estrategia de entrenamiento propuesta y sus componentes.\relax }}{21}{}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Análisis comparativo integral de las métricas de evaluación para los diferentes modelos. Los valores en \leavevmode {\color [rgb]{0.0, 0.5, 0.0}verde} indican mejora porcentual respecto al modelo Baseline, mientras que los valores en \leavevmode {\color [rgb]{0.5, 0.0, 0.0}rojo} indican deterioro. El mejor rendimiento para cada métrica está en \textbf {negrita}.\relax }}{25}{}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Análisis comparativo de eficiencia computacional entre la estrategia de entrenamiento propuesta y métodos alternativos. La estrategia dual propuesta logra un balance favorable entre incorporación de física y eficiencia computacional.\relax }}{28}{}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Configuraciones experimentales para evaluar la estrategia de entrenamiento propuesta y sus componentes.\relax }}{34}{}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Resultados comparativos de rendimiento entre diferentes configuraciones de fine-tuning. Los mejores resultados se muestran en negrita.\relax }}{41}{}%
 \addvspace {10\p@ }

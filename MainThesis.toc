@@ -1,74 +1,108 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Introducción}{2}{}%
-\contentsline {section}{\numberline {1.1}Introducción}{2}{}%
-\contentsline {section}{\numberline {1.2}Preguntas de Investigación y Contribuciones}{2}{}%
-\contentsline {subsection}{\numberline {1.2.1}Preguntas de Investigación}{3}{}%
-\contentsline {subsection}{\numberline {1.2.2}Contribuciones}{3}{}%
-\contentsline {section}{\numberline {1.3}Estructura de la Tesis}{3}{}%
-\contentsline {chapter}{\numberline {2}Marco Teórico y Estado del Arte}{4}{}%
-\contentsline {section}{\numberline {2.1}Imagen Fotoacústica: Fundamentos y Avances}{4}{}%
-\contentsline {subsection}{\numberline {2.1.1}Principios Físicos y Tecnológicos}{4}{}%
-\contentsline {subsection}{\numberline {2.1.2}Métodos Tradicionales de Reconstrucción}{5}{}%
-\contentsline {section}{\numberline {2.2}Importancia de la Consistencia Física en Reconstrucción Fotoacústica}{6}{}%
-\contentsline {subsection}{\numberline {2.2.1}Naturaleza del Problema Inverso}{6}{}%
-\contentsline {subsection}{\numberline {2.2.2}Garantías de Validez y Robustez}{6}{}%
-\contentsline {subsection}{\numberline {2.2.3}Ventajas en el Aprendizaje Profundo}{6}{}%
-\contentsline {section}{\numberline {2.3}Deep Learning en Reconstrucción de Imágenes Fotoacústicas}{7}{}%
-\contentsline {subsection}{\numberline {2.3.1}Evolución de Métodos de Reconstrucción con Deep Learning}{7}{}%
-\contentsline {subsection}{\numberline {2.3.2}Incorporación de Física en Redes Neuronales}{7}{}%
-\contentsline {subsection}{\numberline {2.3.3}Desafíos en la Incorporación de Física}{7}{}%
-\contentsline {section}{\numberline {2.4}Limitaciones y Desafíos Actuales}{8}{}%
-\contentsline {chapter}{\numberline {3}Metodología}{9}{}%
-\contentsline {section}{\numberline {3.1}Fundamentos Teóricos}{9}{}%
-\contentsline {subsection}{\numberline {3.1.1}Efecto Fotoacústico}{9}{}%
-\contentsline {subsection}{\numberline {3.1.2}Ecuación de Onda Fotoacústica}{10}{}%
-\contentsline {subsection}{\numberline {3.1.3}Problema Inverso del Efecto Fotoacústico}{10}{}%
-\contentsline {subsection}{\numberline {3.1.4}Deep Learning en Reconstrucción Fotoacústica}{11}{}%
-\contentsline {section}{\numberline {3.2}Enfoque Propuesto}{12}{}%
-\contentsline {subsection}{\numberline {3.2.1}Arquitectura del Sistema}{12}{}%
-\contentsline {subsection}{\numberline {3.2.2}Preentrenamiento Individual}{12}{}%
-\contentsline {subsubsection}{Red Reconstructora}{14}{}%
-\contentsline {subsubsection}{Red Supervisora}{14}{}%
-\contentsline {subsection}{\numberline {3.2.3}Flujo de Datos}{14}{}%
-\contentsline {subsection}{\numberline {3.2.4}Fine-tuning con Supervisión Física}{15}{}%
-\contentsline {chapter}{\numberline {4}Implementación}{16}{}%
-\contentsline {section}{\numberline {4.1}Especificaciones Técnicas}{16}{}%
-\contentsline {subsection}{\numberline {4.1.1}Arquitectura del Sistema}{16}{}%
-\contentsline {subsection}{\numberline {4.1.2}Hiperparámetros de Entrenamiento}{16}{}%
-\contentsline {subsubsection}{Preentrenamiento}{17}{}%
-\contentsline {subsubsection}{Fine-tuning}{17}{}%
-\contentsline {section}{\numberline {4.2}Pipeline de Entrenamiento}{17}{}%
-\contentsline {subsection}{\numberline {4.2.1}Obtención de Datos}{18}{}%
-\contentsline {subsection}{\numberline {4.2.2}Preentrenamiento}{18}{}%
-\contentsline {subsection}{\numberline {4.2.3}Fine-tuning}{18}{}%
-\contentsline {section}{\numberline {4.3}Métricas de Evaluación}{18}{}%
-\contentsline {subsection}{\numberline {4.3.1}Calidad de Reconstrucción}{18}{}%
-\contentsline {subsection}{\numberline {4.3.2}Rendimiento Computacional}{19}{}%
-\contentsline {subsection}{\numberline {4.3.3}Análisis Estadístico}{19}{}%
-\contentsline {chapter}{\numberline {5}Experimentos y Resultados}{20}{}%
-\contentsline {section}{\numberline {5.1}Experimentos y Resultados}{20}{}%
-\contentsline {subsection}{\numberline {5.1.1}Diseño Experimental}{20}{}%
-\contentsline {subsubsection}{Conjunto de Datos}{20}{}%
-\contentsline {subsubsection}{Configuración de Experimentos}{20}{}%
-\contentsline {subsubsection}{Métricas de Evaluación}{21}{}%
-\contentsline {subsection}{\numberline {5.1.2}Análisis del Proceso de Entrenamiento Dual}{21}{}%
-\contentsline {subsubsection}{Dinámica del Preentrenamiento}{21}{}%
-\contentsline {paragraph}{Fase 1: Adquisición de Capacidades Básicas}{21}{}%
-\contentsline {paragraph}{Análisis Comparativo de Estabilidad}{22}{}%
-\contentsline {subsubsection}{Dinámica de Transferencia de Conocimiento en el Fine-tuning}{22}{}%
-\contentsline {paragraph}{Evolución de la Supervisión Física}{22}{}%
-\contentsline {paragraph}{Análisis de Radar Multimétrica}{23}{}%
-\contentsline {subsection}{\numberline {5.1.3}Contribución de Componentes Específicos en la Estrategia de Entrenamiento}{23}{}%
-\contentsline {subsubsection}{Impacto del Componente de Supervisión Física}{24}{}%
-\contentsline {subsubsection}{Rol del Componente Estructural en la Transferencia de Conocimiento}{24}{}%
-\contentsline {subsection}{\numberline {5.1.4}Análisis Comparativo Integral}{25}{}%
-\contentsline {subsubsection}{Perfil de Mejora Multimétrico}{25}{}%
-\contentsline {subsubsection}{Análisis de Dispersión de Casos}{26}{}%
-\contentsline {subsection}{\numberline {5.1.5}Visualización de Resultados}{26}{}%
-\contentsline {subsubsection}{Ejemplos Representativos de Reconstrucción}{26}{}%
-\contentsline {subsubsection}{Análisis Comparativo Visual}{26}{}%
-\contentsline {paragraph}{Hallazgos Clave del Análisis Visual}{27}{}%
-\contentsline {subsection}{\numberline {5.1.6}Análisis de Eficiencia Computacional y Práctica}{27}{}%
-\contentsline {chapter}{\numberline {6}Análisis y Discusión}{29}{}%
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{30}{}%
-\contentsline {chapter}{\numberline {A}Apéndices}{31}{}%
+\contentsline {section}{\numberline {1.1}Preguntas de Investigación y Contribuciones}{3}{}%
+\contentsline {subsection}{\numberline {1.1.1}Preguntas de Investigación}{3}{}%
+\contentsline {subsection}{\numberline {1.1.2}Contribuciones}{4}{}%
+\contentsline {section}{\numberline {1.2}Estructura de la Tesis}{4}{}%
+\contentsline {chapter}{\numberline {2}Marco Teórico y Estado del Arte}{6}{}%
+\contentsline {subsection}{\numberline {2.0.1}Fundamentos y Avances Recientes en Imagen Fotoacústica}{6}{}%
+\contentsline {subsection}{\numberline {2.0.2}Métodos Tradicionales de Reconstrucción en Imagen Fotoacústica}{7}{}%
+\contentsline {subsection}{\numberline {2.0.3}La Importancia de la Consistencia Física en la Reconstrucción Fotoacústica}{9}{}%
+\contentsline {subsection}{\numberline {2.0.4}Aprendizaje Profundo para la Reconstrucción de Imágenes Fotoacústicas: Tendencias Emergentes}{10}{}%
+\contentsline {subsection}{\numberline {2.0.5}Integración del Conocimiento Físico en Redes Neuronales para Imagen Médica}{11}{}%
+\contentsline {subsection}{\numberline {2.0.6}Limitaciones y Desafíos en la Aplicación a Datos Reales de Imagen Fotoacústica}{12}{}%
+\contentsline {subsection}{\numberline {2.0.7}Aplicaciones Clínicas y Potencial de la Incorporación de la Física}{12}{}%
+\contentsline {subsection}{\numberline {2.0.8}Enfoques Híbridos en la Reconstrucción Fotoacústica}{13}{}%
+\contentsline {subsection}{\numberline {2.0.9}Optimización en Redes Neuronales Profundas: El Algoritmo Adam}{13}{}%
+\contentsline {subsubsection}{Fundamentos del Algoritmo Adam}{13}{}%
+\contentsline {subsubsection}{Ventajas de Adam en Problemas de Reconstrucción de Imágenes}{14}{}%
+\contentsline {subsubsection}{Consideraciones Teóricas y Limitaciones}{14}{}%
+\contentsline {subsubsection}{Configuración de Hiperparámetros}{14}{}%
+\contentsline {subsubsection}{Adam en el Contexto de Entrenamiento Dual}{15}{}%
+\contentsline {subsubsection}{Alternativas y Desarrollos Recientes}{15}{}%
+\contentsline {subsection}{\numberline {2.0.10}Conclusiones del Capítulo}{15}{}%
+\contentsline {chapter}{\numberline {3}Metodología}{17}{}%
+\contentsline {section}{\numberline {3.1}Fundamentos Teóricos}{17}{}%
+\contentsline {subsection}{\numberline {3.1.1}Efecto Fotoacústico}{17}{}%
+\contentsline {subsection}{\numberline {3.1.2}Ecuación de Onda Fotoacústica}{18}{}%
+\contentsline {subsection}{\numberline {3.1.3}Problema Inverso del Efecto Fotoacústico}{18}{}%
+\contentsline {subsection}{\numberline {3.1.4}Deep Learning en Reconstrucción Fotoacústica}{19}{}%
+\contentsline {section}{\numberline {3.2}Enfoque Propuesto}{20}{}%
+\contentsline {subsection}{\numberline {3.2.1}Arquitectura del Sistema}{20}{}%
+\contentsline {subsection}{\numberline {3.2.2}Preentrenamiento Individual}{20}{}%
+\contentsline {subsubsection}{Red Reconstructora}{20}{}%
+\contentsline {subsubsection}{Red Supervisora}{22}{}%
+\contentsline {subsection}{\numberline {3.2.3}Flujo de Datos}{22}{}%
+\contentsline {subsection}{\numberline {3.2.4}Fine-tuning con Supervisión Física}{22}{}%
+\contentsline {subsection}{\numberline {3.2.5}Simulación de Señales Fotoacústicas mediante Modelo de Espacio de Estados}{23}{}%
+\contentsline {subsubsection}{Fundamento del Modelo de Espacio de Estados}{23}{}%
+\contentsline {subsubsection}{Proceso de Discretización}{24}{}%
+\contentsline {subsubsection}{Implementación Numérica}{24}{}%
+\contentsline {subsubsection}{Parámetros de Simulación}{25}{}%
+\contentsline {chapter}{\numberline {4}Implementación}{26}{}%
+\contentsline {section}{\numberline {4.1}Especificaciones Técnicas}{26}{}%
+\contentsline {subsection}{\numberline {4.1.1}Arquitectura del Sistema}{26}{}%
+\contentsline {subsection}{\numberline {4.1.2}Hiperparámetros de Entrenamiento}{28}{}%
+\contentsline {paragraph}{Preentrenamiento}{28}{}%
+\contentsline {paragraph}{Fine-tuning}{28}{}%
+\contentsline {section}{\numberline {4.2}Pipeline de Entrenamiento}{29}{}%
+\contentsline {subsection}{\numberline {4.2.1}Obtención de Datos}{29}{}%
+\contentsline {subsection}{\numberline {4.2.2}Preentrenamiento}{30}{}%
+\contentsline {subsection}{\numberline {4.2.3}Fine-tuning}{30}{}%
+\contentsline {section}{\numberline {4.3}Métricas de Evaluación}{31}{}%
+\contentsline {subsection}{\numberline {4.3.1}Calidad de Reconstrucción}{31}{}%
+\contentsline {subsection}{\numberline {4.3.2}Análisis Visuales Específicos}{32}{}%
+\contentsline {subsection}{\numberline {4.3.3}Análisis Estadístico y Correlación}{32}{}%
+\contentsline {chapter}{\numberline {5}Experimentos y Resultados}{33}{}%
+\contentsline {section}{\numberline {5.1}Diseño Experimental}{33}{}%
+\contentsline {subsection}{\numberline {5.1.1}Conjunto de Datos}{33}{}%
+\contentsline {subsection}{\numberline {5.1.2}Configuración de Experimentos}{33}{}%
+\contentsline {subsection}{\numberline {5.1.3}Métricas de Evaluación}{34}{}%
+\contentsline {section}{\numberline {5.2}Análisis del Proceso de Entrenamiento Dual}{34}{}%
+\contentsline {subsection}{\numberline {5.2.1}Dinámica del Preentrenamiento}{34}{}%
+\contentsline {subsection}{\numberline {5.2.2}Dinámica de Transferencia de Conocimiento en el Fine-tuning}{35}{}%
+\contentsline {section}{\numberline {5.3}Contribución de Componentes Específicos}{37}{}%
+\contentsline {subsection}{\numberline {5.3.1}Impacto del Componente de Supervisión Física}{37}{}%
+\contentsline {subsection}{\numberline {5.3.2}Rol del Componente Estructural}{39}{}%
+\contentsline {subsection}{\numberline {5.3.3}Sinergia entre Componentes}{40}{}%
+\contentsline {section}{\numberline {5.4}Análisis Comparativo Integral}{40}{}%
+\contentsline {subsection}{\numberline {5.4.1}Perfil de Mejora Multimétrico}{40}{}%
+\contentsline {subsection}{\numberline {5.4.2}Análisis por Categorías de Métricas}{41}{}%
+\contentsline {subsection}{\numberline {5.4.3}Implicaciones para la Reconstrucción Fotoacústica}{42}{}%
+\contentsline {subsection}{\numberline {5.4.4}Análisis de Dispersión de Casos}{42}{}%
+\contentsline {section}{\numberline {5.5}Visualización de Resultados}{44}{}%
+\contentsline {subsection}{\numberline {5.5.1}Ejemplos Representativos de Reconstrucción}{44}{}%
+\contentsline {subsection}{\numberline {5.5.2}Análisis Espacial Comparativo}{46}{}%
+\contentsline {subsection}{\numberline {5.5.3}Perfiles de Intensidad}{47}{}%
+\contentsline {subsection}{\numberline {5.5.4}Visualización de Características Aprendidas}{47}{}%
+\contentsline {subsection}{\numberline {5.5.5}Hallazgos Clave del Análisis Visual}{49}{}%
+\contentsline {section}{\numberline {5.6}Interpretación de los Hallazgos Experimentales}{50}{}%
+\contentsline {subsection}{\numberline {5.6.1}Complementariedad entre Conocimiento Físico y Aprendizaje de Datos}{50}{}%
+\contentsline {subsection}{\numberline {5.6.2}La Física como Mecanismo de Estabilización del Aprendizaje}{50}{}%
+\contentsline {subsection}{\numberline {5.6.3}Distribución No Uniforme de Mejoras}{51}{}%
+\contentsline {section}{\numberline {5.7}Comparación con Métodos Alternativos}{51}{}%
+\contentsline {subsection}{\numberline {5.7.1}Ventajas sobre Métodos PINN Tradicionales}{51}{}%
+\contentsline {subsection}{\numberline {5.7.2}Ventajas sobre Métodos Puramente Basados en Datos}{52}{}%
+\contentsline {subsection}{\numberline {5.7.3}Posicionamiento en el Estado del Arte}{52}{}%
+\contentsline {section}{\numberline {5.8}Implicaciones para la Reconstrucción Fotoacústica}{52}{}%
+\contentsline {subsection}{\numberline {5.8.1}Avances en Calidad de Reconstrucción}{53}{}%
+\contentsline {subsection}{\numberline {5.8.2}Potencial Aplicación Clínica}{53}{}%
+\contentsline {section}{\numberline {5.9}Limitaciones del Estudio Actual}{54}{}%
+\contentsline {section}{\numberline {5.10}Reflexiones sobre el Enfoque Metodológico}{54}{}%
+\contentsline {subsection}{\numberline {5.10.1}Balance entre Rigor Físico y Pragmatismo Computacional}{54}{}%
+\contentsline {subsection}{\numberline {5.10.2}Generalización del Enfoque Metodológico}{55}{}%
+\contentsline {chapter}{\numberline {6}Conclusiones y Trabajo Futuro}{56}{}%
+\contentsline {section}{\numberline {6.1}Conclusiones}{56}{}%
+\contentsline {subsection}{\numberline {6.1.1}Sobre la Estrategia de Entrenamiento Dual}{56}{}%
+\contentsline {subsection}{\numberline {6.1.2}Sobre el Aprendizaje Simultáneo de Problemas Directo e Inverso}{57}{}%
+\contentsline {subsection}{\numberline {6.1.3}Sobre la Contribución de los Componentes de la Función de Pérdida}{57}{}%
+\contentsline {subsection}{\numberline {6.1.4}Sobre la Generalización del Enfoque Metodológico}{58}{}%
+\contentsline {subsection}{\numberline {6.1.5}Conclusiones Generales}{58}{}%
+\contentsline {section}{\numberline {6.2}Trabajo Futuro}{59}{}%
+\contentsline {subsection}{\numberline {6.2.1}Validación con Datos Reales}{59}{}%
+\contentsline {subsection}{\numberline {6.2.2}Avances Arquitectónicos}{59}{}%
+\contentsline {subsection}{\numberline {6.2.3}Extensión a Reconstrucción Tridimensional}{60}{}%
+\contentsline {subsection}{\numberline {6.2.4}Refinamiento de Modelos Físicos}{60}{}%
+\contentsline {subsection}{\numberline {6.2.5}Aplicación a Otros Problemas Inversos}{61}{}%
+\contentsline {subsection}{\numberline {6.2.6}Investigación en Transferencia de Conocimiento Físico}{61}{}%
+\contentsline {section}{\numberline {6.3}Consideraciones Finales}{61}{}%

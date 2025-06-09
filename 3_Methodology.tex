@@ -1,10 +1,10 @@
-En esta sección se presenta la metodología de este trabajo tanto teórica como experimental. Partiendo desde la matemática del problema hasta la arquitectura de las redes neuronales utilizadas. En esta sección se presenta la metodología de este trabajo tanto teórica como experimental. Partiendo desde la matemática del problema hasta la arquitectura de las redes neuronales utilizadas. Se describen las variables de estudio, las métricas de evaluación y el proceso de entrenamiento.
+En este capitulo se presenta la metodología de este trabajo tanto teórica como experimental. Partiendo desde la matemática del problema hasta la arquitectura de las redes neuronales utilizadas. En esta sección se presenta la metodología de este trabajo tanto teórica como experimental. Partiendo desde la matemática del problema hasta la arquitectura de las redes neuronales utilizadas. Se describen las variables de estudio, las métricas de evaluación y el proceso de entrenamiento.
 
 \section{Fundamentos Teóricos} \label{sec:fundamentos}
 
 Primero comenzamos por entender el problema físico subyacente y por qué es importante tener en cuenta la consistencia física en la reconstrucción de imágenes fotoacústicas y cómo es que esta consistencia física puede ayudar a nuestra red neuronal a aprender de manera más eficiente y a obtener mejores resultados.
 
-La solución del problema inverso del efecto fotoacústico es una función de distribución a la cual llamamos imagen. Existen dos métodos muy populares para resolver el problema inverso: "Time Reversal" y "Back Projection", los cuales se derivan de suposiciones físicas y matemáticas, lo cual es conocido como DAS (Delay and Sum).
+La solución del problema inverso del efecto fotoacústico es una función de distribución a la cual llamamos imagen. Existen dos métodos muy populares para resolver el problema inverso: \textit{Time Reversal} y \textit{Back Projection}, los cuales se derivan de suposiciones físicas y matemáticas, lo cual es conocido como DAS (Delay and Sum).
 
 \subsection{Efecto Fotoacústico}
 
@@ -82,12 +82,7 @@ El problema inverso PA se formula utilizando condiciones de frontera en una supe
 
 El objetivo es determinar la distribución de presión inicial $f(\mathbf{x}')$ a partir de los datos de frontera $g(\mathbf{x}_S, t)$. Esta distribución representa la imagen PA.
 
-Los supuestos matemáticos para garantizar la resolubilidad incluyen:
-\begin{itemize}
-    \item La fuente está contenida dentro de $S$.
-    \item No existen fuentes PA externas.
-    \item La ecuación de onda es válida en todo el espacio.
-\end{itemize}
+Los supuestos matemáticos para garantizar la resolubilidad incluyen que la fuente esté contenida dentro de $S$, que no existan fuentes PA externas, y que la ecuación de onda sea válida en todo el espacio.
 
 Debido a la naturaleza termodinámica del efecto fotoacústico, el problema inverso PA es mal condicionado, lo que ha llevado al desarrollo de métodos de regularización, entre otros.
 
@@ -118,12 +113,7 @@ La red reconstructora tiene como objetivo principal transformar las señales ac�
 
 \subsection{Arquitectura del Sistema}
 
-Ambas redes siguen una arquitectura U-Net modificada que consiste en:
-\begin{itemize}
-    \item Un codificador (Encoder) que extrae características relevantes de la entrada
-    \item Un cuello de botella (Bottleneck) que comprime la información
-    \item Un decodificador (Decoder) que reconstruye la salida deseada
-\end{itemize}
+Ambas redes siguen una arquitectura U-Net modificada que consiste en un codificador (Encoder) que extrae características relevantes de la entrada, un cuello de botella (Bottleneck) que comprime la información, y un decodificador (Decoder) que reconstruye la salida deseada.
 
 \subsection{Preentrenamiento Individual}
 
@@ -156,13 +146,7 @@ donde $S_{pred}$ es la señal acústica predicha por la red y $S_{true}$ es la s
 
 \subsection{Flujo de Datos}
 
-Durante el proceso de reconstrucción, los datos fluyen de la siguiente manera:
-\begin{enumerate}
-    \item La señal acústica $S$ ingresa a la red reconstructora
-    \item La red reconstructora genera una imagen reconstruida $\hat{I}$
-    \item Esta imagen es procesada por la red supervisora para generar una señal acústica predicha $\hat{S}$
-    \item Las diferentes pérdidas se calculan comparando las salidas con los valores objetivo
-\end{enumerate}
+Durante el proceso de reconstrucción, los datos fluyen de la siguiente manera: la señal acústica $S$ ingresa a la red reconstructora; la red reconstructora genera una imagen reconstruida $\hat{I}$; esta imagen es procesada por la red supervisora para generar una señal acústica predicha $\hat{S}$; y finalmente, las diferentes pérdidas se calculan comparando las salidas con los valores objetivo.
 
 Este diseño permite que la red reconstructora aprenda no solo de la comparación directa con las imágenes objetivo, sino también de la retroalimentación proporcionada por la red supervisora a través de la consistencia física de las señales acústicas generadas.
 
@@ -173,37 +157,112 @@ El proceso de fine-tuning se realiza sobre la red reconstructora previamente ent
 La estructura del fine-tuning involucra cuatro términos de pérdida complementarios:
 
 \begin{equation}
-    \mathcal{L}_{total} = \lambda_{1} \mathcal{L}_{recon} + \lambda_{2} \mathcal{L}_{physics} + \lambda_{3} \mathcal{L}_{struct} + \lambda_{4} \mathcal{P}_{sim}
+    \mathcal{L}_{total} = \lambda_{direct} \mathcal{L}_{direct} + \lambda_{physical} \mathcal{L}_{physical} + \lambda_{struct} \mathcal{L}_{struct} + \lambda_{similarity} \mathcal{P}_{similarity}
 \end{equation}
 
-donde:
+donde $\mathcal{L}_{direct}$ mide la discrepancia entre la imagen reconstruida $\hat{I}$ y la imagen objetivo $I$ como $\mathcal{L}_{direct} = \text{MSE}(\hat{I}, I)$; $\mathcal{L}_{physical}$ evalúa la consistencia física comparando la señal acústica predicha $\hat{S}$ con la señal real $S$ mediante $\mathcal{L}_{physical} = \text{MSE}(\hat{S}, S)$; $\mathcal{L}_{struct}$ preserva las características estructurales de la imagen como $\mathcal{L}_{struct} = 1 - \text{SSIM}(\hat{I}, I)$; y $\mathcal{P}_{sim}$ es un término de penalización que previene que la red tome atajos durante el aprendizaje, definido como $\mathcal{P}_{sim} = \text{cos\_similarity}(\hat{I}, S)$.
 
-\begin{itemize}
-    \item $\mathcal{L}_{recon}$ mide la discrepancia entre la imagen reconstruida $\hat{I}$ y la imagen objetivo $I$:
-    \begin{equation}
-        \mathcal{L}_{recon} = \text{MSE}(\hat{I}, I)
-    \end{equation}
-    
-    \item $\mathcal{L}_{physics}$ evalúa la consistencia física comparando la señal acústica predicha $\hat{S}$ con la señal real $S$:
-    \begin{equation}
-        \mathcal{L}_{physics} = \text{MSE}(\hat{S}, S)
-    \end{equation}
-    
-    \item $\mathcal{L}_{struct}$ preserva las características estructurales de la imagen:
-    \begin{equation}
-        \mathcal{L}_{struct} = 1 - \text{SSIM}(\hat{I}, I)
-    \end{equation}
-    
-    \item $\mathcal{P}_{sim}$ es un término de penalización que previene que la red tome atajos durante el aprendizaje:
-    \begin{equation}
-        \mathcal{P}_{sim} = \text{cos\_similarity}(\hat{I}, S)
-    \end{equation}
-\end{itemize}
+Los coeficientes $\lambda$ ponderan la contribución de cada término en la pérdida total. Durante el fine-tuning, la red supervisora se mantiene con sus pesos congelados, actuando como un evaluador fijo de la consistencia física de las reconstrucciones. Esta red toma la imagen reconstruida $\hat{I}$ y genera una predicción de la señal acústica $\hat{S}$ que debería producir dicha imagen.
 
-Los coeficientes $\lambda_i$ ponderan la contribución de cada término en la pérdida total. Durante el fine-tuning, la red supervisora se mantiene con sus pesos congelados, actuando como un evaluador fijo de la consistencia física de las reconstrucciones. Esta red toma la imagen reconstruida $\hat{I}$ y genera una predicción de la señal acústica $\hat{S}$ que debería producir dicha imagen.
+El término $\mathcal{L}_{physical}$ es particularmente importante ya que fuerza a la red reconstructora a generar imágenes que, cuando son procesadas por la red supervisora, producen señales acústicas consistentes con las mediciones originales. Esto asegura que la reconstrucción no solo sea visualmente precisa ($\mathcal{L}_{direct}$ y $\mathcal{L}_{struct}$) sino que también respete las propiedades físicas del sistema fotoacústico.
 
-El término $\mathcal{L}_{physics}$ es particularmente importante ya que fuerza a la red reconstructora a generar imágenes que, cuando son procesadas por la red supervisora, producen señales acústicas consistentes con las mediciones originales. Esto asegura que la reconstrucción no solo sea visualmente precisa ($\mathcal{L}_{recon}$ y $\mathcal{L}_{struct}$) sino que también respete las propiedades físicas del sistema fotoacústico.
-
-El término de penalización $\mathcal{P}_{sim}$ es crucial para evitar que la red tome atajos en el proceso de aprendizaje. Sin esta penalización, la red podría tender a generar imágenes que son similares a las señales de entrada, lo cual produciría señales acústicas similares a las originales (minimizando $\mathcal{L}_{physics}$) pero no representaría una reconstrucción válida del objeto original.
+El término de penalización $\mathcal{P}_{sim}$ es crucial para evitar que la red tome atajos en el proceso de aprendizaje. Sin esta penalización, la red podría tender a generar imágenes que son similares a las señales de entrada, lo cual produciría señales acústicas similares a las originales (minimizando $\mathcal{L}_{physical}$) pero no representaría una reconstrucción válida del objeto original.
 
 Este enfoque de fine-tuning permite que la red reconstructora refine sus predicciones incorporando conocimiento físico del sistema, mientras mantiene la calidad visual y estructural de las reconstrucciones. La combinación de los diferentes términos de pérdida asegura un balance entre la fidelidad de la reconstrucción y la consistencia física del resultado.
+
+\subsection{Simulación de Señales Fotoacústicas mediante Modelo de Espacio de Estados} \label{sec:simulacion}
+
+
+Para entrenar las redes neuronales propuestas, es necesario generar un conjunto amplio de datos sintéticos que contengan pares de imágenes (absorción óptica) y sus correspondientes señales fotoacústicas. En esta sección, describimos el método utilizado para simular estas señales a partir de perfiles de absorción conocidos, basándonos en el modelo de espacio de estados lineal propuesto por Lang et al. \cite{Lang2017}.
+
+\subsubsection{Fundamento del Modelo de Espacio de Estados}
+
+El modelo de espacio de estados permite discretizar la ecuación diferencial parcial (PDE) de Stokes que describe la propagación y atenuación de ondas acústicas, transformándola en un sistema de ecuaciones de estado discreto. Este enfoque presenta varias ventajas: permite considerar la atenuación acústica dependiente de la frecuencia, incorpora la disminución de la intensidad del láser debido a la absorción, puede manejar perfiles de absorción óptica arbitrarios, y resulta computacionalmente más eficiente que resolver directamente las ecuaciones diferenciales parciales.
+
+La ecuación de Stokes que describe la propagación de ondas acústicas con atenuación se expresa como:
+
+\begin{equation}
+    \frac{\partial^2 p(z,t)}{\partial z^2} - \frac{1}{c_0^2}\frac{\partial^2 p(z,t)}{\partial t^2} + \tau\frac{\partial^3 p(z,t)}{\partial t \partial z^2} = -\frac{\beta}{C_p}\frac{\partial H(z,t)}{\partial t}
+\end{equation}
+
+donde $p(z,t)$ es la presión local a profundidad $z$ y tiempo $t$, $c_0$ es la velocidad del ultrasonido, $\tau$ es el tiempo de relajación que caracteriza la atenuación, $\beta$ es el coeficiente de expansión térmica, $C_p$ es el calor específico, y $H(z,t)$ es la función de calentamiento que representa la energía electromagnética absorbida.
+
+\subsubsection{Proceso de Discretización}
+
+El proceso de discretización transforma la PDE en un sistema de ecuaciones de estado discreto que puede ser expresado como:
+
+\begin{equation}
+    \mathbf{x}_{k+1} = \mathbf{A}\mathbf{x}_k + \mathbf{g}u_k
+\end{equation}
+\begin{equation}
+    y_k = \mathbf{c}^T\mathbf{x}_k + w_k
+\end{equation}
+
+donde $\mathbf{x}_k = [p_k, p_{k-1}]^T$ es el vector de estado que contiene los perfiles de presión en los pasos de tiempo actual y anterior; $\mathbf{A}$ es la matriz de transición de estado que encapsula las propiedades acústicas del medio; $\mathbf{g}$ es el vector de entrada que relaciona la excitación con el cambio de estado; $u_k = i_k - i_{k-1}$ es la diferencia de la intensidad del láser entre pasos de tiempo consecutivos; $y_k$ es la medición de presión en la superficie de la muestra; y $w_k$ es el ruido de medición.
+
+El vector $\mathbf{g}$ contiene implícitamente la información sobre el perfil de absorción óptica $\mu(z)$ a través del vector $\mathbf{d}$:
+
+\begin{equation}
+    \mathbf{d} = \begin{bmatrix} 
+    \mu_0 \\ 
+    \mu_1 a_0 \\ 
+    \mu_2 a_1 a_0 \\ 
+    \vdots \\ 
+    \mu_{N_z-1} a_{N_z-2} a_{N_z-3} \cdots a_1 a_0 
+    \end{bmatrix}
+\end{equation}
+
+donde $a_n = e^{-\mu_n \Delta z}$ representa la atenuación de la intensidad del láser entre los puntos de la malla $z_n$ y $z_{n+1}$. Este término permite considerar la disminución de la intensidad del láser con la profundidad debido a la absorción.
+
+\subsubsection{Implementación Numérica}
+
+Para simular las señales fotoacústicas a partir de un perfil de absorción $\mu(z)$, seguimos estos pasos: discretizamos el dominio espacial en $N_z$ puntos equidistantes con separación $\Delta z$; discretizamos el dominio temporal con paso $\Delta t$; construimos las matrices $\mathbf{M}_1$, $\mathbf{M}_2$ y $\mathbf{M}_3$ según:
+\begin{align}
+    \mathbf{M}_1 &= -\frac{1}{c_0^2 \Delta t^2}\mathbf{I} + \frac{\tau}{2\Delta t}\mathbf{D}\\
+    \mathbf{M}_2 &= \mathbf{D} + \frac{2}{c_0^2 \Delta t^2}\mathbf{I}\\
+    \mathbf{M}_3 &= -\frac{1}{c_0^2 \Delta t^2}\mathbf{I} - \frac{\tau}{2\Delta t}\mathbf{D}
+\end{align}
+
+donde $\mathbf{D}$ es la matriz de diferencias finitas centrales de segundo orden.
+
+Calculamos la matriz de transición de estado $\mathbf{A}$ y el vector de entrada $\mathbf{g}$ como:
+\begin{equation}
+    \mathbf{A} = \begin{bmatrix} \mathbf{M}_4 & \mathbf{M}_5 \\ \mathbf{I} & \mathbf{0} \end{bmatrix}
+\end{equation}
+\begin{equation}
+    \mathbf{g} = \begin{bmatrix} \mathbf{f} \\ \mathbf{0} \end{bmatrix}
+\end{equation}
+
+donde $\mathbf{M}_4 = -\mathbf{M}_1^{-1}\mathbf{M}_2$, $\mathbf{M}_5 = -\mathbf{M}_1^{-1}\mathbf{M}_3$ y $\mathbf{f} = \mathbf{M}_1^{-1}\mathbf{b}$, siendo $\mathbf{b} = -\frac{\beta\chi}{C_p\Delta t}\mathbf{d}$.
+
+Para una señal de modulación láser $i_k$ dada, calculamos $u_k = i_k - i_{k-1}$, propagamos el sistema de estado desde una condición inicial $\mathbf{x}_0 = \mathbf{0}$ utilizando la ecuación de estado, y extraemos las mediciones de presión $y_k = \mathbf{c}^T\mathbf{x}_k$ en la superficie de la muestra ($z=0$).
+
+Esta simulación produce señales fotoacústicas que consideran la atenuación acústica dependiente de la frecuencia, la disminución de la intensidad del láser con la profundidad, y permite utilizar perfiles de absorción arbitrarios.
+
+\subsubsection{Parámetros de Simulación}
+
+Los principales parámetros utilizados en nuestras simulaciones son:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Parámetro} & \textbf{Valor} & \textbf{Unidad} \\
+\hline
+$\Delta t$ & $10^{-9}$ & s \\
+$\Delta z$ & $30 \times 10^{-7}$ & m \\
+$N_z$ & 20-100 & - \\
+$N_y$ & 100-2000 & - \\
+$\tau$ & $77 \times 10^{-12}$ & s \\
+$\chi$ & $3 \times 10^{-2}$ & - \\
+$\beta/C_p$ & 1/1 & - \\
+$c_0$ & 1500 & m/s \\
+\hline
+\end{tabular}
+\caption{Parámetros utilizados para el modelo de espacio de estados en la simulación de señales fotoacústicas.}
+\label{tab:parametros_simulacion}
+\end{table}
+
+Para cada perfil de absorción, generamos diferentes tipos de excitación láser: pulsos cortos ($\sim$10 ns) que aproximan una función delta, señales chirp con frecuencia variable, y señales optimizadas para maximizar la precisión de reconstrucción.
+
+La simulación mediante este modelo de espacio de estados nos permite generar un conjunto amplio y diverso de pares de datos (imagen, señal fotoacústica) que son utilizados para entrenar y validar nuestras redes neuronales duales, manteniendo la consistencia física entre las imágenes y sus correspondientes señales fotoacústicas.

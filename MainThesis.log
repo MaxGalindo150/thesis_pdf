@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.11.3)  12 APR 2025 14:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.11.3)  8 JUN 2025 18:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -191,20 +191,41 @@ Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \TX@delta=\dimen176
 \TX@cols=\count285
 \TX@ftn=\toks28
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks29
+\c@algorithm=\count286
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count287
+\c@ALG@rem=\count288
+\c@ALG@nested=\count289
+\ALG@tlm=\skip56
+\ALG@thistlm=\skip57
+\c@ALG@Lnr=\count290
+\c@ALG@blocknr=\count291
+\c@ALG@storecount=\count292
+\c@ALG@tmpcounter=\count293
+\ALG@tmplength=\skip58
 ) (./LaTexPackages.tex (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip56
-\bibsep=\skip57
+\bibhang=\skip59
+\bibsep=\skip60
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count286
+\c@NAT@ctr=\count294
 ) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip58
+\labelindent=\skip61
 \enit@outerparindent=\dimen177
-\enit@toks=\toks29
+\enit@toks=\toks30
 \enit@inbox=\box56
-\enit@count@id=\count287
-\enitdp@description=\count288
+\enit@count@id=\count295
+\enitdp@description=\count296
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
@@ -227,9 +248,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count289
-\Gm@cntv=\count290
-\c@Gm@tempcnt=\count291
+\Gm@cnth=\count297
+\Gm@cntv=\count298
+\c@Gm@tempcnt=\count299
 \Gm@bindingoffset=\dimen180
 \Gm@wd@mp=\dimen181
 \Gm@odd@mp=\dimen182
@@ -238,20 +259,18 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutheight=\dimen185
 \Gm@layouthoffset=\dimen186
 \Gm@layoutvoffset=\dimen187
-\Gm@dimlist=\toks30
+\Gm@dimlist=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/nomencl/nomencl.sty
 Package: nomencl 2021/11/10 v5.6 Nomenclature package
  (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
  (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks31
-\XKV@tempa@toks=\toks32
+\XKV@toks=\toks32
+\XKV@tempa@toks=\toks33
 )
-\XKV@depth=\count292
+\XKV@depth=\count300
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/koma-script/tocbasic.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/koma-script/tocbasic.sty
 Package: tocbasic 2021/11/13 v3.35 KOMA-Script package (handling toc-files)
  (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
 Package: scrbase 2021/11/13 v3.35 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
@@ -265,68 +284,78 @@ Package: scrlogo 2021/11/13 v3.35 KOMA-Script package (logo)
 Applying: [2021/05/01] Usage of raw or classic option list on input line 252.
 Already applied: [0000/00/00] Usage of raw or classic option list on input line 368.
 )
-\scr@dte@tocline@numberwidth=\skip59
+\scr@dte@tocline@numberwidth=\skip62
 \scr@dte@tocline@numbox=\box57
 )
 Package tocbasic Info: setting babel extension for `nlo' on input line 187.
 Package tocbasic Info: setting babel extension for `nls' on input line 188.
 \nomlabelwidth=\dimen188
 \nom@tempdim=\dimen189
-\nomitemsep=\skip60
+\nomitemsep=\skip63
 ) (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2022-01-21 L3 programming layer (loader) 
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count293
+\l__color_backend_stack_int=\count301
 \l__pdf_internal_box=\box58
 ))
 Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count294
-\l__lipsum_a_int=\count295
-\l__lipsum_b_int=\count296
+\g__lipsum_par_int=\count302
+\l__lipsum_a_int=\count303
+\l__lipsum_b_int=\count304
  (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))) (./CustomFunctions.tex)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 14.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 21.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (./MainThesis.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
+
+
+LaTeX Warning: Label `sec' multiply defined.
+
+
+LaTeX Warning: Label `sec' multiply defined.
+
+
+LaTeX Warning: Label `sec' multiply defined.
+
 )
 \openout1 = `MainThesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Info: Redefining \. on input line 14.
-LaTeX Info: Redefining \% on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Info: Redefining \. on input line 21.
+LaTeX Info: Redefining \% on input line 21.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count297
+\scratchcounter=\count305
 \scratchdimen=\dimen190
 \scratchbox=\box59
-\nofMPsegments=\count298
-\nofMParguments=\count299
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count300
+\nofMPsegments=\count306
+\nofMParguments=\count307
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count308
 \MPscratchDim=\dimen191
-\MPnumerator=\count301
-\makeMPintoPDFobject=\count302
-\everyMPtoPDFconversion=\toks34
+\MPnumerator=\count309
+\makeMPintoPDFobject=\count310
+\everyMPtoPDFconversion=\toks35
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -378,20 +407,20 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [3
 
-])
+] [4])
 \tf@toc=\write3
 \openout3 = `MainThesis.toc'.
 
- [4] (./MainThesis.lof
+ [5] [6] (./MainThesis.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [5
+ [7
 
 ])
 \tf@lof=\write4
 \openout4 = `MainThesis.lof'.
 
- [6] (./MainThesis.lot
+ [8] (./MainThesis.lot
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
@@ -411,159 +440,200 @@ No file MainThesis.nls.
 Cap\'{\i }tulo 1.
 (./1_introduction.tex [2
 
+] [3] [4]) [5]
+Cap\'{\i }tulo 2.
+(./2_LiteratureReview.tex [6
+
 ]
-Overfull \hbox (7.01678pt too wide) in paragraph at lines 24--25
-[]\OT1/ptm/m/n/12 Para abor-dar es-ta pre-gun-ta de ma-ne-ra sis-tem[]ati-ca, se han es-ta-ble-ci-do las si-guien-tes sub-preguntas: 
+Overfull \hbox (5.71074pt too wide) in paragraph at lines 37--38
+[]|\OT1/ptm/m/n/10.95 Radiotrazadores 
  []
 
-) [3]
-Cap\'{\i }tulo 2.
-(./2_LiteratureReview.tex
-<Images/effect.pdf, id=37, 648.72281pt x 466.62523pt>
-File: Images/effect.pdf Graphic file (type pdf)
-<use Images/effect.pdf>
-Package pdftex.def Info: Images/effect.pdf  used on input line 15.
-(pdftex.def)             Requested size: 472.31577pt x 339.73645pt.
- [4
 
-] [5 <./Images/effect.pdf>] [6] [7]) [8]
+Overfull \hbox (47.69057pt too wide) in paragraph at lines 25--54
+ [][] 
+ []
+
+[7] [8] [9]
+Overfull \hbox (3.55685pt too wide) in paragraph at lines 76--76
+[]\OT1/ptm/b/n/14.4 Aprendizaje Pro-fun-do pa-ra la Re-cons-truc-ci[]on de Im[]age-nes Fo-to-ac[]usti-
+ []
+
+
+Overfull \hbox (1.31607pt too wide) in paragraph at lines 78--79
+[]\OT1/ptm/m/n/12 Las pri-me-ras apro-xi-ma-cio-nes pa-ra la re-cons-truc-ci[]on de im[]age-nes fo-to-ac[]usti-cas uti-li-zan-do apren-
+ []
+
+[10] [11] [12] [13] [14] [15]) [16]
 Cap\'{\i }tulo 3.
-(./3_Methodology.tex [9
+(./3_Methodology.tex [17
 
-] [10] [11]
-<Images/arq.pdf, id=98, 826.98842pt x 687.58351pt>
+] [18] [19]
+<Images/arq.pdf, id=105, 826.98842pt x 687.58351pt>
 File: Images/arq.pdf Graphic file (type pdf)
 <use Images/arq.pdf>
-Package pdftex.def Info: Images/arq.pdf  used on input line 112.
+Package pdftex.def Info: Images/arq.pdf  used on input line 107.
 (pdftex.def)             Requested size: 377.85405pt x 314.16245pt.
- [12] [13 <./Images/arq.pdf>] [14]) [15]
+ [20] [21 <./Images/arq.pdf>] [22] [23] [24]) [25]
 Cap\'{\i }tulo 4.
-(./4_Implementation.tex [16
-
-] [17]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 102.
+(./4_Implementation.tex
+File: Images/arq.pdf Graphic file (type pdf)
+<use Images/arq.pdf>
+Package pdftex.def Info: Images/arq.pdf  used on input line 13.
+(pdftex.def)             Requested size: 377.85405pt x 314.16245pt.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [18]) [19]
+) [26
+
+] [27] [28]
+Overfull \hbox (11.95824pt too wide) in paragraph at lines 123--124
+[]\OT1/ptm/m/n/12 Penalizaci[]on de si-mi-li-tud (pre-vie-ne ata-jos du-ran-te el apren-di-za-je): $\OML/cmm/m/it/12 P[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 cos[]similarity\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; S\OT1/cmr/m/n/12 )$ 
+ []
+
+[29] [30]
+
+LaTeX Warning: Reference `fig:metrics_comparative' on page 31 undefined on input line 214.
+
+[31]) [32]
 Cap\'{\i }tulo 5.
 (./5_Experiments.tex
-Underfull \hbox (badness 2103) in paragraph at lines 27--28
+Underfull \hbox (badness 2103) in paragraph at lines 22--23
 []|\OT1/ptm/m/n/12 Evaluar el ren-di-mien-to del
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
 \OT1/ptm/m/n/12 mo-de-lo pre-entrenado sin
  []
 
 
-Underfull \hbox (badness 4205) in paragraph at lines 33--34
+Underfull \hbox (badness 4205) in paragraph at lines 28--29
 []|\OT1/ptm/m/n/12 Determinar la con-tri-bu-ci[]on
  []
 
-[20
+[33
 
 ]
-<Images/perdidas_entrenamiento_recon.png, id=136, 709.6914pt x 419.166pt>
-File: Images/perdidas_entrenamiento_recon.png Graphic file (type png)
-<use Images/perdidas_entrenamiento_recon.png>
-Package pdftex.def Info: Images/perdidas_entrenamiento_recon.png  used on input line 63.
-(pdftex.def)             Requested size: 226.70955pt x 133.8992pt.
-<Images/perdidas_entrenamiento_super.png, id=138, 709.6914pt x 419.166pt>
-File: Images/perdidas_entrenamiento_super.png Graphic file (type png)
-<use Images/perdidas_entrenamiento_super.png>
-Package pdftex.def Info: Images/perdidas_entrenamiento_super.png  used on input line 70.
-(pdftex.def)             Requested size: 226.70955pt x 133.8992pt.
- [21]
-<Images/perdidas_entrenamiento_finetuning.png, id=142, 4781.865pt x 1779.64874pt>
-File: Images/perdidas_entrenamiento_finetuning.png Graphic file (type png)
-<use Images/perdidas_entrenamiento_finetuning.png>
-Package pdftex.def Info: Images/perdidas_entrenamiento_finetuning.png  used on input line 96.
-(pdftex.def)             Requested size: 377.85405pt x 140.60971pt.
- [22 <./Images/perdidas_entrenamiento_recon.png> <./Images/perdidas_entrenamiento_super.png>]
-Overfull \hbox (2.9631pt too wide) in paragraph at lines 116--117
-\OT1/ptm/m/n/12 MAE, NRM-SE, PSNR, SSIM) pa-ra los di-fe-ren-tes mo-de-los (Ba-se-li-ne, FT com-ple-to, FT No-Physical,
- []
-
-<Images/perdidas_entrenamiento_finetuning_no_phy.png, id=148, 4781.865pt x 1779.64874pt>
-File: Images/perdidas_entrenamiento_finetuning_no_phy.png Graphic file (type png)
-<use Images/perdidas_entrenamiento_finetuning_no_phy.png>
-Package pdftex.def Info: Images/perdidas_entrenamiento_finetuning_no_phy.png  used on input line 128.
-(pdftex.def)             Requested size: 226.70955pt x 84.37126pt.
-[23 <./Images/perdidas_entrenamiento_finetuning.png>]
-<Images/perdidas_entrenamiento_finetuning_no_struct.png, id=152, 4782.86874pt x 1779.64874pt>
-File: Images/perdidas_entrenamiento_finetuning_no_struct.png Graphic file (type png)
-<use Images/perdidas_entrenamiento_finetuning_no_struct.png>
-Package pdftex.def Info: Images/perdidas_entrenamiento_finetuning_no_struct.png  used on input line 161.
-(pdftex.def)             Requested size: 226.70955pt x 84.3441pt.
- [24 <./Images/perdidas_entrenamiento_finetuning_no_phy.png> <./Images/perdidas_entrenamiento_finetuning_no_struct.png>]
-Overfull \hbox (212.60849pt too wide) in paragraph at lines 204--220
+<images_2/perdidas_entrenamiento_recon.png, id=158, 1194.4625pt x 691.58376pt>
+File: images_2/perdidas_entrenamiento_recon.png Graphic file (type png)
+<use images_2/perdidas_entrenamiento_recon.png>
+Package pdftex.def Info: images_2/perdidas_entrenamiento_recon.png  used on input line 51.
+(pdftex.def)             Requested size: 226.70955pt x 131.25453pt.
+<images_2/perdidas_entrenamiento_super.png, id=159, 1193.45876pt x 691.58376pt>
+File: images_2/perdidas_entrenamiento_super.png Graphic file (type png)
+<use images_2/perdidas_entrenamiento_super.png>
+Package pdftex.def Info: images_2/perdidas_entrenamiento_super.png  used on input line 58.
+(pdftex.def)             Requested size: 226.70955pt x 131.37062pt.
+ [34]
+<images_2/perdidas_entrenamiento_finetuning.png, id=164, 1383.1675pt x 1194.4625pt>
+File: images_2/perdidas_entrenamiento_finetuning.png Graphic file (type png)
+<use images_2/perdidas_entrenamiento_finetuning.png>
+Package pdftex.def Info: images_2/perdidas_entrenamiento_finetuning.png  used on input line 78.
+(pdftex.def)             Requested size: 377.85405pt x 326.30019pt.
+ [35 <./images_2/perdidas_entrenamiento_recon.png> <./images_2/perdidas_entrenamiento_super.png>] [36 <./images_2/perdidas_entrenamiento_finetuning.png>]
+<images_2/radar_chart_metrics.png, id=171, 827.2506pt x 865.7946pt>
+File: images_2/radar_chart_metrics.png Graphic file (type png)
+<use images_2/radar_chart_metrics.png>
+Package pdftex.def Info: images_2/radar_chart_metrics.png  used on input line 91.
+(pdftex.def)             Requested size: 377.85405pt x 395.46964pt.
+<images_2/perdidas_entrenamiento_finetuning_no_phy.png, id=173, 1390.19376pt x 1194.4625pt>
+File: images_2/perdidas_entrenamiento_finetuning_no_phy.png Graphic file (type png)
+<use images_2/perdidas_entrenamiento_finetuning_no_phy.png>
+Package pdftex.def Info: images_2/perdidas_entrenamiento_finetuning_no_phy.png  used on input line 106.
+(pdftex.def)             Requested size: 377.85405pt x 324.64163pt.
+ [37 <./images_2/radar_chart_metrics.png>] [38 <./images_2/perdidas_entrenamiento_finetuning_no_phy.png>]
+<images_2/perdidas_entrenamiento_finetuning_no_struct.png, id=182, 1394.20876pt x 1194.4625pt>
+File: images_2/perdidas_entrenamiento_finetuning_no_struct.png Graphic file (type png)
+<use images_2/perdidas_entrenamiento_finetuning_no_struct.png>
+Package pdftex.def Info: images_2/perdidas_entrenamiento_finetuning_no_struct.png  used on input line 123.
+(pdftex.def)             Requested size: 377.85405pt x 323.7121pt.
+ [39 <./images_2/perdidas_entrenamiento_finetuning_no_struct.png>]
+<images_2/grouped_improvements.png, id=186, 1004.0712pt x 570.2103pt>
+File: images_2/grouped_improvements.png Graphic file (type png)
+<use images_2/grouped_improvements.png>
+Package pdftex.def Info: images_2/grouped_improvements.png  used on input line 152.
+(pdftex.def)             Requested size: 377.85405pt x 214.5766pt.
+ [40]
+Overfull \hbox (22.76718pt too wide) in paragraph at lines 165--178
  [][] 
  []
 
-[25]
-<Images/sample_sup.png, id=161, 1084.05pt x 361.35pt>
-File: Images/sample_sup.png Graphic file (type png)
-<use Images/sample_sup.png>
-Package pdftex.def Info: Images/sample_sup.png  used on input line 239.
-(pdftex.def)             Requested size: 425.0813pt x 141.69234pt.
-<Images/sample_solo.png, id=162, 1084.05pt x 361.35pt>
-File: Images/sample_solo.png Graphic file (type png)
-<use Images/sample_solo.png>
-Package pdftex.def Info: Images/sample_solo.png  used on input line 253.
-(pdftex.def)             Requested size: 226.70955pt x 75.56593pt.
-File: Images/sample_sup.png Graphic file (type png)
-<use Images/sample_sup.png>
-Package pdftex.def Info: Images/sample_sup.png  used on input line 260.
-(pdftex.def)             Requested size: 226.70955pt x 75.56593pt.
-<Images/sample_no_phy.png, id=163, 1084.05pt x 361.35pt>
-File: Images/sample_no_phy.png Graphic file (type png)
-<use Images/sample_no_phy.png>
-Package pdftex.def Info: Images/sample_no_phy.png  used on input line 269.
-(pdftex.def)             Requested size: 226.70955pt x 75.56593pt.
+[41 <./images_2/grouped_improvements.png>]
+<images_2/complexity_vs_improvement.png, id=195, 1075.3776pt x 713.7867pt>
+File: images_2/complexity_vs_improvement.png Graphic file (type png)
+<use images_2/complexity_vs_improvement.png>
+Package pdftex.def Info: images_2/complexity_vs_improvement.png  used on input line 206.
+(pdftex.def)             Requested size: 472.31577pt x 313.50076pt.
+ [42] [43 <./images_2/complexity_vs_improvement.png>]
+<images_2/representative_cases.png, id=203, 1065.5007pt x 769.6755pt>
+File: images_2/representative_cases.png Graphic file (type png)
+<use images_2/representative_cases.png>
+Package pdftex.def Info: images_2/representative_cases.png  used on input line 233.
+(pdftex.def)             Requested size: 425.0813pt x 307.06613pt.
+ [44] [45 <./images_2/representative_cases.png>]
+<images_2/error_maps_comparison.png, id=211, 1230.999pt x 796.8972pt>
+File: images_2/error_maps_comparison.png Graphic file (type png)
+<use images_2/error_maps_comparison.png>
+Package pdftex.def Info: images_2/error_maps_comparison.png  used on input line 254.
+(pdftex.def)             Requested size: 472.31577pt x 305.75456pt.
+ [46 <./images_2/error_maps_comparison.png>]
+<images_2/reconstruction_comparison_profile.png, id=217, 860.013pt x 424.9476pt>
+File: images_2/reconstruction_comparison_profile.png Graphic file (type png)
+<use images_2/reconstruction_comparison_profile.png>
+Package pdftex.def Info: images_2/reconstruction_comparison_profile.png  used on input line 271.
+(pdftex.def)             Requested size: 401.47128pt x 198.3702pt.
+<images_2/feature_maps_comparison.png, id=218, 1077.3048pt x 573.1011pt>
+File: images_2/feature_maps_comparison.png Graphic file (type png)
+<use images_2/feature_maps_comparison.png>
+Package pdftex.def Info: images_2/feature_maps_comparison.png  used on input line 290.
+(pdftex.def)             Requested size: 472.31577pt x 251.26454pt.
+ [47 <./images_2/reconstruction_comparison_profile.png>]
+<images_2/attention_maps.png, id=223, 1076.823pt x 562.9833pt>
+File: images_2/attention_maps.png Graphic file (type png)
+<use images_2/attention_maps.png>
+Package pdftex.def Info: images_2/attention_maps.png  used on input line 305.
+(pdftex.def)             Requested size: 425.0813pt x 222.23422pt.
+ [48 <./images_2/feature_maps_comparison.png>] [49 <./images_2/attention_maps.png>] [50] [51] [52] [53] [54]) [55]
+Cap\'{\i }tulo 6.
+(./7_Conclusion.tex [56
 
-Underfull \hbox (badness 1365) in paragraph at lines 270--270
-[]\OT1/ptm/m/n/10.95 (c) |Fine-tuning sin com-po-nen-te f[]^^Psi-ca (FT No-
+] [57] [58]
+Overfull \hbox (2.18094pt too wide) in paragraph at lines 69--70
+[]\OT1/ptm/m/n/12 La ex-plo-ra-ci[]on de ar-qui-tec-tu-ras m[]as avan-za-das re-pre-sen-ta otra di-rec-ci[]on pro-me-te-do-ra que podr[]^^Pa
  []
 
-<Images/sample_no_struct.png, id=164, 1084.05pt x 361.35pt>
-File: Images/sample_no_struct.png Graphic file (type png)
-<use Images/sample_no_struct.png>
-Package pdftex.def Info: Images/sample_no_struct.png  used on input line 276.
-(pdftex.def)             Requested size: 226.70955pt x 75.56593pt.
-[26 <./Images/sample_sup.png>] [27 <./Images/sample_solo.png> <./Images/sample_no_phy.png> <./Images/sample_no_struct.png>]) [28]
-Cap\'{\i }tulo 6.
-(./6_Analysis.tex) [29
+[59] [60]
+Overfull \hbox (21.41586pt too wide) in paragraph at lines 99--100
+[]\OT1/ptm/m/n/12 Otras apli-ca-cio-nes po-ten-cia-les in-clu-yen la re-cons-truc-ci[]on en mi-cros-cop[]^^Pa []opti-ca de super-resoluci[]on,
+ []
 
-]
-Cap\'{\i }tulo 7.
-(./7_Conclusion.tex) [30
+[61]) (./MainThesis.bbl [62] [63
 
-]
-Ap\'{e}ndice A.
-(./8_Appendices.tex) [31
-
-] (./MainThesis.bbl [32
-
-] [33
-
-] [34]) [35] (./MainThesis.aux
+] [64] [65] [66] [67]) [68] (./MainThesis.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
-) ) 
+)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8906 strings out of 478287
- 155039 string characters out of 5849289
- 595864 words of memory out of 5000000
- 26915 multiletter control sequences out of 15000+600000
- 494230 words of font info for 72 fonts, out of 8000000 for 9000
+ 9414 strings out of 478287
+ 165963 string characters out of 5849289
+ 615895 words of memory out of 5000000
+ 27415 multiletter control sequences out of 15000+600000
+ 497307 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 115i,11n,109p,1406b,565s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on MainThesis.pdf (42 pages, 2315012 bytes).
+ 115i,11n,109p,1859b,582s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on MainThesis.pdf (77 pages, 7186266 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 164 compressed objects within 2 object streams
+ 356 PDF objects out of 1000 (max. 8388607)
+ 222 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

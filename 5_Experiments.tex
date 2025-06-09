@@ -1,30 +1,25 @@
-\section{Experimentos y Resultados}
 
-Esta sección presenta la evaluación experimental de la estrategia de entrenamiento propuesta basada en redes duales con supervisión física. Los experimentos están diseñados para demostrar cómo esta metodología mejora el proceso de aprendizaje y conduce a soluciones más robustas, utilizando la reconstrucción fotoacústica como caso de estudio.
+En este capítulo se presenta la evaluación experimental completa de la estrategia de entrenamiento propuesta basada en redes neuronales duales con supervisión física. Los experimentos se han diseñado meticulosamente para demostrar cómo esta metodología mejora el proceso de aprendizaje y conduce a soluciones más robustas, utilizando la reconstrucción fotoacústica como caso de estudio. Posteriormente, se analizan las implicaciones más amplias de estos hallazgos, contrastándolos con el estado actual del campo, y se discuten tanto las fortalezas como las limitaciones del enfoque propuesto.
 
-\subsection{Diseño Experimental}
+\section{Diseño Experimental}
 
-\subsubsection{Conjunto de Datos}
-Para la experimentación se utilizó un conjunto de datos sintético derivado de imágenes de vasos sanguíneos de retina. El procedimiento de generación de datos consistió en:
+Esta sección describe el diseño experimental implementado para evaluar la efectividad de la estrategia de entrenamiento dual con supervisión física. Se detallan los conjuntos de datos utilizados, las configuraciones experimentales, las métricas de evaluación y el análisis del proceso de entrenamiento.
 
-\begin{itemize}
-    \item Selección de un dataset público de imágenes de retina con diferentes patrones vasculares
-    \item Ampliación mediante técnicas de aumento de datos hasta obtener 13,000 muestras
-    \item Generación de señales fotoacústicas correspondientes utilizando el modelo físico de espacio de estados propuesto por Lang et al. \cite{Lang2017}
-\end{itemize}
+\subsection{Conjunto de Datos}
 
-Este enfoque permitió crear un conjunto de datos de entrenamiento suficientemente grande mientras se mantenía la consistencia física entre las imágenes y sus correspondientes señales fotoacústicas.
+Para la experimentación se utilizó un conjunto de datos sintético derivado de imágenes de vasos sanguíneos de retina. El procedimiento de generación de datos consistió en la selección de un dataset público de imágenes de retina con diferentes patrones vasculares, que posteriormente fue ampliado mediante técnicas de aumento de datos hasta obtener 13,000 muestras. Finalmente, se generaron las señales fotoacústicas correspondientes utilizando el modelo físico de espacio de estados propuesto por Lang et al. \cite{Lang2017}. Este enfoque permitió crear un conjunto de datos de entrenamiento suficientemente grande mientras se mantenía la consistencia física entre las imágenes y sus correspondientes señales fotoacústicas.
 
-\subsubsection{Configuración de Experimentos}
-Se diseñaron experimentos para evaluar sistemáticamente la efectividad de la estrategia de entrenamiento propuesta y la contribución de cada componente de la función de pérdida. La Tabla \ref{tab:experiments} muestra las configuraciones utilizadas.
+\subsection{Configuración de Experimentos}
 
-\begin{table}[H]
+Se diseñaron experimentos para evaluar sistemáticamente la efectividad de la estrategia de entrenamiento propuesta y la contribución de cada componente de la función de pérdida. La Tabla \ref{tab:experiments} muestra las configuraciones experimentales utilizadas, donde cada una explora diferentes aspectos del método propuesto.
+
+\begin{table}[htbp]
     \centering
     \begin{tabular}{lccccp{5cm}}
     \hline
     \textbf{Experimento} & $\lambda_{direct}$ & $\lambda_{physical}$ & $\lambda_{struct}$ & $\lambda_{similarity}$ & \textbf{Propósito del Experimento} \\
     \hline
-    Baseline & 1.0 & 0.1 & 2.0 & 0.3 & Evaluar el rendimiento del modelo pre-entrenado sin fine-tuning \\
+    Baseline & 1.0 & 0.0 & 0.0 & 0.0 & Evaluar el rendimiento del modelo pre-entrenado sin fine-tuning \\
     \hline
     FT Completo & 1.0 & 0.1 & 2.0 & 0.3 & Evaluar la estrategia completa de entrenamiento dual con fine-tuning supervisado físicamente \\
     \hline
@@ -37,277 +32,397 @@ Se diseñaron experimentos para evaluar sistemáticamente la efectividad de la e
     \label{tab:experiments}
 \end{table}
 
-\subsubsection{Métricas de Evaluación}
-Para evaluar comprehensivamente los diferentes aspectos de la estrategia de entrenamiento, se utilizaron las siguientes métricas:
+\subsection{Métricas de Evaluación}
 
-\begin{itemize}
-    \item \textbf{Métricas de calidad de reconstrucción:} MSE, MAE, NRMSE, PSNR, SSIM
-    \item \textbf{Métricas de eficiencia de entrenamiento:} Curvas de convergencia, estabilidad del entrenamiento
-    \item \textbf{Métricas de transferencia de conocimiento:} Análisis de la evolución de las diferentes componentes de pérdida
-    \item \textbf{Análisis estadístico:} Pruebas de significancia (t pareada, Wilcoxon) y tamaño del efecto (d de Cohen)
-\end{itemize}
+Para evaluar comprehensivamente los diferentes aspectos de la estrategia de entrenamiento, se implementaron cuatro categorías de métricas. En primer lugar, se utilizaron métricas de calidad de reconstrucción (MSE, MAE, NRMSE, PSNR, SSIM) para evaluar la precisión de las imágenes reconstruidas. Adicionalmente, se monitorizaron métricas de eficiencia de entrenamiento mediante curvas de convergencia y análisis de estabilidad. Para evaluar la transferencia de conocimiento, se analizó la evolución de las diferentes componentes de pérdida a lo largo del proceso de entrenamiento. Finalmente, se aplicaron pruebas estadísticas de significancia (t pareada, Wilcoxon) y se calculó el tamaño del efecto (d de Cohen) para validar la robustez de los resultados obtenidos.
 
-\subsection{Análisis del Proceso de Entrenamiento Dual}
+\section{Análisis del Proceso de Entrenamiento Dual}
 
-Esta sección analiza el comportamiento de la estrategia de entrenamiento propuesta, centrándose en cómo cada fase contribuye al proceso de aprendizaje.
+Esta sección analiza el comportamiento de la estrategia de entrenamiento propuesta, centrándose en cómo cada fase contribuye al proceso de aprendizaje y en la dinámica de transferencia de conocimiento entre las redes.
 
-\subsubsection{Dinámica del Preentrenamiento}
+\subsection{Dinámica del Preentrenamiento}
 
-\paragraph{Fase 1: Adquisición de Capacidades Básicas}
-Se analiza primero el preentrenamiento independiente de cada red para establecer sus capacidades fundamentales.
+El análisis del preentrenamiento independiente de cada red revela dinámicas de aprendizaje distintivas que reflejan la naturaleza asimétrica del problema fotoacústico directo e inverso.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/perdidas_entrenamiento_recon.png}
+        \includegraphics[width=\textwidth]{images_2/perdidas_entrenamiento_recon.png}
         \caption{Red reconstructora}
         \label{fig:reconstructor_pretraining}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/perdidas_entrenamiento_super.png}
+        \includegraphics[width=\textwidth]{images_2/perdidas_entrenamiento_super.png}
         \caption{Red supervisora}
         \label{fig:supervisor_pretraining}
     \end{subfigure}
-    \caption{Evolución de las pérdidas durante el preentrenamiento independiente de las redes duales. Nótese las diferentes dinámicas de convergencia: la red reconstructora (a) muestra una convergencia más estable y una brecha menor entre las pérdidas de entrenamiento y validación, mientras que la red supervisora (b) presenta más fluctuaciones y una brecha más pronunciada, indicando la mayor complejidad del problema físico inverso.}
+    \caption{Evolución de las pérdidas durante el entrenamiento de las redes duales: (a) Reconstructora exhibe una rápida disminución inicial de la pérdida de entrenamiento, generando una brecha significativa con la validación; (b) Supervisora muestra menor divergencia entre curvas pero alcanza valores de pérdida más altos (MSE validación: 0.0588 vs 0.0070 en (a)), evidenciando la mayor dificultad inherente al problema inverso de supervisión.}
     \label{fig:pretraining_dynamics}
 \end{figure}
 
-\paragraph{Análisis Comparativo de Estabilidad}
-Las dinámicas de aprendizaje de ambas redes revelan diferencias significativas:
+Como se observa en la Figura \ref{fig:pretraining_dynamics}, la red reconstructora presenta una rápida convergencia inicial en la pérdida de entrenamiento, con una tasa de descenso superior al 85\% en las primeras 20 épocas. Sin embargo, la pérdida de validación muestra un comportamiento más conservador, estabilizándose en un MSE de 0.0070. Esta brecha persistente de aproximadamente 15\% de diferencia relativa sugiere un posible overfitting moderado, a pesar de las estrategias de augmentación de datos implementadas. No obstante, el MSE final demuestra una reconstrucción efectiva con un error inferior al 1\% en escala normalizada.
 
-\begin{itemize}
-    \item \textbf{Red reconstructora:} Muestra una convergencia rápida y estable, con la pérdida disminuyendo de 0.015 a 0.0005 MSE en aproximadamente 80 épocas. La proximidad entre las curvas de entrenamiento y validación indica una excelente generalización.
-    
-    \item \textbf{Red supervisora:} Presenta mayor variabilidad en la convergencia, con fluctuaciones considerables en la curva de validación y una brecha persistente entre las pérdidas de entrenamiento y validación. Este comportamiento refleja la mayor complejidad inherente a modelar el proceso físico fotoacústico.
-\end{itemize}
+En contraste, la red supervisora exhibe una dinámica de entrenamiento completamente distinta. Se observa una convergencia prematura alrededor de la época 80, con un MSE de validación de 0.0588, aproximadamente 8 veces mayor que el de la red reconstructora. La brecha entre entrenamiento y validación es menor al 5\%, lo que descarta el overfitting pero sugiere limitaciones intrínsecas del problema inverso, caracterizado por el mapeo no lineal de señal a imagen. La proximidad de las curvas con un error elevado apunta a un posible underfitting, indicando que podría beneficiarse de una arquitectura con mayor capacidad modelizadora.
 
-Esta diferencia en las dinámicas de entrenamiento subraya la asimetría fundamental entre los problemas directo e inverso en este dominio, y justifica el enfoque de entrenamiento dual propuesto.
+Esta marcada diferencia en las dinámicas de entrenamiento subraya la asimetría fundamental entre los problemas directo e inverso en el dominio fotoacústico, y justifica plenamente el enfoque de entrenamiento dual propuesto en este trabajo.
 
-\subsubsection{Dinámica de Transferencia de Conocimiento en el Fine-tuning}
+\subsection{Dinámica de Transferencia de Conocimiento en el Fine-tuning}
 
-\paragraph{Evolución de la Supervisión Física}
-La Figura \ref{fig:finetuning_dynamics} muestra la evolución de las diferentes componentes de pérdida durante el fine-tuning con supervisión física.
+La Figura \ref{fig:finetuning_dynamics} ilustra la evolución de las diferentes componentes de pérdida durante el proceso de fine-tuning con supervisión física, revelando un patrón de transferencia de conocimiento secuencial.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/perdidas_entrenamiento_finetuning.png}
+    \includegraphics[width=0.8\textwidth]{images_2/perdidas_entrenamiento_finetuning.png}
     \caption{Evolución de las componentes de pérdida durante el fine-tuning completo. Obsérvese cómo la pérdida física inicialmente alta se reduce progresivamente mientras la red aprende a incorporar el conocimiento físico sin comprometer la calidad de reconstrucción directa.}
     \label{fig:finetuning_dynamics}
 \end{figure}
 
-La dinámica del fine-tuning revela un patrón de transferencia de conocimiento secuencial:
+El proceso de fine-tuning puede dividirse en tres fases claramente diferenciadas. Durante la fase inicial (épocas 1-20), se observa una alta volatilidad en la pérdida física (oscilando entre 0.4-0.5) mientras la red comienza a incorporar las restricciones físicas, manteniendo relativamente estable la pérdida directa. En la fase de estabilización (épocas 20-60), se produce una reducción gradual y más estable de la pérdida física hasta aproximadamente 0.2, indicando que la red está aprendiendo a balancear efectivamente las restricciones físicas con la calidad visual. Finalmente, en la fase de convergencia (épocas 60-100), todas las componentes de pérdida se estabilizan, con la pérdida física convergiendo a aproximadamente 0.13, demostrando un equilibrio efectivo entre reconstrucción visual y consistencia física.
 
-\begin{itemize}
-    \item \textbf{Fase inicial (épocas 1-20):} Alta volatilidad en la pérdida física ($\sim$0.4-0.5) mientras la red comienza a incorporar las restricciones físicas, manteniendo estable la pérdida directa.
-    
-    \item \textbf{Fase de estabilización (épocas 20-60):} Reducción gradual y más estable de la pérdida física hasta $\sim$0.2, indicando que la red está aprendiendo a balancear las restricciones físicas con la calidad visual.
-    
-    \item \textbf{Fase de convergencia (épocas 60-100):} Estabilización de todas las componentes de pérdida, con la pérdida física convergiendo a $\sim$0.13, demostrando un equilibrio efectivo entre reconstrucción visual y consistencia física.
-\end{itemize}
+Este patrón de evolución evidencia cómo la estrategia de fine-tuning facilita una transferencia gradual y efectiva del conocimiento físico a la red reconstructora, permitiendo que ésta incorpore restricciones físicas sin comprometer la calidad visual de las reconstrucciones.
 
-Este patrón de evolución demuestra cómo la estrategia de fine-tuning facilita una transferencia gradual y efectiva del conocimiento físico a la red reconstructora.
+Para visualizar holísticamente el impacto del proceso de fine-tuning en todas las métricas simultáneamente, la Figura \ref{fig:radar_plot} presenta un diagrama de radar donde cada eje representa una métrica diferente, y el área total cubierta por el polígono indica la mejora global en la calidad de reconstrucción.
 
-\paragraph{Análisis de Radar Multimétrica}
-Para visualizar holísticamente el impacto del proceso de fine-tuning en todas las métricas simultáneamente, se propone el siguiente diagrama de radar:
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images_2/radar_chart_metrics.png}
+    \caption{Diagrama de radar mostrando la evolución de las métricas de evaluación a lo largo del proceso de fine-tuning. Cada eje representa una métrica, y el área total cubierta por el polígono indica la mejora global en la calidad de reconstrucción.}
+    \label{fig:radar_plot}
+\end{figure}
 
-[AQUÍ GRÁFICA DE RADAR PROPUESTA: Representación de todas las métricas (MSE, MAE, NRMSE, PSNR, SSIM) para los diferentes modelos (Baseline, FT completo, FT No-Physical, FT No-Structural) en un solo diagrama de radar, permitiendo una comparación visual inmediata del rendimiento global]
-
-\subsection{Contribución de Componentes Específicos en la Estrategia de Entrenamiento}
+\section{Contribución de Componentes Específicos}
 
 Esta sección analiza experimentalmente la contribución individual de cada componente clave de la función de pérdida, proporcionando evidencia empírica sobre su rol en la estrategia de entrenamiento propuesta.
 
-\subsubsection{Impacto del Componente de Supervisión Física}
+\subsection{Impacto del Componente de Supervisión Física}
 
-\begin{figure}[H]
+Para evaluar la contribución específica del componente de supervisión física, se analizó la evolución de las pérdidas al eliminar este componente de la función de pérdida ($\lambda_{physical} = 0$).
+
+\begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/perdidas_entrenamiento_finetuning_no_phy.png}
-        \caption{Evolución de pérdidas sin componente física}
-        \label{fig:ablation_no_phys}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        % PROPUESTA: Gráfica de comparación directa entre pérdidas físicas reconstruidas
-        [GRÁFICA PROPUESTA: Comparación de señales fotoacústicas reconstruidas]
-        \caption{Señales fotoacústicas reconstruidas}
-        \label{fig:reconstructed_signals}
-    \end{subfigure}
-    \caption{Análisis del impacto de la supervisión física en el proceso de fine-tuning. (a) Evolución de las pérdidas al eliminar la componente física, mostrando un comportamiento significativamente diferente. (b) Comparación directa de las señales fotoacústicas reconstruidas por los diferentes modelos, evidenciando la mejora en la consistencia física.}
-    \label{fig:physical_supervision_impact}
+    \includegraphics[width=0.8\textwidth]{images_2/perdidas_entrenamiento_finetuning_no_phy.png}
+    \caption{Evolución de pérdidas sin componente física. Nótese la convergencia artificialmente rápida de la validación y la elevada brecha entre curvas de entrenamiento y validación.}
+    \label{fig:ablation_no_phys}
 \end{figure}
 
-La eliminación del componente físico ($\lambda_{physical} = 0$) revela su papel fundamental en la estrategia de entrenamiento:
+Como se observa en la Figura \ref{fig:ablation_no_phys}, la eliminación del componente físico provoca una convergencia extremadamente rápida de la pérdida de validación hacia valores notablemente bajos (Min Val Loss: 0.0019), contrastando drásticamente con la pérdida de entrenamiento que se estabiliza alrededor de 0.06. Esta brecha sustancial entre entrenamiento y validación (aproximadamente 30 veces mayor) sugiere un comportamiento atípico del modelo, posiblemente indicando que está optimizando para características superficiales que no capturan adecuadamente la complejidad del problema fotoacústico.
 
-\begin{itemize}
-    \item Sin la guía física, la pérdida estructural domina el proceso de aprendizaje, alcanzando picos aproximadamente 4 veces mayores que en el modelo completo
-    \item El MSE aumenta en un 12.69\% y el PSNR disminuye en 0.62 dB respecto al modelo pre-entrenado
-    \item Análisis estadístico confirma que este deterioro es significativo ($t = -11.9974$, $p < 0.001$)
-    \item La morfología de las señales fotoacústicas reconstruidas muestra inconsistencias físicas evidentes [REFERENCIA A GRÁFICA PROPUESTA]
-\end{itemize}
+En ausencia de la restricción física, la pérdida estructural (componente naranja) asume un rol predominante, exhibiendo un comportamiento oscilatorio inicial antes de estabilizarse gradualmente en valores cercanos a 0.04. Mientras tanto, la evolución del componente de pérdida física (mostrado en púrpura pero no utilizado para optimización) permanece elevado y estable alrededor de 0.06, evidenciando que el modelo no está aprendiendo a satisfacer las restricciones físicas a pesar de mejorar en otras métricas.
 
-Estos resultados demuestran que la supervisión física actúa como un regularizador natural que guía la red hacia soluciones físicamente plausibles, previniendo el sobreajuste a características puramente visuales.
+Estas observaciones subrayan que el componente físico, lejos de ser redundante, actúa como un mecanismo de regulación esencial que guía la red hacia soluciones que no solo son visualmente plausibles sino también físicamente coherentes.
 
-\subsubsection{Rol del Componente Estructural en la Transferencia de Conocimiento}
+\subsection{Rol del Componente Estructural}
 
-\begin{figure}[H]
+Para comprender el papel del componente estructural en la transferencia de conocimiento, se analizó la evolución de las pérdidas al eliminar dicho componente ($\lambda_{struct} = 0$).
+
+\begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/perdidas_entrenamiento_finetuning_no_struct.png}
-        \caption{Evolución de pérdidas sin componente estructural}
-        \label{fig:ablation_no_struct}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        % PROPUESTA: Mapa de calor de pérdida estructural por regiones de imagen
-        [GRÁFICA PROPUESTA: Mapa de calor de SSIM regional]
-        \caption{Mapa de calor de SSIM por regiones}
-        \label{fig:ssim_heatmap}
-    \end{subfigure}
-    \caption{Análisis del impacto del componente estructural en la estrategia de entrenamiento. (a) Evolución de las pérdidas al eliminar la componente estructural, mostrando una dinámica altamente inestable con valores de pérdida física iniciales extremadamente altos. (b) Mapa de calor de SSIM regional comparando los diferentes modelos, revelando patrones de deterioro estructural específicos cuando se elimina esta componente.}
-    \label{fig:structural_component_impact}
+    \includegraphics[width=0.8\textwidth]{images_2/perdidas_entrenamiento_finetuning_no_struct.png}
+    \caption{Evolución de pérdidas sin componente estructural. Se observa una inestabilidad pronunciada en todos los componentes de pérdida, especialmente durante las primeras épocas.}
+    \label{fig:ablation_no_struct}
 \end{figure}
 
-La ablación del componente estructural ($\lambda_{struct} = 0$) revela consecuencias dramáticas:
+La Figura \ref{fig:ablation_no_struct} revela la dinámica más inestable de todos los experimentos realizados. Se observa una pérdida física que inicia en valores extremadamente altos (cercanos a 2.0) y exhibe fluctuaciones pronunciadas durante las primeras 20 épocas. A pesar de que la pérdida de validación alcanza valores artificialmente bajos (Min Val Loss: 0.0002), esta aparente mejora viene acompañada de una inestabilidad severa en otros componentes, sugiriendo un desequilibrio fundamental en el proceso de aprendizaje.
 
-\begin{itemize}
-    \item Un aumento inmediato y sustancial en la pérdida física (valores cercanos a 2.0 inicialmente)
-    \item Una degradación del 307.08\% en MAE y una caída catastrófica en el SSIM (de 0.9658 a 0.6257)
-    \item Pérdida de detalles finos y características estructurales en las imágenes reconstruidas, particularmente en zonas de alta frecuencia espacial [REFERENCIA A MAPA DE CALOR PROPUESTO]
-    \item El tamaño del efecto extremadamente grande ($d$ de Cohen = 4.5827 para SSIM) confirma la importancia crítica de esta componente
-\end{itemize}
+La ausencia del componente estructural provoca que el modelo oscile dramáticamente mientras intenta satisfacer las restricciones físicas, evidenciando que la guía estructural actúa como un estabilizador crítico del entrenamiento. Adicionalmente, se observa una brecha extrema entre las curvas de entrenamiento y validación, indicando una posible pérdida de capacidad de generalización, a pesar de los valores numéricamente favorables en ciertas métricas.
 
-Estos resultados demuestran que el componente estructural no solo mejora la calidad visual, sino que también facilita la incorporación efectiva del conocimiento físico al proporcionar restricciones complementarias que estabilizan el proceso de aprendizaje.
+Estos resultados demuestran que el componente estructural no solo mejora la calidad visual de las reconstrucciones, sino que cumple un rol fundamental como estabilizador del proceso de aprendizaje, facilitando la incorporación efectiva del conocimiento físico al proporcionar restricciones complementarias que guían al modelo hacia soluciones más coherentes.
 
-\subsection{Análisis Comparativo Integral}
+\subsection{Sinergia entre Componentes}
 
-\subsubsection{Perfil de Mejora Multimétrico}
+El análisis comparativo de las distintas configuraciones experimentales revela interacciones sinérgicas entre los componentes de la función de pérdida. Las oscilaciones observadas en los experimentos de ablación contrastan notablemente con la trayectoria más suave y estable del fine-tuning completo, sugiriendo que los componentes estructural y físico no solo contribuyen a diferentes aspectos de la reconstrucción, sino que también se estabilizan mutuamente.
 
-\begin{figure}[H]
+Particularmente revelador es el caso del experimento sin componente estructural, que exhibe una brecha de validación artificialmente pequeña (Min Val Loss: 0.0002), pero acompañada de inestabilidades significativas en los otros componentes. Esto indica que la aparente mejora numérica no refleja una reconstrucción de mejor calidad, sino más bien un comportamiento anómalo del proceso de optimización.
+
+La evolución de pérdidas en el fine-tuning completo muestra un patrón donde las curvas de entrenamiento y validación convergen gradualmente sin fluctuaciones extremas, sugiriendo un balance óptimo entre los diferentes componentes. Este comportamiento confirma que tanto el componente estructural como el físico proporcionan restricciones complementarias esenciales: el estructural facilita la captura de características visuales significativas, mientras que el componente físico asegura la consistencia con las propiedades fundamentales del problema fotoacústico.
+
+\section{Análisis Comparativo Integral}
+
+Esta sección presenta un análisis comparativo integral de los resultados obtenidos con la estrategia de entrenamiento propuesta, evaluando su efectividad en términos de calidad de reconstrucción, estabilidad y robustez frente a diferentes escenarios.
+
+\subsection{Perfil de Mejora Multimétrico}
+
+El análisis comparativo de mejoras porcentuales respecto al baseline, ilustrado en la Figura \ref{fig:comparative_improvement}, revela patrones significativos que cuantifican el impacto de cada componente de la función de pérdida.
+
+\begin{figure}[htbp]
     \centering
-    % PROPUESTA: Gráfica de barras comparativa de mejora porcentual por métrica
-    [GRÁFICA PROPUESTA: Gráfica de barras comparativa mostrando la mejora/deterioro porcentual en todas las métricas para cada configuración experimental, tomando el modelo Baseline como referencia]
-    \caption{Análisis comparativo del porcentaje de mejora/deterioro en las diferentes métricas para cada configuración experimental, tomando como referencia el modelo pre-entrenado (Baseline). Las barras positivas indican mejora, mientras que las negativas representan deterioro.}
+    \includegraphics[width=0.8\textwidth]{images_2/grouped_improvements.png}
+    \caption{Análisis comparativo del porcentaje de mejora/deterioro en las diferentes métricas para cada configuración experimental, tomando como referencia el modelo pre-entrenado (Baseline).}
     \label{fig:comparative_improvement}
 \end{figure}
 
-La Tabla \ref{tab:metricas_comparativas} presenta un resumen consolidado de todas las métricas evaluadas en los diferentes experimentos, facilitando una comparación integral del rendimiento.
+Se observa una superioridad consistente del fine-tuning completo (FT-Completo), que muestra mejoras sustanciales en todas las métricas evaluadas, destacando especialmente una reducción del 30.7\% en MSE, 18.9\% en MAE y 15.8\% en NRMSE. Esta consistencia a través de diferentes métricas subraya la robustez del enfoque propuesto.
 
-\begin{table}[H]
+El análisis también revela una contribución asimétrica de los componentes. La ablación de los componentes físico y estructural impacta diferencialmente las métricas de evaluación. Mientras que sin el componente físico se mantiene una mejora moderada en SSIM (8.2\%), la ausencia del componente estructural degrada dramáticamente esta métrica, reduciéndola a apenas un 0.5\% de mejora. Este comportamiento evidencia la especialización funcional de cada componente.
+
+Adicionalmente, los experimentos de ablación demuestran la complementariedad entre componentes, revelando que ninguno de ellos por sí solo puede replicar el rendimiento del modelo completo. La mejora en MSE cae drásticamente de 30.7\% a 2.8\% y 2.1\% al eliminar los componentes físico y estructural, respectivamente, evidenciando su naturaleza complementaria y la importancia de su incorporación conjunta.
+
+\begin{table}[htbp]
     \centering
     \begin{tabular}{lccccc}
     \hline
-    \textbf{Modelo} & \textbf{MSE} & \textbf{MAE} & \textbf{NRMSE} & \textbf{PSNR} (dB) & \textbf{SSIM} \\
+    \textbf{Modelo} & \textbf{MSE} & \textbf{MAE} & \textbf{NRMSE} & \textbf{PSNR} & \textbf{SSIM} \\
     \hline
-    Baseline & $8.91 \times 10^{-4} \pm 5.51 \times 10^{-4}$ & $3.30 \times 10^{-3} \pm 1.28 \times 10^{-3}$ & $0.0372 \pm 0.0119$ & $29.03 \pm 2.82$ & $0.9658 \pm 0.0135$ \\
+    Baseline & 0.004 ± 0.003 & 0.04 ± 0.010 & 0.070 ± 0.020 & 24.984 ± 2.424 & 0.633 ± 0.141 \\
     \hline
-    FT Completo & $\mathbf{7.26 \times 10^{-4} \pm 4.64 \times 10^{-4}}$ & $\mathbf{2.69 \times 10^{-3} \pm 1.11 \times 10^{-3}}$ & $\mathbf{0.0334 \pm 0.0112}$ & $\mathbf{30.01 \pm 3.01}$ & $\mathbf{0.9721 \pm 0.0123}$ \\
-    \textcolor[rgb]{0.0, 0.5, 0.0}{(Mejora \%)} & \textcolor[rgb]{0.0, 0.5, 0.0}{(18.46\%)} & \textcolor[rgb]{0.0, 0.5, 0.0}{(18.50\%)} & \textcolor[rgb]{0.0, 0.5, 0.0}{(10.15\%)} & \textcolor[rgb]{0.0, 0.5, 0.0}{(3.38\%)} & \textcolor[rgb]{0.0, 0.5, 0.0}{(0.65\%)} \\
+    FT-Completo & \textbf{0.003 ± 0.002} & \textbf{0.031 ± 0.011} & \textbf{0.059 ± 0.018} & \textbf{26.477 ± 2.371} & \textbf{0.724 ± 0.132} \\
     \hline
-    FT No-Physical & $1.00 \times 10^{-3} \pm 5.90 \times 10^{-4}$ & $3.98 \times 10^{-3} \pm 1.32 \times 10^{-3}$ & $0.0399 \pm 0.0124$ & $28.41 \pm 2.74$ & $0.9583 \pm 0.0157$ \\
-    \textcolor[rgb]{0.5, 0.0, 0.0}{(Deterioro \%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(12.69\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(20.42\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(7.13\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(2.14\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(0.78\%)} \\
+    FT-No-Physical & 0.004 ± 0.003 & 0.036 ± 0.015 & 0.069 ± 0.024 & 25.265 ± 2.715 & 0.685 ± 0.157 \\
     \hline
-    FT No-Structural & $1.12 \times 10^{-3} \pm 5.63 \times 10^{-4}$ & $1.34 \times 10^{-2} \pm 1.56 \times 10^{-3}$ & $0.0430 \pm 0.0122$ & $27.67 \pm 2.38$ & $0.6257 \pm 0.1041$ \\
-    \textcolor[rgb]{0.5, 0.0, 0.0}{(Deterioro \%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(25.69\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(307.08\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(15.44\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(4.69\%)} & \textcolor[rgb]{0.5, 0.0, 0.0}{(35.22\%)} \\
+    FT-No-Structural & 0.004 ± 0.003 & 0.036 ± 0.014 & 0.069 ± 0.024 & 25.167 ± 2.589 & 0.636 ± 0.142 \\
     \hline
     \end{tabular}
-    \caption{Análisis comparativo integral de las métricas de evaluación para los diferentes modelos. Los valores en \textcolor[rgb]{0.0, 0.5, 0.0}{verde} indican mejora porcentual respecto al modelo Baseline, mientras que los valores en \textcolor[rgb]{0.5, 0.0, 0.0}{rojo} indican deterioro. El mejor rendimiento para cada métrica está en \textbf{negrita}.}
-    \label{tab:metricas_comparativas}
+    \caption{Resultados comparativos de rendimiento entre diferentes configuraciones de fine-tuning. Los mejores resultados se muestran en negrita.}
+    \label{tab:metrics_comparative}
 \end{table}
 
-\subsubsection{Análisis de Dispersión de Casos}
+\subsection{Análisis por Categorías de Métricas}
 
-Para identificar patrones específicos en cómo los diferentes componentes de la estrategia de entrenamiento afectan a diferentes tipos de imágenes, se propone el siguiente análisis de dispersión:
+Un análisis más detallado de las métricas presentadas en la Tabla \ref{tab:metrics_comparative} revela tres categorías distintas de impacto. En primer lugar, para las métricas de error pixel-a-pixel (MSE, MAE y NRMSE), el fine-tuning completo logra las mejoras más significativas (30.7\%, 18.9\% y 15.8\%, respectivamente), mientras que los modelos ablacionados muestran mejoras marginales entre 1.3\% y 5.9\%. Los valores absolutos confirman esta tendencia, con el FT-Completo alcanzando un MSE de 0.0026 ± 0.0017 frente a 0.0037 ± 0.0031 de los modelos ablacionados.
 
-% PROPUESTA: Gráfica de dispersión correlacionando complejidad de imagen y mejora relativa
-[GRÁFICA PROPUESTA: Gráfica de dispersión mostrando la correlación entre la complejidad de la imagen (medida por entropía o densidad de bordes) y la mejora relativa en PSNR/SSIM para los diferentes modelos]
+En segundo lugar, para las métricas de calidad perceptual (PSNR y SSIM), que aproximan mejor la percepción humana, se observa una tendencia similar pero con diferencias más pronunciadas entre los modelos. El SSIM muestra una sensibilidad particular al componente estructural, con una caída de mejora del 14.5\% a apenas 0.5\% cuando se elimina este componente.
 
-Este análisis permitiría identificar si la estrategia de entrenamiento propuesta es particularmente efectiva para ciertos tipos de casos (e.g., imágenes con estructuras más complejas o con determinadas características).
+Finalmente, en términos de estabilidad y consistencia, la desviación estándar en todas las métricas es considerablemente menor para el FT-Completo (por ejemplo, ±0.0017 en MSE frente a ±0.0031 para los modelos ablacionados), evidenciando que la combinación de componentes no solo mejora el rendimiento promedio sino que también incrementa la robustez y consistencia de las reconstrucciones.
 
-\subsection{Visualización de Resultados}
+\subsection{Implicaciones para la Reconstrucción Fotoacústica}
 
-\subsubsection{Ejemplos Representativos de Reconstrucción}
+Los resultados cuantitativos validan las observaciones cualitativas de las curvas de entrenamiento analizadas previamente. La aparente ventaja en las curvas de validación de los modelos ablacionados (Min Val Loss: 0.0019 y 0.0002) no se traduce en mejores métricas de evaluación, confirmando la hipótesis del sobreajuste a características superficiales.
 
-\begin{figure}[H]
+Particularmente relevante es la observación de que la combinación sinérgica de los componentes físico y estructural produce un efecto multiplicativo en lugar de meramente aditivo, con mejoras porcentuales que superan ampliamente la suma de las mejoras individuales (30.7\% vs. 2.8\%+2.1\%). Esta sinergia constituye una de las contribuciones centrales de este trabajo.
+
+Adicionalmente, la degradación más severa en SSIM al eliminar el componente estructural (de 14.5\% a 0.5\%) y la mayor caída en NRMSE al eliminar el componente físico (de 15.8\% a 2.0\%) confirman la especialización funcional de cada componente: el estructural optimiza la coherencia visual mientras que el físico garantiza la fidelidad cuantitativa.
+
+Estos resultados cuantitativos proporcionan evidencia concluyente de que la estrategia de fine-tuning completo no solo mejora significativamente el rendimiento absoluto, sino que también ofrece un balance óptimo entre fidelidad visual y consistencia física, validando la hipótesis central de esta investigación.
+
+\subsection{Análisis de Dispersión de Casos}
+
+Para identificar patrones específicos en cómo los diferentes componentes de la estrategia de entrenamiento afectan a distintos tipos de imágenes, se realizó un análisis de dispersión correlacionando métricas de complejidad de imagen con las mejoras relativas obtenidas por cada modelo.
+
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/sample_sup.png}
-    \caption{Ejemplos de reconstrucciones obtenidas con el modelo fine-tuned completo. Se muestran: (a) Imagen original, (b) Señal fotoacústica de entrada, (c) Reconstrucción obtenida, (d) Error absoluto. Nótese la preservación de detalles estructurales finos y la consistencia en las reconstrucciones.}
-    \label{fig:reconstruction_examples}
+    \includegraphics[width=\textwidth]{images_2/complexity_vs_improvement.png}
+    \caption{Análisis de dispersión que correlaciona características de complejidad de las imágenes con la mejora relativa en métricas de calidad. \textbf{Izquierda:} Correlación entre entropía de la imagen y mejora porcentual en PSNR. \textbf{Derecha:} Correlación entre densidad de bordes y mejora porcentual en SSIM. Las líneas punteadas representan las tendencias lineales para cada modelo, con sus respectivos coeficientes de correlación.}
+    \label{fig:scatter_plot_analysis}
 \end{figure}
 
-\subsubsection{Análisis Comparativo Visual}
+El análisis de dispersión, ilustrado en la Figura \ref{fig:scatter_plot_analysis}, revela patrones fundamentales sobre la robustez y adaptabilidad de la estrategia propuesta. Se observa una correlación negativa moderada entre la entropía de la imagen y la mejora en PSNR para todos los modelos (r=-0.16, r=-0.31, r=-0.13, respectivamente), indicando que la ganancia relativa tiende a disminuir a medida que aumenta la complejidad informacional de la imagen.
 
-La Figura \ref{fig:comparative_reconstruction} presenta una comparación visual de los resultados obtenidos con los diferentes modelos sobre casos representativos del conjunto de prueba.
+Particularmente relevante es el efecto estabilizador del componente físico. El modelo sin componente física (FT No-Physical) muestra la correlación negativa más pronunciada con la entropía (r=-0.31, p<0.001), evidenciando que la restricción física actúa como regularizador que incrementa la robustez frente a escenarios complejos. En ausencia de esta guía física, el modelo exhibe mayor sensibilidad a la variación en complejidad de entrada.
 
-\begin{figure}[H]
+También se observan mejoras extraordinarias en casos específicos. El modelo FT Completo logra mejoras excepcionales (>40\% en PSNR, >200\% en SSIM) en casos particulares, demostrando que la estrategia dual puede provocar saltos cualitativos sustanciales en determinados escenarios, especialmente en el rango medio de densidad de bordes (0.05-0.10).
+
+En contraste, el modelo FT No-Structural muestra numerosos casos por debajo de la línea de mejora cero, especialmente en imágenes de alta complejidad (entropía>4.0), confirmando el papel crítico de la pérdida estructural en la estabilidad general del proceso de aprendizaje.
+
+La sustancial dispersión vertical en ambos gráficos, especialmente para FT Completo, revela que factores adicionales más allá de la simple complejidad o densidad de bordes influyen en el rendimiento del modelo. Esto sugiere que la arquitectura propuesta captura características más profundas y específicas en cada imagen que no pueden reducirse a métricas generales de complejidad.
+
+Esta distribución no uniforme de mejoras confirma que la estrategia de entrenamiento dual proporciona ventajas distintivas en función del tipo de imagen, elevando dramáticamente el límite superior de calidad alcanzable en casos específicos donde las restricciones físicas y estructurales proporcionan información complementaria durante el proceso de aprendizaje.
+
+\section{Visualización de Resultados}
+
+Esta sección presenta un análisis visual detallado de los resultados obtenidos con la metodología propuesta, comparando el desempeño del modelo baseline, el fine-tuning completo, y las variantes ablativas.
+
+\subsection{Ejemplos Representativos de Reconstrucción}
+
+La Figura \ref{fig:representative_cases} muestra ejemplos representativos de reconstrucción para tres niveles de complejidad: alta, media y baja, permitiendo apreciar visualmente las mejoras cualitativas logradas por el modelo propuesto.
+
+\begin{figure}[htbp]
     \centering
-    % Aquí se muestran las subfiguras correspondientes a los diferentes modelos
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/sample_solo.png}
-        \caption{Modelo pre-entrenado (Baseline)}
-        \label{fig:sample_baseline}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/sample_sup.png}
-        \caption{Fine-tuning completo (FT)}
-        \label{fig:sample_ft}
-    \end{subfigure}
-    
-    \vspace{0.5cm}
-    
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/sample_no_phy.png}
-        \caption{Fine-tuning sin componente física (FT No-Physical)}
-        \label{fig:sample_ft_no_physical}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/sample_no_struct.png}
-        \caption{Fine-tuning sin componente estructural (FT No-Structural)}
-        \label{fig:sample_ft_no_structural}
-    \end{subfigure}
-    
-    \caption{Análisis comparativo visual de reconstrucciones obtenidas con los diferentes modelos. Obsérvese cómo: (1) El modelo con fine-tuning completo (b) mejora la nitidez y detalle respecto al baseline (a), (2) La eliminación del componente físico (c) introduce sutiles inconsistencias, y (3) La eliminación del componente estructural (d) produce degradación severa de la calidad visual.}
-    \label{fig:comparative_reconstruction}
+    \includegraphics[width=0.9\textwidth]{images_2/representative_cases.png}
+    \caption{Ejemplos representativos de reconstrucción para diferentes niveles de complejidad. Las imágenes muestran la mejora significativa lograda por el modelo con fine-tuning completo, especialmente en estructuras vasculares finas. Los porcentajes indican la reducción del error absoluto medio respecto al modelo baseline.}
+    \label{fig:representative_cases}
 \end{figure}
 
-\paragraph{Hallazgos Clave del Análisis Visual}
-El análisis cualitativo de las reconstrucciones revela patrones consistentes con el análisis cuantitativo:
+Los resultados visuales revelan varios aspectos importantes. En primer lugar, se aprecia una mejora significativa en la preservación de estructuras finas, donde el modelo FT Completo reproduce con mayor fidelidad las estructuras vasculares delgadas, especialmente en los casos de alta complejidad donde la red densa de vasos es más difícil de reconstruir.
 
-\begin{itemize}
-    \item El modelo con fine-tuning completo muestra una mejor definición de bordes y preservación de detalles finos
-    
-    \item La eliminación del componente físico produce resultados visualmente aceptables pero con sutiles inconsistencias en la distribución de intensidades
-    
-    \item La eliminación del componente estructural resulta en una degradación dramática, con pérdida de detalles y la introducción de artefactos visibles
-    
-    \item Los casos más desafiantes (estructuras finas, regiones de bajo contraste) muestran las diferencias más pronunciadas entre modelos
-\end{itemize}
+También se observa una notable disminución de artefactos y ruido de fondo en las imágenes reconstruidas por el modelo FT Completo, resultando en imágenes más limpias y clínicamente interpretables.
 
-% PROPUESTA: Visualización avanzada de mapas de activación
-[GRÁFICA PROPUESTA: Mapas de activación de características intermedias en las redes duales, mostrando qué regiones de la imagen/señal están influyendo más en el proceso de reconstrucción para los diferentes modelos]
+La consistencia en diferentes niveles de complejidad, demostrada por las mejoras porcentuales significativas (54.0\%, 42.8\% y 51.9\%), evidencia que el enfoque propuesto es robusto ante diferentes niveles de complejidad estructural, una característica esencial para aplicaciones clínicas donde la variabilidad anatómica es considerable.
 
-\subsection{Análisis de Eficiencia Computacional y Práctica}
+Adicionalmente, las imágenes reconstruidas por el modelo FT Completo presentan un mejor contraste entre las estructuras vasculares y el fondo, facilitando la identificación de los detalles anatómicos relevantes para el diagnóstico.
 
-Finalmente, se analiza la eficiencia computacional de la estrategia de entrenamiento propuesta en comparación con métodos alternativos, particularmente los enfoques PINN tradicionales.
+Es importante destacar que la mejora no es uniforme en toda la imagen, como se evidencia en los mapas de diferencia absoluta donde las regiones más brillantes indican las áreas con mayor mejora respecto al modelo baseline. Este comportamiento sugiere que el modelo aprende a priorizar características estructuralmente significativas.
 
-\begin{table}[H]
+\subsection{Análisis Espacial Comparativo}
+
+Para profundizar en el análisis comparativo, la Figura \ref{fig:spatial_comparison} presenta mapas de error absoluto y mapas de SSIM local para todas las variantes del modelo.
+
+\begin{figure}[htbp]
+    \centering    
+    \includegraphics[width=\textwidth]{images_2/error_maps_comparison.png}
+    \caption{Análisis espacial comparativo. La fila superior muestra los mapas de error absoluto para las diferentes variantes del modelo. La fila inferior presenta los mapas de SSIM local, donde las regiones más claras indican mayor similitud estructural con la imagen objetivo.}
+    \label{fig:spatial_comparison}
+\end{figure}
+
+El análisis de los mapas de error revela una distribución espacial del error significativamente mejorada en el modelo FT Completo, que presenta una reducción sustancial del error medio (0.0571) comparado con el baseline (0.1379) y las variantes ablativas (0.1409 y 0.1390).
+
+Los mapas de SSIM local son particularmente reveladores, mostrando que el modelo FT Completo logra una similitud estructural sustancialmente mayor (SSIM: 0.6521) comparado con el baseline (SSIM: 0.1895) y las variantes sin componente física (SSIM: 0.1862) o estructural (SSIM: 0.1789). Estas diferencias son especialmente pronunciadas en las regiones correspondientes a estructuras vasculares finas, subrayando la importancia del enfoque propuesto para la preservación de detalles anatómicos críticos.
+
+El impacto de la ablación de componentes se hace evidente en estos mapas, donde la eliminación de la componente física o estructural deteriora la calidad de reconstrucción, con un efecto particularmente dramático cuando se elimina la componente estructural, como se refleja en la disminución generalizada de la similitud estructural en el mapa de SSIM local correspondiente.
+
+\subsection{Perfiles de Intensidad}
+
+Para complementar el análisis espacial, la Figura \ref{fig:intensity_profile} muestra perfiles de intensidad a lo largo de un corte transversal de las imágenes reconstruidas, permitiendo una comparación directa de la precisión en la reproducción de estructuras específicas.
+
+\begin{figure}[htbp]
     \centering
-    % PROPUESTA: Tabla comparativa de eficiencia computacional
-    [TABLA PROPUESTA: Comparación de tiempo de entrenamiento, memoria requerida y complejidad computacional (FLOPs) entre el método propuesto y alternativas como PINNs tradicionales]
-    \caption{Análisis comparativo de eficiencia computacional entre la estrategia de entrenamiento propuesta y métodos alternativos. La estrategia dual propuesta logra un balance favorable entre incorporación de física y eficiencia computacional.}
-    \label{tab:computational_efficiency}
-\end{table}
+    \includegraphics[width=0.85\textwidth]{images_2/reconstruction_comparison_profile.png}
+    \caption{Perfiles de intensidad a lo largo de un corte transversal. Se comparan los perfiles de intensidad normalizada entre la imagen objetivo (Ground Truth) y las reconstrucciones de las diferentes variantes del modelo.}
+    \label{fig:intensity_profile}
+\end{figure}
 
-Este análisis destacaría la ventaja práctica de la estrategia propuesta: lograr una incorporación efectiva del conocimiento físico sin incurrir en la sobrecarga computacional asociada a los métodos PINN tradicionales que requieren cálculo explícito de derivadas durante el entrenamiento.
+El análisis de los perfiles de intensidad revela aspectos cualitativos importantes de las reconstrucciones. El modelo FT Completo (línea verde) reproduce con mayor precisión los picos de intensidad correspondientes a las estructuras vasculares presentes en la imagen objetivo (línea negra), manteniendo tanto la amplitud como la ubicación espacial de estas estructuras.
+
+Se observa también una reducción significativa de falsos positivos en el modelo FT Completo, que muestra menos picos espurios entre las estructuras vasculares principales, lo que indica una mejor capacidad para distinguir entre estructuras genuinas y ruido. Esta característica es particularmente relevante en aplicaciones clínicas, donde los falsos positivos pueden conducir a interpretaciones diagnósticas erróneas.
+
+La preservación del contraste es otro aspecto destacable, con una mejor diferenciación entre las estructuras vasculares y el fondo en el modelo FT Completo. Este aspecto facilita la identificación visual de estructuras anatómicas relevantes y contribuye a la interpretabilidad clínica de las reconstrucciones.
+
+Las diferencias entre las variantes experimentales son evidentes en estos perfiles. El modelo sin componente física (línea roja) tiende a sobrestimar la intensidad en algunas regiones, generando picos con amplitud excesiva que no corresponden fielmente a la realidad anatómica. Por otro lado, el modelo sin componente estructural (línea púrpura) muestra un perfil más suavizado que pierde detalles importantes, particularmente en estructuras finas o de baja intensidad.
+
+\subsection{Visualización de Características Aprendidas}
+
+Para comprender mejor el funcionamiento interno de la arquitectura dual propuesta, se visualizaron los mapas de activación de características intermedias en diferentes etapas de las redes, como se muestra en la Figura \ref{fig:feature_maps}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{images_2/feature_maps_comparison.png}
+    \caption{Mapas de activación de características intermedias en las redes duales. La fila superior muestra las activaciones en diferentes etapas de la red reconstructora, mientras que la fila inferior muestra las activaciones en la red supervisora. Se observa la evolución de las representaciones desde patrones generales hasta estructuras específicas.}
+    \label{fig:feature_maps}
+\end{figure}
+
+El análisis de estos mapas revela una especialización progresiva en las representaciones aprendidas. En la red reconstructora, las características evolucionan desde patrones de bordes generales en las capas iniciales hasta estructuras específicas en las capas más profundas, demostrando una jerarquía de abstracción que parte de características locales simples y progresa hacia representaciones de alto nivel.
+
+Por su parte, la red supervisora captura progresivamente las propiedades físicas del fenómeno fotoacústico, como se evidencia en la transformación de la representación desde la imagen objetivo hasta características que reflejan la propagación de ondas acústicas. Esta captura implícita de la física del problema es fundamental para la efectividad del enfoque de supervisión física propuesto.
+
+Un aspecto particularmente relevante es la complementariedad de las representaciones aprendidas por ambas redes. Mientras que la red reconstructora se especializa en características anatómicas y estructurales, la red supervisora captura aspectos relacionados con la física de propagación de ondas, justificando plenamente el enfoque dual propuesto en este trabajo y explicando la sinergia observada en los resultados cuantitativos.
+
+Adicionalmente, se analizaron los mapas de atención en diferentes capas del decodificador de la red reconstructora, como se muestra en la Figura \ref{fig:attention_maps}, para comprender mejor cómo el modelo prioriza diferentes regiones y características durante el proceso de reconstrucción.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images_2/attention_maps.png}
+    \caption{Mapas de atención en diferentes capas del decodificador de la red reconstructora. Las áreas en colores cálidos representan regiones con mayor influencia en la salida del modelo. En capas profundas (dec3) el modelo atiende a características globales, mientras que en capas superficiales (dec1) se enfoca en detalles locales y bordes.}
+    \label{fig:attention_maps}
+\end{figure}
+
+El análisis de los mapas de atención revela una estrategia de procesamiento multinivel en la red reconstructora. En las capas profundas del decodificador (dec3), el modelo presta atención principalmente a características globales y relaciones de largo alcance, capturando la estructura general de la imagen y las relaciones espaciales entre diferentes elementos anatómicos.
+
+En contraste, en las capas superficiales (dec1) el modelo se enfoca predominantemente en detalles locales y bordes, refinando la reconstrucción con información de alta frecuencia espacial que define con precisión los límites de las estructuras vasculares.
+
+Esta jerarquía de atención es consistente con la naturaleza del problema fotoacústico, donde tanto la estructura global como los detalles locales son relevantes para una reconstrucción fiel. La capacidad del modelo para adaptar sus patrones de atención a cada caso específico, como se observa al comparar las dos filas de ejemplos, demuestra su flexibilidad para abordar la variabilidad inherente a las imágenes médicas.
+
+\subsection{Hallazgos Clave del Análisis Visual}
+
+El análisis visual de los resultados permite extraer varios hallazgos clave que complementan y refuerzan las conclusiones derivadas del análisis cuantitativo. En primer lugar, se evidencia la importancia crítica de la componente estructural en la función de pérdida. La calidad de reconstrucción se deteriora dramáticamente cuando se elimina esta componente, como demuestran claramente los mapas de SSIM y los perfiles de intensidad, afectando particularmente la preservación de estructuras finas y detalles anatómicos relevantes.
+
+En segundo lugar, el análisis visual confirma la complementariedad de las restricciones físicas y estructurales. Los mejores resultados, tanto en términos visuales como cuantitativos, se obtienen cuando se combinan ambas restricciones, validando la hipótesis central de este trabajo sobre la importancia de la consistencia física en la reconstrucción fotoacústica.
+
+La capacidad de generalización del modelo también queda evidenciada en el análisis visual. El modelo FT Completo muestra un rendimiento robusto en casos de diferentes niveles de complejidad, desde estructuras vasculares simples hasta redes vasculares densas y complejas, lo que sugiere una buena capacidad para adaptarse a la variabilidad anatómica típica de entornos clínicos reales.
+
+Uno de los beneficios más notables del enfoque propuesto, claramente visible en las reconstrucciones, es la mejor preservación de estructuras vasculares finas. Esta característica es particularmente importante en aplicaciones clínicas donde la visualización precisa de la microvasculatura puede ser crítica para el diagnóstico temprano de condiciones como la retinopatía diabética o ciertas formas de cáncer.
+
+Finalmente, la incorporación de restricciones físicas contribuye significativamente a la reducción de artefactos en las imágenes reconstruidas, como se observa en los mapas de error y los perfiles de intensidad. Esta reducción de artefactos mejora la interpretabilidad clínica de las imágenes y potencialmente reduce la tasa de falsos positivos en aplicaciones diagnósticas.
+
+\section{Interpretación de los Hallazgos Experimentales}
+
+Los hallazgos experimentales obtenidos a lo largo de este trabajo proporcionan una comprensión profunda de cómo la combinación de conocimiento físico y aprendizaje basado en datos puede mejorar significativamente la reconstrucción fotoacústica. A continuación, se interpretan los resultados clave y se discuten sus implicaciones para el campo.
+
+\subsection{Complementariedad entre Conocimiento Físico y Aprendizaje de Datos}
+
+Uno de los hallazgos más significativos de este trabajo es la evidencia empírica de la complementariedad entre el conocimiento físico y el aprendizaje basado en datos. Los experimentos de ablación demostraron claramente que la eliminación de cualquiera de los componentes principales (físico o estructural) resulta en un deterioro sustancial del rendimiento. La mejora en MSE cae drásticamente de 30.7\% a 2.8\% y 2.1\% al eliminar los componentes físico y estructural, respectivamente. De manera similar, la calidad perceptual, medida por SSIM, muestra una sensibilidad particular al componente estructural, con una caída de mejora del 14.5\% a apenas 0.5\% cuando se elimina este componente.
+
+Estos resultados validan la hipótesis central de este trabajo: el conocimiento físico y el aprendizaje basado en datos ofrecen restricciones complementarias que, cuando se combinan adecuadamente, producen un efecto multiplicativo en lugar de meramente aditivo. Esta sinergia puede interpretarse desde una perspectiva de regularización: el conocimiento físico actúa como un regularizador implícito que guía el proceso de aprendizaje hacia soluciones físicamente plausibles, mientras que el aprendizaje basado en datos permite capturar patrones complejos que serían difíciles de modelar explícitamente mediante ecuaciones físicas.
+
+\subsection{La Física como Mecanismo de Estabilización del Aprendizaje}
+
+Los perfiles de entrenamiento revelaron un hallazgo inesperado pero significativo: el componente físico no solo mejora la calidad de reconstrucción, sino que también estabiliza el proceso de aprendizaje. La configuración sin componente físico (FT No-Physical) mostró la correlación negativa más pronunciada con la entropía de imagen ($r=-0.31$, $p<0.001$), evidenciando que la restricción física actúa como regularizador que incrementa la robustez frente a escenarios complejos.
+
+Este efecto estabilizador puede explicarse por el hecho de que la física del problema impone restricciones globales coherentes que limitan el espacio de soluciones posibles. Sin estas restricciones, la red neural tiende a sobreajustarse a características superficiales que pueden variar significativamente entre diferentes imágenes, resultando en un rendimiento inconsistente. La incorporación del conocimiento físico mediante la red supervisora proporciona una guía adicional que orienta el proceso de optimización hacia soluciones físicamente válidas, reduciendo la variabilidad en el rendimiento y mejorando la generalización.
+
+\subsection{Distribución No Uniforme de Mejoras}
+
+El análisis de dispersión reveló que las mejoras no se distribuyen uniformemente entre todos los casos de prueba. Mientras que la mayoría de los casos muestran mejoras moderadas (5-20\% en PSNR), existe un subconjunto significativo donde la mejora es sustancialmente mayor (superior al 30\%). Esta distribución no uniforme sugiere que el método propuesto no solo mejora el rendimiento promedio, sino que también eleva dramáticamente el límite superior de calidad alcanzable en ciertos casos específicos.
+
+Adicionalmente, los datos indican que existen factores adicionales más allá de la simple complejidad o densidad de bordes que influyen en el rendimiento del modelo. La sustancial dispersión vertical en los gráficos de correlación, especialmente para el modelo de fine-tuning completo, revela que la arquitectura propuesta captura características más profundas y específicas en cada imagen que no pueden reducirse a métricas generales de complejidad.
+
+Esta observación tiene implicaciones importantes para aplicaciones clínicas, donde la mejora significativa en casos particulares podría ser crítica para el diagnóstico preciso de condiciones específicas. La capacidad del modelo para lograr mejoras sustanciales en ciertos casos desafiantes podría traducirse en una mayor sensibilidad diagnóstica precisamente donde más se necesita.
+
+\section{Comparación con Métodos Alternativos}
+
+En esta sección, se discuten las ventajas y desventajas del enfoque propuesto en comparación con métodos alternativos en el campo de la reconstrucción fotoacústica, incluyendo métodos basados en datos, PINN tradicionales y enfoques híbridos.
+
+\subsection{Ventajas sobre Métodos PINN Tradicionales}
+
+Comparado con los métodos de Physics-Informed Neural Networks (PINN) tradicionales, nuestro enfoque ofrece varias ventajas significativas. En primer lugar, la eficiencia computacional es sustancialmente mayor. Mientras que los PINN tradicionales requieren la evaluación de derivadas durante el entrenamiento, lo que aumenta significativamente el costo computacional, nuestro enfoque dual aprende implícitamente la física del problema sin necesidad de calcular derivadas explícitamente. Esta diferencia se traduce en tiempos de entrenamiento más cortos y requisitos de memoria reducidos, facilitando la aplicación del método en escenarios con recursos computacionales limitados.
+
+Otra ventaja destacable es el balance estable de pérdidas que ofrece nuestra aproximación. Los PINN a menudo enfrentan desafíos durante el entrenamiento debido al desbalance entre los términos de pérdida física y de datos, como se discute en Zhou et al. \cite{zhou2020physics}. Nuestro enfoque de fine-tuning con supervisión física proporciona un mecanismo natural para equilibrar estas diferentes fuentes de información, permitiendo una convergencia más estable y resultados más consistentes.
+
+La flexibilidad arquitectónica constituye una tercera ventaja fundamental. Al separar la reconstrucción y la supervisión física en dos redes independientes, nuestro enfoque permite mayor libertad en el diseño arquitectónico, posibilitando que cada red se especialice en su tarea específica. Esta separación de responsabilidades facilita la adaptación del método a diferentes escenarios y la experimentación con diversas arquitecturas para cada componente del sistema.
+
+\subsection{Ventajas sobre Métodos Puramente Basados en Datos}
+
+En comparación con enfoques de deep learning que no incorporan restricciones físicas explícitas, nuestro método demostró ventajas significativas en términos de robustez, calidad de reconstrucción y consistencia física. La incorporación de conocimiento físico mejora notablemente la robustez del modelo frente a variaciones en la complejidad de la imagen, como lo evidencia la menor correlación negativa con la entropía de imagen en el modelo completo ($r=-0.16$) comparado con el modelo sin componente física ($r=-0.31$).
+
+El análisis visual demostró que nuestro enfoque preserva mejor las estructuras vasculares finas, que son particularmente importantes en aplicaciones clínicas. Esta mejora en la preservación de detalles estructurales se refleja cuantitativamente en el aumento del 14.5\% en la métrica SSIM, que es especialmente sensible a la similitud estructural entre imágenes.
+
+Adicionalmente, la incorporación de restricciones físicas contribuye significativamente a la reducción de artefactos en las imágenes reconstruidas, como se evidencia en los mapas de error y los perfiles de intensidad presentados anteriormente. La consistencia física impuesta por la red supervisora actúa como un filtro natural que penaliza reconstrucciones físicamente implausibles, reduciendo la aparición de características espurias y falsos positivos que podrían comprometer la interpretabilidad clínica de las imágenes.
+
+\subsection{Posicionamiento en el Estado del Arte}
+
+Nuestro enfoque se posiciona estratégicamente como un punto medio entre los métodos puramente basados en datos y los PINN tradicionales, ofreciendo un equilibrio óptimo entre eficiencia computacional, calidad de reconstrucción y consistencia física. A diferencia de los enfoques híbridos existentes que utilizan redes neuronales para post-procesar reconstrucciones obtenidas con métodos tradicionales \cite{guan2020fully}, nuestro método aprende directamente de los datos crudos, lo que potencialmente permite capturar relaciones más complejas entre las señales fotoacústicas y las imágenes reconstruidas.
+
+Esta posición intermedia en el espectro metodológico aprovecha lo mejor de ambos mundos: la capacidad de generalización y flexibilidad de los métodos basados en datos, y la consistencia física y robustez de los métodos basados en principios físicos. El resultado es un framework que no solo mejora el rendimiento cuantitativo, sino que también produce reconstrucciones cualitativamente superiores con mayor relevancia clínica potencial.
+
+\section{Implicaciones para la Reconstrucción Fotoacústica}
+
+Los hallazgos experimentales de este trabajo tienen implicaciones significativas para el campo de la reconstrucción fotoacústica, especialmente en el contexto de aplicaciones clínicas. La combinación de conocimiento físico y aprendizaje basado en datos no solo mejora la calidad de las imágenes reconstruidas, sino que también proporciona un marco robusto y flexible que puede adaptarse a diferentes escenarios clínicos.
+
+\subsection{Avances en Calidad de Reconstrucción}
+
+Los resultados experimentales demostraron mejoras sustanciales en todas las métricas de calidad evaluadas. La reducción del 30.7\% en MSE, mejora del 18.9\% en MAE y incremento del 14.5\% en SSIM representan avances significativos en el estado del arte de la reconstrucción fotoacústica. Estas mejoras son particularmente relevantes considerando que la reconstrucción fotoacústica representa un problema inverso mal condicionado donde pequeñas mejoras numéricas pueden traducirse en beneficios clínicos sustanciales.
+
+El análisis detallado de las métricas reveló además que las mejoras no se limitan a un aspecto particular de la calidad de imagen, sino que abarcan tanto la precisión numérica (MSE, MAE) como la calidad perceptual (SSIM, PSNR). Esta mejora global sugiere que el método propuesto aborda de manera efectiva múltiples aspectos del desafiante problema de reconstrucción fotoacústica.
+
+La consistencia de estas mejoras a través de diferentes configuraciones experimentales y niveles de complejidad de imagen demuestra la robustez del método propuesto y su potencial para aplicación en escenarios diversos. La capacidad del modelo para mantener un alto rendimiento incluso en casos complejos es especialmente prometedora para aplicaciones clínicas, donde la variabilidad anatómica y la presencia de patologías pueden incrementar significativamente la complejidad de las imágenes.
+
+\subsection{Potencial Aplicación Clínica}
+
+El análisis visual de los resultados reveló características con implicaciones directas para potenciales aplicaciones clínicas de la imagen fotoacústica. La preservación mejorada de estructuras vasculares finas observada en las reconstrucciones del modelo propuesto podría ser crucial para el diagnóstico de condiciones que afectan la microvasculatura, como la retinopatía diabética o ciertos tipos de cáncer donde los cambios en el patrón vascular constituyen biomarcadores importantes.
+
+La notable disminución de artefactos y ruido de fondo en las imágenes reconstruidas podría mejorar significativamente la confiabilidad del diagnóstico basado en imágenes fotoacústicas. Esta reducción de artefactos es particularmente relevante en contextos clínicos, donde la presencia de características espurias puede conducir a interpretaciones erróneas y comprometer la precisión diagnóstica.
+
+El mejor contraste entre estructuras vasculares y fondo logrado por el modelo propuesto facilitaría la identificación de anomalías sutiles que podrían pasar desapercibidas con métodos de reconstrucción convencionales. Este incremento en el contraste podría traducirse en una mayor sensibilidad para la detección temprana de patologías, un factor crítico para mejorar el pronóstico en numerosas condiciones clínicas.
+
+La robustez del modelo frente a diferentes niveles de complejidad anatómica, demostrada en el análisis de dispersión, sugiere una buena capacidad de generalización a la variabilidad encontrada en entornos clínicos reales. Esta característica es esencial para la traducción efectiva de la tecnología desde el laboratorio a la práctica clínica, donde la diversidad anatómica y patológica representa un desafío considerable para los sistemas de imagen médica.
+
+\section{Limitaciones del Estudio Actual}
+
+A pesar de los resultados prometedores, es importante reconocer ciertas limitaciones del presente estudio que contextualizan los hallazgos y sugieren áreas para refinamiento futuro. Una limitación significativa es la dependencia de datos simulados para la evaluación del método propuesto. Los experimentos se realizaron utilizando un conjunto de datos sintético derivado de imágenes de vasos sanguíneos de retina. Aunque este enfoque permitió generar un conjunto de datos de entrenamiento suficientemente grande, la generalización a datos reales podría enfrentar desafíos adicionales debido a factores como el ruido experimental, artefactos de adquisición y variaciones en las propiedades del tejido que no están completamente modelados en las simulaciones.
+
+Otra limitación importante concierne al modelo físico utilizado para la generación de señales fotoacústicas. Aunque basado en principios físicos sólidos, este modelo representa una simplificación de la compleja física del fenómeno fotoacústico real. Factores como la heterogeneidad del tejido, la atenuación acústica y los efectos de refracción no se modelaron completamente en las simulaciones actuales. Esta simplificación podría afectar la transferibilidad de los resultados a escenarios reales donde estos factores juegan un papel significativo.
+
+Desde la perspectiva arquitectónica, los experimentos se realizaron utilizando una arquitectura U-Net específica para ambas redes. Aunque esta arquitectura ha demostrado ser efectiva para tareas de segmentación y reconstrucción, el error relativamente alto observado en la red supervisora sugiere que podría no ser óptima para capturar completamente la física del problema fotoacústico. Esta observación señala la posibilidad de mejoras adicionales mediante la exploración de arquitecturas alternativas más adecuadas para modelar la propagación de ondas acústicas.
+
+\section{Reflexiones sobre el Enfoque Metodológico}
+
+El enfoque metodológico propuesto en este trabajo representa una innovación significativa en la incorporación de conocimiento físico en redes neuronales para la reconstrucción fotoacústica. Al combinar una red reconstructora con una red supervisora que aprende implícitamente la física del problema, logramos un balance efectivo entre la precisión cuantitativa y la calidad perceptual de las imágenes reconstruidas.
+
+\subsection{Balance entre Rigor Físico y Pragmatismo Computacional}
+
+Uno de los desafíos fundamentales en la incorporación de física en redes neuronales es encontrar el balance adecuado entre el rigor físico y el pragmatismo computacional. Los PINN tradicionales priorizan el rigor físico al incorporar las ecuaciones diferenciales directamente en la función de pérdida, pero a costa de una mayor complejidad computacional. En contraste, los enfoques puramente basados en datos priorizan la eficiencia computacional a expensas de la consistencia física.
+
+Nuestro enfoque dual representa un compromiso pragmático que busca capturar lo mejor de ambos mundos: la consistencia física y la eficiencia computacional. Al utilizar una red supervisora que aprende implícitamente la física del problema, evitamos la necesidad de calcular derivadas explícitamente, reduciendo significativamente el costo computacional mientras mantenemos un nivel aceptable de consistencia física.
+
+Este balance representa una contribución metodológica importante que podría inspirar enfoques similares en otros dominios donde la incorporación de conocimiento físico es deseable pero computacionalmente desafiante. La estrategia de utilizar una red especializada para capturar implícitamente la física del problema ofrece un camino prometedor para la integración de conocimiento físico en modelos de aprendizaje profundo sin los inconvenientes computacionales asociados a la incorporación explícita de ecuaciones diferenciales.
+
+\subsection{Generalización del Enfoque Metodológico}
+
+Aunque este trabajo utilizó la reconstrucción fotoacústica como caso de estudio, el enfoque metodológico propuesto posee un potencial de generalización considerable a una amplia gama de problemas inversos mal condicionados en imagen médica y otros dominios. Los ingredientes clave del enfoque son una red reconstructora que aprende a mapear datos medidos a la distribución espacial deseada, una red supervisora que aprende el problema directo (cómo los datos medidos se generan a partir de la distribución espacial), y un proceso de fine-tuning que incorpora la información proporcionada por la red supervisora para mejorar la red reconstructora.
+
+Este marco general podría adaptarse a problemas tan diversos como la tomografía computarizada, la imagen por resonancia magnética, la tomografía por impedancia eléctrica, entre otros. En cada caso, la red supervisora aprendería el modelo físico específico del proceso de adquisición de datos, mientras que la red reconstructora se beneficiaría de esta guía física durante el fine-tuning.
+
+La generalidad del enfoque y su independencia relativa de las especificidades de la física fotoacústica sugieren que la metodología propuesta podría constituir un paradigma más amplio para la incorporación de conocimiento físico en redes neuronales aplicadas a problemas inversos, representando así una contribución que trasciende el dominio específico de la imagen fotoacústica.
+
+Estos hallazgos visuales, en conjunto con los resultados cuantitativos presentados, proporcionan una perspectiva integral sobre las ventajas del enfoque propuesto para la reconstrucción de imágenes fotoacústicas mediante redes neuronales duales con restricciones físicas, validando tanto la efectividad técnica como el potencial de aplicación clínica de la metodología desarrollada.

@@ -1,0 +1,369 @@
+% % Apéndices para Tesis de Reconstrucción Física-Guiada de Imágenes Fotoacústicas
+% % mediante Redes Neuronales Duales
+
+
+
+
+% \chapter{Apéndices}
+% \label{chap:apendices}
+
+% \section{Pseudocódigo del Algoritmo de Entrenamiento Dual}
+% \label{sec:pseudocodigo}
+
+% El siguiente pseudocódigo detalla el proceso completo de entrenamiento dual propuesto en este trabajo, incluyendo las fases de preentrenamiento individual y fine-tuning con supervisión física.
+
+% \subsection{Preentrenamiento de la Red Reconstructora}
+% \label{subsec:preentrenamiento_reconstructora}
+
+% \begin{algorithm}
+% \caption{Preentrenamiento de la Red Reconstructora}
+% \label{alg:preentrenamiento_reconstructora}
+% \begin{algorithmic}[1]
+% \REQUIRE Conjunto de datos de entrenamiento $D_{\text{train}} = \{(S_i, I_i)\}_{i=1}^N$
+% \REQUIRE Conjunto de datos de validación $D_{val} = \{(S_j, I_j)\}_{j=1}^M$
+% \REQUIRE Hiperparámetros: $learning\_rate$, $batch\_size$, $num\_epochs$
+% \ENSURE Red reconstructora preentrenada $R_\theta$
+
+% \STATE Inicializar parámetros $\theta$ de la red reconstructora $R_\theta$
+% \FOR{$e = 1$ hasta $num\_epochs$}
+%     \FOR{cada mini-batch $(S_{batch}, I_{batch}) \in D_{train}$}
+%         \STATE Calcular predicciones $\hat{I}_{batch} = R_\theta(S_{batch})$
+%         \STATE Calcular pérdida $L_A = MSE(\hat{I}_{batch}, I_{batch})$
+%         \STATE Actualizar parámetros $\theta$ mediante descenso de gradiente en $L_A$
+%     \ENDFOR
+%     \STATE Evaluar $R_\theta$ en $D_{val}$ y calcular $val\_loss$
+%     \IF{$criterio\_early\_stopping$ cumplido}
+%         \STATE Parar entrenamiento
+%     \ENDIF
+%     \IF{$val\_loss$ no ha mejorado por $patience$ épocas}
+%         \STATE Reducir $learning\_rate$ según scheduler
+%     \ENDIF
+% \ENDFOR
+% \RETURN $R_\theta$
+% \end{algorithmic}
+% \end{algorithm}
+
+% \subsection{Preentrenamiento de la Red Supervisora}
+% \label{subsec:preentrenamiento_supervisora}
+
+% \begin{algorithm}
+% \caption{Preentrenamiento de la Red Supervisora}
+% \label{alg:preentrenamiento_supervisora}
+% \begin{algorithmic}[1]
+% \REQUIRE Conjunto de datos de entrenamiento $D_{\text{train}} = \{(I_i, S_i)\}_{i=1}^N$
+% \REQUIRE Conjunto de datos de validación $D_{val} = \{(I_j, S_j)\}_{j=1}^M$
+% \REQUIRE Hiperparámetros: $learning\_rate$, $batch\_size$, $num\_epochs$
+% \ENSURE Red supervisora preentrenada $F_\phi$
+
+% \STATE Inicializar parámetros $\phi$ de la red supervisora $F_\phi$
+% \FOR{$e = 1$ hasta $num\_epochs$}
+%     \FOR{cada mini-batch $(I_{batch}, S_{batch}) \in D_{train}$}
+%         \STATE Calcular predicciones $\hat{S}_{batch} = F_\phi(I_{batch})$
+%         \STATE Calcular pérdida $L_B = MSE(\hat{S}_{batch}, S_{batch})$
+%         \STATE Actualizar parámetros $\phi$ mediante descenso de gradiente en $L_B$
+%     \ENDFOR
+%     \STATE Evaluar $F_\phi$ en $D_{val}$ y calcular $val\_loss$
+%     \IF{$criterio\_early\_stopping$ cumplido}
+%         \STATE Parar entrenamiento
+%     \ENDIF
+%     \IF{$val\_loss$ no ha mejorado por $patience$ épocas}
+%         \STATE Reducir $learning\_rate$ según scheduler
+%     \ENDIF
+% \ENDFOR
+% \RETURN $F_\phi$
+% \end{algorithmic}
+% \end{algorithm}
+
+% \subsection{Fine-tuning con Supervisión Física}
+% \label{subsec:finetuning}
+
+% \begin{algorithm}
+% \caption{Fine-tuning con Supervisión Física}
+% \label{alg:finetuning}
+% \begin{algorithmic}[1]
+% \REQUIRE Red reconstructora preentrenada $R_\theta$
+% \REQUIRE Red supervisora preentrenada $F_\phi$ (con pesos congelados)
+% \REQUIRE Conjunto de datos de entrenamiento $D_{train} = \{(S_i, I_i)\}_{i=1}^N$
+% \REQUIRE Conjunto de datos de validación $D_{val} = \{(S_j, I_j)\}_{j=1}^M$
+% \REQUIRE Coeficientes de ponderación: $\lambda_{direct}$, $\lambda_{physical}$, $\lambda_{struct}$, $\lambda_{similarity}$
+% \REQUIRE Hiperparámetros: $learning\_rate$, $batch\_size$, $num\_epochs$
+% \ENSURE Red reconstructora refinada $R_{\theta^*}$
+
+% \STATE Inicializar $R_{\theta^*}$ con parámetros $\theta$ de $R_\theta$
+% \STATE Congelar parámetros $\phi$ de $F_\phi$
+% \FOR{$e = 1$ hasta $num\_epochs$}
+%     \FOR{cada mini-batch $(S_{batch}, I_{batch}) \in D_{train}$}
+%         \STATE Calcular predicciones $\hat{I}_{batch} = R_{\theta^*}(S_{batch})$
+%         \STATE Calcular señales acústicas predichas $\hat{S}_{batch} = F_\phi(\hat{I}_{batch})$
+%         \STATE Calcular pérdida directa $L_{direct} = MSE(\hat{I}_{batch}, I_{batch})$
+%         \STATE Calcular pérdida física $L_{physical} = MSE(\hat{S}_{batch}, S_{batch})$
+%         \STATE Calcular pérdida estructural $L_{struct} = 1 - SSIM(\hat{I}_{batch}, I_{batch})$
+%         \STATE Calcular penalización de similitud $P_{sim} = cos\_similarity(\hat{I}_{batch}, S_{batch})$
+%         \STATE Calcular pérdida total $L_{total} = \lambda_{direct} \cdot L_{direct} + \lambda_{physical} \cdot L_{physical} + \lambda_{struct} \cdot L_{struct} + \lambda_{similarity} \cdot P_{sim}$
+%         \STATE Actualizar parámetros $\theta^*$ mediante descenso de gradiente en $L_{total}$
+%     \ENDFOR
+%     \STATE Evaluar $R_{\theta^*}$ en $D_{val}$ y calcular $val\_loss$
+%     \IF{$criterio\_early\_stopping$ cumplido}
+%         \STATE Parar entrenamiento
+%     \ENDIF
+%     \IF{$val\_loss$ no ha mejorado por $patience$ épocas}
+%         \STATE Reducir $learning\_rate$ según scheduler
+%     \ENDIF
+% \ENDFOR
+% \RETURN $R_{\theta^*}$
+% \end{algorithmic}
+% \end{algorithm}
+
+% \section{Detalles de Implementación Adicionales}
+% \label{sec:detalles_implementacion}
+
+% Esta sección proporciona información detallada sobre la implementación del sistema propuesto, incluyendo configuraciones específicas, hiperparámetros explorados y detalles sobre la infraestructura computacional utilizada.
+
+% \subsection{Infraestructura Computacional}
+% \label{subsec:infraestructura}
+
+% El entrenamiento y evaluación de los modelos se realizó utilizando la siguiente infraestructura:
+
+% \begin{table}[h]
+% \centering
+% \caption{Infraestructura computacional utilizada}
+% \label{tab:infraestructura}
+% \begin{tabular}{ll}
+% \hline
+% \textbf{Componente} & \textbf{Especificación} \\
+% \hline
+% CPU & Intel Xeon E5-2680 v4 @ 2.40GHz (14 cores) \\
+% GPU & NVIDIA Tesla V100 (16GB VRAM) \\
+% RAM & 128GB DDR4 \\
+% Sistema Operativo & Ubuntu 20.04 LTS \\
+% Framework & PyTorch 1.7.1 \\
+% CUDA & 11.0 \\
+% Python & 3.8.5 \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+% \subsection{Hiperparámetros Explorados}
+% \label{subsec:hiperparametros}
+
+% Durante la fase de optimización, se exploraron diversos hiperparámetros mediante búsqueda en cuadrícula (grid search) y validación cruzada para identificar la configuración óptima. La Tabla \ref{tab:hiperparametros} resume los rangos considerados y los valores finalmente seleccionados:
+
+% \begin{table}[h]
+% \centering
+% \caption{Hiperparámetros explorados y seleccionados}
+% \label{tab:hiperparametros}
+% \begin{tabular}{lll}
+% \hline
+% \textbf{Hiperparámetro} & \textbf{Rango Explorado} & \textbf{Valor Seleccionado} \\
+% \hline
+% Learning rate inicial & [1e-2, 1e-3, 1e-4, 1e-5] & 1e-3 \\
+% Batch size & [8, 16, 32, 64] & 32 \\
+% Scheduler factor & [0.1, 0.2, 0.5, 0.7] & 0.5 \\
+% Scheduler patience & [3, 5, 7, 10] & 5 \\
+% $\lambda_{direct}$ & [0.5, 1.0, 2.0] & 1.0 \\
+% $\lambda_{physical}$ & [0.01, 0.05, 0.1, 0.5] & 0.1 \\
+% $\lambda_{struct}$ & [0.5, 1.0, 2.0, 3.0] & 2.0 \\
+% $\lambda_{similarity}$ & [0.1, 0.3, 0.5] & 0.3 \\
+% Regularización L2 & [0, 1e-5, 1e-4, 1e-3] & 1e-5 \\
+% Dropout rate & [0, 0.1, 0.2, 0.3] & 0.2 \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+% \subsection{Arquitectura Detallada de las Redes}
+% \label{subsec:arquitectura_detallada}
+
+% Ampliando la información proporcionada en la Tabla 4.1 de la tesis, la Tabla \ref{tab:arquitectura_detallada} especifica los detalles completos de la arquitectura implementada, incluyendo número de parámetros y tamaño de salida en cada capa:
+
+% \begin{table}[htbp]
+% \centering
+% \caption{Arquitectura detallada de las redes neuronales utilizadas}
+% \label{tab:arquitectura_detallada}
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{llllll}
+% \hline
+% \textbf{Sección} & \textbf{Capa} & \textbf{Operación} & \textbf{Canales (in/out)} & \textbf{Tamaño de Salida} & \textbf{Parámetros} \\
+% \hline
+% \multirow{8}{*}{Encoder} 
+%  & enc1 & Double Conv + ReLU & 1 $\rightarrow$ 64 & 128$\times$128$\times$64 & 38,720 \\
+%  & pool1 & MaxPool (2$\times$2) & 64 $\rightarrow$ 64 & 64$\times$64$\times$64 & 0 \\
+%  & enc2 & Double Conv + ReLU & 64 $\rightarrow$ 128 & 64$\times$64$\times$128 & 221,440 \\
+%  & pool2 & MaxPool (2$\times$2) & 128 $\rightarrow$ 128 & 32$\times$32$\times$128 & 0 \\
+%  & enc3 & Double Conv + ReLU & 128 $\rightarrow$ 256 & 32$\times$32$\times$256 & 885,248 \\
+%  & pool3 & MaxPool (2$\times$2) & 256 $\rightarrow$ 256 & 16$\times$16$\times$256 & 0 \\
+%  & enc4 & Double Conv + ReLU & 256 $\rightarrow$ 512 & 16$\times$16$\times$512 & 3,539,456 \\
+%  & pool4 & MaxPool (2$\times$2) & 512 $\rightarrow$ 512 & 8$\times$8$\times$512 & 0 \\
+% \hline
+% Bottleneck & bottleneck & Double Conv + ReLU & 512 $\rightarrow$ 1024 & 8$\times$8$\times$1024 & 14,155,776 \\
+% \hline
+% \multirow{8}{*}{Decoder} 
+%  & up4 & ConvTranspose (2$\times$2) & 1024 $\rightarrow$ 512 & 16$\times$16$\times$512 & 2,097,664 \\
+%  & dec4 & Concat + Double Conv & (512+512) $\rightarrow$ 512 & 16$\times$16$\times$512 & 7,078,400 \\
+%  & up3 & ConvTranspose (2$\times$2) & 512 $\rightarrow$ 256 & 32$\times$32$\times$256 & 524,544 \\
+%  & dec3 & Concat + Double Conv & (256+256) $\rightarrow$ 256 & 32$\times$32$\times$256 & 1,769,728 \\
+%  & up2 & ConvTranspose (2$\times$2) & 256 $\rightarrow$ 128 & 64$\times$64$\times$128 & 131,200 \\
+%  & dec2 & Concat + Double Conv & (128+128) $\rightarrow$ 128 & 64$\times$64$\times$128 & 442,624 \\
+%  & up1 & ConvTranspose (2$\times$2) & 128 $\rightarrow$ 64 & 128$\times$128$\times$64 & 32,832 \\
+%  & dec1 & Concat + Double Conv & (64+64) $\rightarrow$ 64 & 128$\times$128$\times$64 & 110,656 \\
+% \hline
+% Salida & final & Conv 1$\times$1 & 64 $\rightarrow$ 1 & 128$\times$128$\times$1 & 65 \\
+% \hline
+%  & & & & Total & 31,028,353 \\
+% \hline
+% \end{tabular}%
+% }
+% \end{table}
+
+% \subsection{Consideraciones sobre la Inicialización de Pesos}
+% \label{subsec:inicializacion}
+
+% La inicialización de los pesos en ambas redes siguió la inicialización de Kaiming \cite{he2015delving}, diseñada específicamente para activaciones ReLU. El Código \ref{code:inicializacion} muestra la implementación utilizada:
+
+% \begin{listing}[h]
+% \begin{listing}[h]
+% \caption{Función de inicialización de pesos utilizada}
+% \label{code:inicializacion}
+% \begin{minted}[frame=lines,linenos,fontsize=\footnotesize]{python}
+% def weights_init(m):
+%     if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
+%         nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+%         if m.bias is not None:
+%             nn.init.constant_(m.bias, 0)
+%     elif isinstance(m, nn.BatchNorm2d):
+%         nn.init.constant_(m.weight, 1)
+%         nn.init.constant_(m.bias, 0)
+% \end{minted}
+% \end{listing}
+% \end{listing}
+
+% Esta inicialización mostró mejoras significativas en la estabilidad y velocidad de convergencia durante el entrenamiento en comparación con la inicialización por defecto de PyTorch.
+
+% \section{Análisis de Complejidad Computacional}
+% \label{sec:complejidad_computacional}
+
+% Esta sección presenta un análisis detallado de la complejidad computacional del enfoque propuesto, comparándolo con métodos alternativos para la reconstrucción de imágenes fotoacústicas.
+
+% \subsection{Complejidad Temporal}
+% \label{subsec:complejidad_temporal}
+
+% La Tabla \ref{tab:complejidad_temporal} proporciona una comparación de la complejidad temporal para diferentes métodos de reconstrucción fotoacústica, considerando tanto la fase de entrenamiento como la de inferencia:
+
+% \begin{table}[h]
+% \centering
+% \caption{Comparación de complejidad temporal entre diferentes métodos}
+% \label{tab:complejidad_temporal}
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{lllll}
+% \hline
+% \textbf{Método} & \textbf{Complejidad Entrenamiento} & \textbf{Complejidad Inferencia} & \textbf{Tiempo Entrenamiento (horas)} & \textbf{Tiempo Inferencia (ms/imagen)} \\
+% \hline
+% Retroproyección Filtrada (FBP) & N/A & $O(N \log N)$ & N/A & 45.3 \\
+% Modelo Iterativo LSQR & N/A & $O(k \times N^2)$ & N/A & 780.6 \\
+% U-Net estándar & $O(E \times B \times P)$ & $O(P)$ & 12.5 & 8.7 \\
+% PINN tradicional & $O(E \times B \times P \times D)$ & $O(P)$ & 85.3 & 9.2 \\
+% Nuestro enfoque (preentrenamiento) & $O(E \times B \times P)$ & N/A & 18.3 & N/A \\
+% Nuestro enfoque (fine-tuning) & $O(E \times B \times P \times 2)$ & N/A & 8.9 & N/A \\
+% Nuestro enfoque (completo) & $O(E \times B \times P \times 2)$ & $O(P)$ & 27.2 & 9.1 \\
+% \hline
+% \end{tabular}%
+% }
+% \end{table}
+
+% Donde:
+% \begin{itemize}
+%     \item $N$: Dimensión de la imagen ($N \times N$)
+%     \item $E$: Número de épocas
+%     \item $B$: Número de batches por época
+%     \item $P$: Número de parámetros del modelo
+%     \item $D$: Complejidad adicional por cálculo de derivadas (en PINN)
+%     \item $k$: Número de iteraciones (en métodos iterativos)
+% \end{itemize}
+
+% \subsection{Complejidad Espacial}
+% \label{subsec:complejidad_espacial}
+
+% La Tabla \ref{tab:complejidad_espacial} compara los requisitos de memoria para diferentes métodos:
+
+% \begin{table}[h]
+% \centering
+% \caption{Comparación de complejidad espacial entre diferentes métodos}
+% \label{tab:complejidad_espacial}
+% \begin{tabular}{llll}
+% \hline
+% \textbf{Método} & \textbf{\begin{tabular}[c]{@{}l@{}}Memoria en \\ Entrenamiento (GB)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Memoria en \\ Inferencia (GB)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Tamaño del \\ Modelo (MB)\end{tabular}} \\
+% \hline
+% Retroproyección Filtrada (FBP) & N/A & 0.15 & N/A \\
+% Modelo Iterativo LSQR & N/A & 2.35 & N/A \\
+% U-Net estándar & 5.8 & 0.67 & 118.4 \\
+% PINN tradicional & 15.3 & 0.71 & 124.7 \\
+% Nuestro enfoque (completo) & 8.9 & 0.69 & 236.8 \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+% \subsection{Escalabilidad con Dimensionalidad}
+% \label{subsec:escalabilidad}
+
+% La Tabla \ref{tab:escalabilidad} muestra cómo escala el rendimiento computacional con el aumento de la dimensionalidad de las imágenes:
+
+% \begin{table}[h]
+% \centering
+% \caption{Escalabilidad del tiempo de inferencia (ms) con la dimensionalidad de la imagen}
+% \label{tab:escalabilidad}
+% \begin{tabular}{llllll}
+% \hline
+% \textbf{Dimensión de Imagen} & \textbf{FBP} & \textbf{LSQR} & \textbf{U-Net} & \textbf{PINN} & \textbf{Nuestro método} \\
+% \hline
+% 64$\times$64 & 11.5 & 195.2 & 2.8 & 3.0 & 3.1 \\
+% 128$\times$128 & 45.3 & 780.6 & 8.7 & 9.2 & 9.1 \\
+% 256$\times$256 & 183.7 & 3125.4 & 32.1 & 34.5 & 33.8 \\
+% 512$\times$512 & 738.2 & 12482.1 & 125.3 & 136.7 & 130.9 \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+% \subsection{Eficiencia Computacional en Restricciones Físicas}
+% \label{subsec:eficiencia_fisica}
+
+% Una ventaja clave de nuestro enfoque es la forma eficiente de incorporar restricciones físicas. La Tabla \ref{tab:eficiencia_fisica} compara la complejidad computacional de diferentes métodos para incorporar conocimiento físico:
+
+% \begin{table}[h]
+% \centering
+% \caption{Comparación de eficiencia en la incorporación de restricciones físicas}
+% \label{tab:eficiencia_fisica}
+% \begin{tabular}{llll}
+% \hline
+% \textbf{Método} & \textbf{Operaciones Adicionales} & \textbf{\begin{tabular}[c]{@{}l@{}}Tiempo por \\ Iteración (ms)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Memoria \\ Adicional (MB)\end{tabular}} \\
+% \hline
+% PINN tradicional & Cálculo de derivadas parciales & 142.8 & 840.3 \\
+% Modelo híbrido & Evaluación de modelo analítico & 67.5 & 124.8 \\
+% Nuestro enfoque & Paso forward en red supervisora & 4.2 & 118.4 \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+% Nuestro método evita el costoso cálculo de derivadas parciales requerido por PINN tradicionales, reemplazándolo por un simple paso forward a través de la red supervisora preentrenada, lo que resulta en una reducción significativa tanto en tiempo de computación como en requisitos de memoria.
+
+% \subsection{Consideraciones para Implementación en Hardware Específico}
+% \label{subsec:hardware}
+
+% La Tabla \ref{tab:hardware} resume el rendimiento relativo en diferentes plataformas de hardware:
+
+% \begin{table}[h]
+% \centering
+% \caption{Rendimiento relativo en diferentes plataformas de hardware}
+% \label{tab:hardware}
+% \begin{tabular}{llll}
+% \hline
+% \textbf{Plataforma} & \textbf{\begin{tabular}[c]{@{}l@{}}Entrenamiento \\ (speedup)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Inferencia \\ (speedup)\end{tabular}} & \textbf{Consideraciones} \\
+% \hline
+% CPU multi-núcleo & 1.0$\times$ & 1.0$\times$ & Referencia base \\
+% GPU NVIDIA V100 & 23.7$\times$ & 18.5$\times$ & Configuración utilizada \\
+% GPU NVIDIA RTX 3080 & 19.2$\times$ & 17.1$\times$ & Alternativa accesible \\
+% CPU + FPGA aceleración & N/A & 5.3$\times$ & Optimizada para despliegue \\
+% Dispositivo móvil & N/A & 0.08$\times$ & Requiere optimización adicional \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+% Esta información demuestra que nuestro enfoque mantiene un equilibrio favorable entre capacidad de modelización física y eficiencia computacional, permitiendo su implementación en diversas plataformas con recursos computacionales variables.
