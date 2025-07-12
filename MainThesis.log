@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.11.3)  8 JUN 2025 18:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.10.31)  9 JUN 2025 09:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/mgalindo/max/maestria/tesis/w_deep_doc/MainThesis.tex
-(/home/mgalindo/max/maestria/tesis/w_deep_doc/MainThesis.tex
+**/home/mgalindo/max/maestria/tesis/thesis_pdf/MainThesis.tex
+(/home/mgalindo/max/maestria/tesis/thesis_pdf/MainThesis.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
@@ -396,31 +396,38 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+<images_2/logo.pdf, id=1, 770.88pt x 866.48718pt>
+File: images_2/logo.pdf Graphic file (type pdf)
+<use images_2/logo.pdf>
+Package pdftex.def Info: images_2/logo.pdf  used on input line 29.
+(pdftex.def)             Requested size: 50.62651pt x 56.9055pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./000_abstract.tex) [1
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images_2/logo.pdf>] (./000_abstract_es.tex) [1
 
-] (./00_acknowledgements.tex) [2
+] (./000_abstract_en.tex) [2
+
+] (./00_acknowledgements.tex) [3
 
 ] (./MainThesis.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [3
+ [4
 
-] [4])
+] [5])
 \tf@toc=\write3
 \openout3 = `MainThesis.toc'.
 
- [5] [6] (./MainThesis.lof
+ [6] [7] (./MainThesis.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [7
+ [8
 
 ])
 \tf@lof=\write4
 \openout4 = `MainThesis.lof'.
 
- [8] (./MainThesis.lot
+ [9] (./MainThesis.lot
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
@@ -469,7 +476,7 @@ Cap\'{\i }tulo 3.
 (./3_Methodology.tex [17
 
 ] [18] [19]
-<Images/arq.pdf, id=105, 826.98842pt x 687.58351pt>
+<Images/arq.pdf, id=111, 826.98842pt x 687.58351pt>
 File: Images/arq.pdf Graphic file (type pdf)
 <use Images/arq.pdf>
 Package pdftex.def Info: Images/arq.pdf  used on input line 107.
@@ -515,41 +522,41 @@ Underfull \hbox (badness 4205) in paragraph at lines 28--29
 [33
 
 ]
-<images_2/perdidas_entrenamiento_recon.png, id=158, 1194.4625pt x 691.58376pt>
+<images_2/perdidas_entrenamiento_recon.png, id=165, 1194.4625pt x 691.58376pt>
 File: images_2/perdidas_entrenamiento_recon.png Graphic file (type png)
 <use images_2/perdidas_entrenamiento_recon.png>
 Package pdftex.def Info: images_2/perdidas_entrenamiento_recon.png  used on input line 51.
 (pdftex.def)             Requested size: 226.70955pt x 131.25453pt.
-<images_2/perdidas_entrenamiento_super.png, id=159, 1193.45876pt x 691.58376pt>
+<images_2/perdidas_entrenamiento_super.png, id=166, 1193.45876pt x 691.58376pt>
 File: images_2/perdidas_entrenamiento_super.png Graphic file (type png)
 <use images_2/perdidas_entrenamiento_super.png>
 Package pdftex.def Info: images_2/perdidas_entrenamiento_super.png  used on input line 58.
 (pdftex.def)             Requested size: 226.70955pt x 131.37062pt.
  [34]
-<images_2/perdidas_entrenamiento_finetuning.png, id=164, 1383.1675pt x 1194.4625pt>
+<images_2/perdidas_entrenamiento_finetuning.png, id=170, 1383.1675pt x 1194.4625pt>
 File: images_2/perdidas_entrenamiento_finetuning.png Graphic file (type png)
 <use images_2/perdidas_entrenamiento_finetuning.png>
 Package pdftex.def Info: images_2/perdidas_entrenamiento_finetuning.png  used on input line 78.
 (pdftex.def)             Requested size: 377.85405pt x 326.30019pt.
  [35 <./images_2/perdidas_entrenamiento_recon.png> <./images_2/perdidas_entrenamiento_super.png>] [36 <./images_2/perdidas_entrenamiento_finetuning.png>]
-<images_2/radar_chart_metrics.png, id=171, 827.2506pt x 865.7946pt>
+<images_2/radar_chart_metrics.png, id=177, 827.2506pt x 865.7946pt>
 File: images_2/radar_chart_metrics.png Graphic file (type png)
 <use images_2/radar_chart_metrics.png>
 Package pdftex.def Info: images_2/radar_chart_metrics.png  used on input line 91.
 (pdftex.def)             Requested size: 377.85405pt x 395.46964pt.
-<images_2/perdidas_entrenamiento_finetuning_no_phy.png, id=173, 1390.19376pt x 1194.4625pt>
+<images_2/perdidas_entrenamiento_finetuning_no_phy.png, id=179, 1390.19376pt x 1194.4625pt>
 File: images_2/perdidas_entrenamiento_finetuning_no_phy.png Graphic file (type png)
 <use images_2/perdidas_entrenamiento_finetuning_no_phy.png>
 Package pdftex.def Info: images_2/perdidas_entrenamiento_finetuning_no_phy.png  used on input line 106.
 (pdftex.def)             Requested size: 377.85405pt x 324.64163pt.
  [37 <./images_2/radar_chart_metrics.png>] [38 <./images_2/perdidas_entrenamiento_finetuning_no_phy.png>]
-<images_2/perdidas_entrenamiento_finetuning_no_struct.png, id=182, 1394.20876pt x 1194.4625pt>
+<images_2/perdidas_entrenamiento_finetuning_no_struct.png, id=188, 1394.20876pt x 1194.4625pt>
 File: images_2/perdidas_entrenamiento_finetuning_no_struct.png Graphic file (type png)
 <use images_2/perdidas_entrenamiento_finetuning_no_struct.png>
 Package pdftex.def Info: images_2/perdidas_entrenamiento_finetuning_no_struct.png  used on input line 123.
 (pdftex.def)             Requested size: 377.85405pt x 323.7121pt.
  [39 <./images_2/perdidas_entrenamiento_finetuning_no_struct.png>]
-<images_2/grouped_improvements.png, id=186, 1004.0712pt x 570.2103pt>
+<images_2/grouped_improvements.png, id=193, 1004.0712pt x 570.2103pt>
 File: images_2/grouped_improvements.png Graphic file (type png)
 <use images_2/grouped_improvements.png>
 Package pdftex.def Info: images_2/grouped_improvements.png  used on input line 152.
@@ -560,36 +567,36 @@ Overfull \hbox (22.76718pt too wide) in paragraph at lines 165--178
  []
 
 [41 <./images_2/grouped_improvements.png>]
-<images_2/complexity_vs_improvement.png, id=195, 1075.3776pt x 713.7867pt>
+<images_2/complexity_vs_improvement.png, id=201, 1075.3776pt x 713.7867pt>
 File: images_2/complexity_vs_improvement.png Graphic file (type png)
 <use images_2/complexity_vs_improvement.png>
 Package pdftex.def Info: images_2/complexity_vs_improvement.png  used on input line 206.
 (pdftex.def)             Requested size: 472.31577pt x 313.50076pt.
  [42] [43 <./images_2/complexity_vs_improvement.png>]
-<images_2/representative_cases.png, id=203, 1065.5007pt x 769.6755pt>
+<images_2/representative_cases.png, id=209, 1065.5007pt x 769.6755pt>
 File: images_2/representative_cases.png Graphic file (type png)
 <use images_2/representative_cases.png>
 Package pdftex.def Info: images_2/representative_cases.png  used on input line 233.
 (pdftex.def)             Requested size: 425.0813pt x 307.06613pt.
  [44] [45 <./images_2/representative_cases.png>]
-<images_2/error_maps_comparison.png, id=211, 1230.999pt x 796.8972pt>
+<images_2/error_maps_comparison.png, id=218, 1230.999pt x 796.8972pt>
 File: images_2/error_maps_comparison.png Graphic file (type png)
 <use images_2/error_maps_comparison.png>
 Package pdftex.def Info: images_2/error_maps_comparison.png  used on input line 254.
 (pdftex.def)             Requested size: 472.31577pt x 305.75456pt.
  [46 <./images_2/error_maps_comparison.png>]
-<images_2/reconstruction_comparison_profile.png, id=217, 860.013pt x 424.9476pt>
+<images_2/reconstruction_comparison_profile.png, id=223, 860.013pt x 424.9476pt>
 File: images_2/reconstruction_comparison_profile.png Graphic file (type png)
 <use images_2/reconstruction_comparison_profile.png>
 Package pdftex.def Info: images_2/reconstruction_comparison_profile.png  used on input line 271.
 (pdftex.def)             Requested size: 401.47128pt x 198.3702pt.
-<images_2/feature_maps_comparison.png, id=218, 1077.3048pt x 573.1011pt>
+<images_2/feature_maps_comparison.png, id=224, 1077.3048pt x 573.1011pt>
 File: images_2/feature_maps_comparison.png Graphic file (type png)
 <use images_2/feature_maps_comparison.png>
 Package pdftex.def Info: images_2/feature_maps_comparison.png  used on input line 290.
 (pdftex.def)             Requested size: 472.31577pt x 251.26454pt.
  [47 <./images_2/reconstruction_comparison_profile.png>]
-<images_2/attention_maps.png, id=223, 1076.823pt x 562.9833pt>
+<images_2/attention_maps.png, id=229, 1076.823pt x 562.9833pt>
 File: images_2/attention_maps.png Graphic file (type png)
 <use images_2/attention_maps.png>
 Package pdftex.def Info: images_2/attention_maps.png  used on input line 305.
@@ -622,18 +629,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9414 strings out of 478287
- 165963 string characters out of 5849289
- 615895 words of memory out of 5000000
- 27415 multiletter control sequences out of 15000+600000
+ 9427 strings out of 478287
+ 166278 string characters out of 5849288
+ 614937 words of memory out of 5000000
+ 27424 multiletter control sequences out of 15000+600000
  497307 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  115i,11n,109p,1859b,582s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on MainThesis.pdf (77 pages, 7186266 bytes).
+Output written on MainThesis.pdf (78 pages, 7261141 bytes).
 PDF statistics:
- 356 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
+ 362 PDF objects out of 1000 (max. 8388607)
+ 226 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
