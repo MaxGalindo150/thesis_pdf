@@ -5,22 +5,22 @@
 \contentsline {subsection}{\numberline {1.1.2}Contribuciones}{4}{}%
 \contentsline {section}{\numberline {1.2}Estructura de la Tesis}{4}{}%
 \contentsline {chapter}{\numberline {2}Marco Teórico y Estado del Arte}{6}{}%
-\contentsline {subsection}{\numberline {2.0.1}Fundamentos y Avances Recientes en Imagen Fotoacústica}{6}{}%
-\contentsline {subsection}{\numberline {2.0.2}Métodos Tradicionales de Reconstrucción en Imagen Fotoacústica}{7}{}%
-\contentsline {subsection}{\numberline {2.0.3}La Importancia de la Consistencia Física en la Reconstrucción Fotoacústica}{9}{}%
-\contentsline {subsection}{\numberline {2.0.4}Aprendizaje Profundo para la Reconstrucción de Imágenes Fotoacústicas: Tendencias Emergentes}{10}{}%
-\contentsline {subsection}{\numberline {2.0.5}Integración del Conocimiento Físico en Redes Neuronales para Imagen Médica}{11}{}%
-\contentsline {subsection}{\numberline {2.0.6}Limitaciones y Desafíos en la Aplicación a Datos Reales de Imagen Fotoacústica}{12}{}%
-\contentsline {subsection}{\numberline {2.0.7}Aplicaciones Clínicas y Potencial de la Incorporación de la Física}{12}{}%
-\contentsline {subsection}{\numberline {2.0.8}Enfoques Híbridos en la Reconstrucción Fotoacústica}{13}{}%
-\contentsline {subsection}{\numberline {2.0.9}Optimización en Redes Neuronales Profundas: El Algoritmo Adam}{13}{}%
-\contentsline {subsubsection}{Fundamentos del Algoritmo Adam}{13}{}%
-\contentsline {subsubsection}{Ventajas de Adam en Problemas de Reconstrucción de Imágenes}{14}{}%
-\contentsline {subsubsection}{Consideraciones Teóricas y Limitaciones}{14}{}%
-\contentsline {subsubsection}{Configuración de Hiperparámetros}{14}{}%
-\contentsline {subsubsection}{Adam en el Contexto de Entrenamiento Dual}{15}{}%
-\contentsline {subsubsection}{Alternativas y Desarrollos Recientes}{15}{}%
-\contentsline {subsection}{\numberline {2.0.10}Conclusiones del Capítulo}{15}{}%
+\contentsline {section}{\numberline {2.1}Fundamentos y Avances Recientes en Imagen Fotoacústica}{6}{}%
+\contentsline {section}{\numberline {2.2}Métodos Tradicionales de Reconstrucción en Imagen Fotoacústica}{7}{}%
+\contentsline {section}{\numberline {2.3}La Importancia de la Consistencia Física en la Reconstrucción Fotoacústica}{9}{}%
+\contentsline {section}{\numberline {2.4}Aprendizaje Profundo para la Reconstrucción de Imágenes Fotoacústicas: Tendencias Emergentes}{10}{}%
+\contentsline {subsection}{\numberline {2.4.1}Integración del Conocimiento Físico en Redes Neuronales para Imagen Médica}{11}{}%
+\contentsline {subsection}{\numberline {2.4.2}Limitaciones y Desafíos en la Aplicación a Datos Reales de Imagen Fotoacústica}{12}{}%
+\contentsline {section}{\numberline {2.5}Aplicaciones Clínicas y Potencial de la Incorporación de la Física}{12}{}%
+\contentsline {section}{\numberline {2.6}Enfoques Híbridos en la Reconstrucción Fotoacústica}{13}{}%
+\contentsline {section}{\numberline {2.7}Optimización en Redes Neuronales Profundas: El Algoritmo Adam}{13}{}%
+\contentsline {subsection}{\numberline {2.7.1}Fundamentos del Algoritmo Adam}{14}{}%
+\contentsline {subsection}{\numberline {2.7.2}Ventajas de Adam en Problemas de Reconstrucción de Imágenes}{14}{}%
+\contentsline {subsection}{\numberline {2.7.3}Consideraciones Teóricas y Limitaciones}{14}{}%
+\contentsline {subsection}{\numberline {2.7.4}Configuración de Hiperparámetros}{15}{}%
+\contentsline {subsection}{\numberline {2.7.5}Adam en el Contexto de Entrenamiento Dual}{15}{}%
+\contentsline {subsection}{\numberline {2.7.6}Alternativas y Desarrollos Recientes}{15}{}%
+\contentsline {section}{\numberline {2.8}Conclusiones del Capítulo}{16}{}%
 \contentsline {chapter}{\numberline {3}Metodología}{17}{}%
 \contentsline {section}{\numberline {3.1}Fundamentos Teóricos}{17}{}%
 \contentsline {subsection}{\numberline {3.1.1}Efecto Fotoacústico}{17}{}%

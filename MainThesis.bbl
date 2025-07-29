@@ -3,13 +3,11 @@
 \bibitem{antholzer2019deep}
 S.~Antholzer, M.~Haltmeier, and J.~Schwab.
 \newblock Deep learning for photoacoustic tomography from sparse data.
-\newblock {\em Inverse Problems in Science and Engineering}, 27(7):987--1005,
-  2019.
+\newblock {\em Inverse Problems in Science and Engineering}, 27(7):987--1005, 2019.
 
 \bibitem{pa_limited_sampling_2023}
 S.~Antholzer, J.~Schwab, and M.~Haltmeier.
-\newblock Photoacoustic imaging with limited sampling: a review of machine
-  learning approaches.
+\newblock Photoacoustic imaging with limited sampling: a review of machine learning approaches.
 \newblock {\em Biomedical Optics Express}, 14(4):1777--1798, 2023.
 \newblock Accedido: 22 abril 2025.
 
@@ -20,8 +18,7 @@ S.~Arridge, P.~Maass, O.~Öktem, and C.-B. Schönlieb.
 
 \bibitem{bell_1880}
 A.~G. Bell.
-\newblock {\em On the production and reproduction of sound by light},
-  volume~20.
+\newblock {\em On the production and reproduction of sound by light}, volume~20.
 \newblock Yale University, 1880.
 
 \bibitem{bell1880production}
@@ -31,8 +28,7 @@ A.~G. Bell.
 
 \bibitem{improving_attention_2024}
 N.~I. Berezhnov and A.~A. Sirota.
-\newblock Improving attention mechanisms in transformer architecture in image
-  restoration.
+\newblock Improving attention mechanisms in transformer architecture in image restoration.
 \newblock {\em Computer Optics}, 48(5), 2024.
 \newblock Accedido: 22 abril 2025.
 
@@ -48,21 +44,18 @@ L.~Bottou, F.~E. Curtis, and J.~Nocedal.
 
 \bibitem{chen2018closing}
 J.~Chen and Q.~Gu.
-\newblock Closing the generalization gap of adaptive gradient methods in
-  training deep neural networks.
+\newblock Closing the generalization gap of adaptive gradient methods in training deep neural networks.
 \newblock {\em arXiv preprint arXiv:1806.06763}, 2018.
 
 \bibitem{dual_modal_2024}
 M.~Chen, M.~Xu, and L.~Ding.
-\newblock Dual-modal photoacoustic and ultrasound imaging: from preclinical to
-  clinical applications.
+\newblock Dual-modal photoacoustic and ultrasound imaging: from preclinical to clinical applications.
 \newblock {\em Frontiers in Photonics}, 5:1359784, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{review_deep_learning_2022}
 W.~Choi and C.~Kim.
-\newblock Review of deep learning approaches for interleaved photoacoustic and
-  ultrasound (paus) imaging.
+\newblock Review of deep learning approaches for interleaved photoacoustic and ultrasound (paus) imaging.
 \newblock {\em PMC - PubMed Central}, 2022.
 \newblock Accedido: 22 abril 2025.
 
@@ -79,21 +72,18 @@ B.~Cox, J.~G. Laufer, P.~C. Beard, and S.~R. Arridge.
 
 \bibitem{recent_advances_2025a}
 J.~Doe and J.~Smith.
-\newblock Recent advances in photoacoustic imaging: Current status and future
-  perspectives.
+\newblock Recent advances in photoacoustic imaging: Current status and future perspectives.
 \newblock {\em Journal of Biomedical Imaging}, 43(2):125--148, 2025.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{duchi2011adaptive}
 J.~Duchi, E.~Hazan, and Y.~Singer.
-\newblock Adaptive subgradient methods for online learning and stochastic
-  optimization.
+\newblock Adaptive subgradient methods for online learning and stochastic optimization.
 \newblock {\em Journal of machine learning research}, 12(7):2121--2159, 2011.
 
 \bibitem{guan2020fully}
 S.~Guan, A.~A. Khan, S.~Sikdar, and P.~V. Chitnis.
-\newblock Fully dense unet for 2d sparse photoacoustic tomography artifact
-  removal.
+\newblock Fully dense unet for 2d sparse photoacoustic tomography artifact removal.
 \newblock {\em IEEE Journal of Selected Topics in Quantum Electronics}, 2020.
 
 \bibitem{hybrid_neural_network_2020}
@@ -104,8 +94,7 @@ S.~Guan, A.~A. Khan, S.~Sikdar, and P.~V. Chitnis.
 
 \bibitem{deep_learning_realtime_2021}
 S.~Guan, A.~A. Khan, S.~Sikdar, and P.~V. Chitnis.
-\newblock Deep-learning image reconstruction for real-time photoacoustic
-  system.
+\newblock Deep-learning image reconstruction for real-time photoacoustic system.
 \newblock {\em PMC - PubMed Central}, 2021.
 \newblock Accedido: 22 abril 2025.
 
@@ -116,66 +105,55 @@ B.~Guo, J.~Li, H.~Zmuda, and M.~Sheplak.
 
 \bibitem{hauptmann_2024}
 A.~Hauptmann, B.~Cox, and P.~Beard.
-\newblock Advances in photoacoustic imaging reconstruction and quantitative
-  analysis for biomedical applications.
+\newblock Advances in photoacoustic imaging reconstruction and quantitative analysis for biomedical applications.
 \newblock {\em arXiv preprint}, arXiv:2411.02843, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{hauptmann_2024b}
 A.~Hauptmann, B.~Cox, and P.~Beard.
-\newblock Advances in photoacoustic imaging reconstruction and quantitative
-  analysis for biomedical applications.
+\newblock Advances in photoacoustic imaging reconstruction and quantitative analysis for biomedical applications.
 \newblock {\em ResearchGate}, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{hauptmann2020deep}
 A.~Hauptmann and B.~T. Cox.
-\newblock Deep learning in photoacoustic tomography: current approaches and
-  future directions.
+\newblock Deep learning in photoacoustic tomography: current approaches and future directions.
 \newblock {\em Journal of Biomedical Optics}, 25(11):112903, 2020.
 
 \bibitem{hauptmann2018model}
-A.~Hauptmann, F.~Lucka, M.~Betcke, N.~Huynh, J.~Adler, B.~Cox, P.~Beard,
-  S.~Ourselin, and S.~Arridge.
-\newblock Model-based learning for accelerated, limited-view 3-{D}
-  photoacoustic tomography.
+A.~Hauptmann, F.~Lucka, M.~Betcke, N.~Huynh, J.~Adler, B.~Cox, P.~Beard, S.~Ourselin, and S.~Arridge.
+\newblock Model-based learning for accelerated, limited-view 3-{D} photoacoustic tomography.
 \newblock {\em IEEE transactions on medical imaging}, 2018.
 
 \bibitem{he2016deep}
 K.~He, X.~Zhang, S.~Ren, and J.~Sun.
 \newblock Deep residual learning for image recognition.
-\newblock {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 770--778, 2016.
+\newblock {\em Proceedings of the IEEE conference on computer vision and pattern recognition}, pages 770--778, 2016.
 
 \bibitem{hoffer2019augmented}
 M.~Hoffer, A.~Pourshafeie, L.~Schmidt, I.~Shcherbatyi, and G.~Wolf.
-\newblock Augmented neural networks for modeling physical systems with
-  conservation laws.
+\newblock Augmented neural networks for modeling physical systems with conservation laws.
 \newblock {\em arXiv preprint arXiv:1912.04405}, 2019.
 
 \bibitem{huang2013full}
 C.~Huang, K.~Wang, L.~Nie, et~al.
-\newblock Full-wave iterative image reconstruction in photoacoustic tomography
-  with acoustically inhomogeneous media.
+\newblock Full-wave iterative image reconstruction in photoacoustic tomography with acoustically inhomogeneous media.
 \newblock {\em IEEE transactions on medical imaging}, 32(6):1097--1110, 2013.
 
 \bibitem{huang2017densely}
 G.~Huang, Z.~Liu, L.~Van Der~Maaten, and K.~Q. Weinberger.
 \newblock Densely connected convolutional networks.
-\newblock {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 4700--4708, 2017.
+\newblock {\em Proceedings of the IEEE conference on computer vision and pattern recognition}, pages 4700--4708, 2017.
 
 \bibitem{quantitative_pa_deep_2016}
 T.~Jetzfellner, A.~Rosenthal, and D.~Razansky.
-\newblock Quantitative photoacoustic image reconstruction improves accuracy in
-  deep tissue structures.
+\newblock Quantitative photoacoustic image reconstruction improves accuracy in deep tissue structures.
 \newblock {\em PMC - PubMed Central}, 2016.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{recent_advances_2025b}
 R.~Johnson and E.~Williams.
-\newblock Recent advances in photoacoustic imaging: Current status and future
-  perspectives.
+\newblock Recent advances in photoacoustic imaging: Current status and future perspectives.
 \newblock {\em PMC - PubMed Central}, 12(4):45--67, 2025.
 \newblock Accedido: 22 abril 2025.
 
@@ -196,15 +174,13 @@ P.~Kuchment and L.~Kunyansky.
 
 \bibitem{hybrid_learning_systems_2024}
 R.~Kumar and M.~Singh.
-\newblock Hybrid learning systems: Integrating traditional machine learning
-  with deep learning techniques.
+\newblock Hybrid learning systems: Integrating traditional machine learning with deep learning techniques.
 \newblock {\em ResearchGate}, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{Lang2017}
 O.~Lang, P.~Kovacs, C.~Motz, M.~Huemer, T.~Berer, and P.~Burgholzer.
-\newblock A linear state space model for photoacoustic imaging in an acoustic
-  attenuating media.
+\newblock A linear state space model for photoacoustic imaging in an acoustic attenuating media.
 \newblock {\em arXiv preprint}, 1808.00218v1, 2017.
 
 \bibitem{lee2019deep}
@@ -215,8 +191,7 @@ J.-G. Lee, S.~Jun, Y.-W. Cho, H.~Lee, G.~B. Kim, J.~B. Seo, and N.~Kim.
 \bibitem{li2018visualizing}
 H.~Li, Z.~Xu, G.~Taylor, C.~Studer, and T.~Goldstein.
 \newblock Visualizing the loss landscape of neural nets.
-\newblock {\em Advances in neural information processing systems},
-  31:6389--6399, 2018.
+\newblock {\em Advances in neural information processing systems}, 31:6389--6399, 2018.
 
 \bibitem{li2021photoacoustic}
 L.~Li, L.~Zhu, C.~Ma, L.~Lin, J.~Yao, and L.~V. Wang.
@@ -225,29 +200,25 @@ L.~Li, L.~Zhu, C.~Ma, L.~Lin, J.~Yao, and L.~V. Wang.
 
 \bibitem{quantitative_pa_2024}
 X.~Li, J.~Taylor, and C.-W. Wei.
-\newblock Quantitative photoacoustic imaging algorithm using sparse
-  decomposition for photoacoustic and ultrasound dual-mode imaging.
+\newblock Quantitative photoacoustic imaging algorithm using sparse decomposition for photoacoustic and ultrasound dual-mode imaging.
 \newblock {\em Biomedical Optics Express}, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{deep_learning_reconstruction_2024}
 Z.~Li, X.~Wang, and J.~Chen.
-\newblock Deep learning-based super-resolution reconstruction and segmentation
-  of photoacoustic images.
+\newblock Deep learning-based super-resolution reconstruction and segmentation of photoacoustic images.
 \newblock {\em Applied Sciences}, 14(12):5331, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{understanding_pinns_2024}
 Z.~Li, H.~Zhang, and J.~Wu.
-\newblock Understanding physics-informed neural networks: Techniques,
-  applications, trends, and challenges.
+\newblock Understanding physics-informed neural networks: Techniques, applications, trends, and challenges.
 \newblock {\em Intelligence}, 5(3):74, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{understanding_pinns_research_2024}
 Z.~Li, H.~Zhang, and J.~Wu.
-\newblock Understanding physics-informed neural networks: Techniques,
-  applications, trends, and challenges.
+\newblock Understanding physics-informed neural networks: Techniques, applications, trends, and challenges.
 \newblock {\em ResearchGate}, 2024.
 \newblock Accedido: 22 abril 2025.
 
@@ -264,15 +235,13 @@ L.~Liu, H.~Jiang, P.~He, W.~Chen, X.~Liu, J.~Gao, and J.~Han.
 
 \bibitem{deep_learning_review_2024}
 W.~Liu, Z.~Wang, and X.~Han.
-\newblock A comprehensive review of deep learning: Architectures, recent
-  advances, and applications.
+\newblock A comprehensive review of deep learning: Architectures, recent advances, and applications.
 \newblock {\em Information}, 15(12):755, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{score_based_diffusion_2024}
 Z.~Liu, Z.~Chen, and C.~Zhang.
-\newblock Score-based diffusion models for photoacoustic tomography image
-  reconstruction.
+\newblock Score-based diffusion models for photoacoustic tomography image reconstruction.
 \newblock {\em arXiv preprint}, arXiv:2404.00471v1, 2024.
 \newblock Accedido: 22 abril 2025.
 
@@ -283,8 +252,7 @@ I.~Loshchilov and F.~Hutter.
 
 \bibitem{lutzweiler2014photoacoustic}
 C.~Lutzweiler and D.~Razansky.
-\newblock Photoacoustic imaging and tomography: Current approaches and future
-  directions.
+\newblock Photoacoustic imaging and tomography: Current approaches and future directions.
 \newblock {\em Current medical imaging reviews}, 10(4):305--313, 2014.
 
 \bibitem{maier2019gentle}
@@ -293,8 +261,7 @@ A.~Maier, C.~Syben, T.~Lasser, and C.~Riess.
 \newblock {\em Zeitschrift für Medizinische Physik}, 29(2):86--101, 2019.
 
 \bibitem{oktay2018attention}
-O.~Oktay, J.~Schlemper, L.~L. Folgoc, M.~Lee, M.~Heinrich, K.~Misawa, K.~Mori,
-  S.~McDonagh, N.~Y. Hammerla, B.~Kainz, B.~Glocker, and D.~Rueckert.
+O.~Oktay, J.~Schlemper, L.~L. Folgoc, M.~Lee, M.~Heinrich, K.~Misawa, K.~Mori, S.~McDonagh, N.~Y. Hammerla, B.~Kainz, B.~Glocker, and D.~Rueckert.
 \newblock Attention {U-Net}: Learning where to look for the pancreas.
 \newblock In {\em Medical Imaging with Deep Learning}. MIDL, 2018.
 
@@ -306,15 +273,12 @@ J.~Park and L.~V. Wang.
 
 \bibitem{Raissi2017Physics}
 M.~Raissi, P.~Perdikaris, and G.~E. Karniadakis.
-\newblock Physics informed deep learning ({Part I}): Data-driven solutions of
-  nonlinear partial differential equations.
+\newblock Physics informed deep learning ({Part I}): Data-driven solutions of nonlinear partial differential equations.
 \newblock {\em arXiv preprint arXiv:1711.10561}, 2017.
 
 \bibitem{raissi2019physics}
 M.~Raissi, P.~Perdikaris, and G.~E. Karniadakis.
-\newblock Physics-informed neural networks: A deep learning framework for
-  solving forward and inverse problems involving nonlinear partial differential
-  equations.
+\newblock Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations.
 \newblock {\em Journal of Computational Physics}, 2019.
 
 \bibitem{reddi2019convergence}
@@ -330,10 +294,7 @@ A.~Reiter and M.~A. Lediju~Bell.
 \bibitem{ronneberger2015unet}
 O.~Ronneberger, P.~Fischer, and T.~Brox.
 \newblock U-net: Convolutional networks for biomedical image segmentation.
-\newblock In {\em International Conference on Medical Image Computing and
-  Computer-Assisted Intervention}, volume 9351 of {\em Lecture Notes in
-  Computer Science}, pages 234--241. Springer, Springer International
-  Publishing, 2015.
+\newblock In {\em International Conference on Medical Image Computing and Computer-Assisted Intervention}, volume 9351 of {\em Lecture Notes in Computer Science}, pages 234--241. Springer, Springer International Publishing, 2015.
 
 \bibitem{ruder2016overview}
 S.~Ruder.
@@ -342,16 +303,13 @@ S.~Ruder.
 
 \bibitem{schlemper2019attention}
 J.~Schlemper, O.~Oktay, M.~Schaap, et~al.
-\newblock Attention gated networks: Learning to leverage salient regions in
-  medical images.
+\newblock Attention gated networks: Learning to leverage salient regions in medical images.
 \newblock {\em Medical image analysis}, 53:197--207, 2019.
 
 \bibitem{schmidt2021descending}
 R.~M. Schmidt, F.~Schneider, and P.~Hennig.
-\newblock Descending through a crowded valley-benchmarking deep learning
-  optimizers.
-\newblock {\em International Conference on Machine Learning}, pages 9367--9376,
-  2021.
+\newblock Descending through a crowded valley-benchmarking deep learning optimizers.
+\newblock {\em International Conference on Machine Learning}, pages 9367--9376, 2021.
 
 \bibitem{shan2019physics}
 T.~Shan and J.~Tang.
@@ -366,22 +324,17 @@ D.~Shen, G.~Wu, and H.-I. Suk.
 \bibitem{smith2017cyclical}
 L.~N. Smith.
 \newblock Cyclical learning rates for training neural networks.
-\newblock {\em 2017 IEEE winter conference on applications of computer vision
-  (WACV)}, pages 464--472, 2017.
+\newblock {\em 2017 IEEE winter conference on applications of computer vision (WACV)}, pages 464--472, 2017.
 
 \bibitem{tick2016image}
 J.~Tick, A.~Pulkkinen, and T.~Tarvainen.
-\newblock Image reconstruction in photoacoustic tomography with variable speed
-  of sound using a higher-order geometrical acoustics approximation.
-\newblock {\em The Journal of the Acoustical Society of America},
-  139(3):1447--1459, 2016.
+\newblock Image reconstruction in photoacoustic tomography with variable speed of sound using a higher-order geometrical acoustics approximation.
+\newblock {\em The Journal of the Acoustical Society of America}, 139(3):1447--1459, 2016.
 
 \bibitem{tieleman2012lecture}
 T.~Tieleman and G.~Hinton.
-\newblock Lecture 6.5-rmsprop: Divide the gradient by a running average of its
-  recent magnitude.
-\newblock {\em COURSERA: Neural networks for machine learning}, 4(2):26--31,
-  2012.
+\newblock Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude.
+\newblock {\em COURSERA: Neural networks for machine learning}, 4(2):26--31, 2012.
 
 \bibitem{valluru2016molecular}
 K.~S. Valluru and J.~K. Willmann.
@@ -389,11 +342,9 @@ K.~S. Valluru and J.~K. Willmann.
 \newblock {\em Bioengineering}, 3(1):7, 2016.
 
 \bibitem{vaswani2017attention}
-A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
-  {\L}.~Kaiser, and I.~Polosukhin.
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez, {\L}.~Kaiser, and I.~Polosukhin.
 \newblock Attention is all you need.
-\newblock In {\em Advances in Neural Information Processing Systems},
-  volume~30, pages 5998--6008. Curran Associates, Inc., 2017.
+\newblock In {\em Advances in Neural Information Processing Systems}, volume~30, pages 5998--6008. Curran Associates, Inc., 2017.
 
 \bibitem{image_reconstruction_pa_2024}
 K.~Wang and L.~V. Wang.
@@ -409,8 +360,7 @@ K.~Wang and L.~V. Wang.
 
 \bibitem{pa_digital_brain_2023}
 L.~Wang and M.~Xu.
-\newblock Photoacoustic digital brain and deep-learning-assisted image
-  reconstruction.
+\newblock Photoacoustic digital brain and deep-learning-assisted image reconstruction.
 \newblock {\em ResearchGate}, 2023.
 \newblock Accedido: 22 abril 2025.
 
@@ -426,29 +376,24 @@ L.~V. Wang and S.~Hu.
 
 \bibitem{pinns_geoengineering_2024}
 X.~Wang, H.~Chen, and M.~Li.
-\newblock Physics-informed neural network solver for numerical analysis in
-  geoengineering.
-\newblock {\em Georisk: Assessment and Management of Risk for Engineered
-  Systems and Geohazards}, 2024.
+\newblock Physics-informed neural network solver for numerical analysis in geoengineering.
+\newblock {\em Georisk: Assessment and Management of Risk for Engineered Systems and Geohazards}, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{mwg_unet_2024}
 X.~Wang, T.~Zhang, and H.~Liu.
-\newblock Mwg-unet++: Hybrid transformer u-net model for brain tumor
-  segmentation in mri scans.
+\newblock Mwg-unet++: Hybrid transformer u-net model for brain tumor segmentation in mri scans.
 \newblock {\em Bioengineering}, 12(2):140, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{wang2016review}
 Y.~Wang and L.~V. Wang.
 \newblock A review of photoacoustic tomography systems.
-\newblock {\em IEEE Journal of Selected Topics in Quantum Electronics},
-  22(3):1--15, 2016.
+\newblock {\em IEEE Journal of Selected Topics in Quantum Electronics}, 22(3):1--15, 2016.
 
 \bibitem{xu2005universal}
 M.~Xu and L.~V. Wang.
-\newblock Universal back-projection algorithm for photoacoustic computed
-  tomography.
+\newblock Universal back-projection algorithm for photoacoustic computed tomography.
 \newblock {\em Physical Review E}, 71(1):016706, 2005.
 
 \bibitem{xu2006photoacoustic}
@@ -475,8 +420,7 @@ J.~Yang, S.~Ren, and S.~Yang.
 
 \bibitem{yang2021physics}
 Y.~Yang, J.~Sun, L.~Li, and L.~V. Wang.
-\newblock Physics-informed deep learning for computational photoacoustic
-  imaging.
+\newblock Physics-informed deep learning for computational photoacoustic imaging.
 \newblock {\em IEEE Transactions on Computational Imaging}, 2021.
 
 \bibitem{yi2019generative}
@@ -485,10 +429,8 @@ X.~Yi, E.~Walia, and P.~Babyn.
 \newblock {\em Medical image analysis}, 58:101552, 2019.
 
 \bibitem{you2019large}
-Y.~You, J.~Li, S.~Reddi, J.~Hseu, S.~Kumar, S.~Bhojanapalli, X.~Song,
-  J.~Demmel, K.~Keutzer, and C.-J. Hsieh.
-\newblock Large batch optimization for deep learning: Training bert in 76
-  minutes.
+Y.~You, J.~Li, S.~Reddi, J.~Hseu, S.~Kumar, S.~Bhojanapalli, X.~Song, J.~Demmel, K.~Keutzer, and C.-J. Hsieh.
+\newblock Large batch optimization for deep learning: Training bert in 76 minutes.
 \newblock {\em arXiv preprint arXiv:1904.00962}, 2019.
 
 \bibitem{physics_informed_polymers_2025}
@@ -499,8 +441,7 @@ C.~Zhang, J.~Liu, and W.~Chen.
 
 \bibitem{resolution_enhancement_2024}
 C.~Zhang and W.~Liu.
-\newblock Resolution enhancement strategies in photoacoustic microscopy: A
-  comprehensive review.
+\newblock Resolution enhancement strategies in photoacoustic microscopy: A comprehensive review.
 \newblock {\em Micromachines}, 15(12):1463, 2024.
 \newblock Accedido: 22 abril 2025.
 
@@ -511,8 +452,7 @@ H.~Zhang, J.~Xia, et~al.
 
 \bibitem{sparse_sampling_2024}
 J.~Zhang, M.~Sun, and J.~Lei.
-\newblock Sparse sampling photoacoustic reconstruction with a graph
-  regularization group sparse dictionary.
+\newblock Sparse sampling photoacoustic reconstruction with a graph regularization group sparse dictionary.
 \newblock {\em Applied Optics}, 63(20):5292, 2024.
 \newblock Accedido: 22 abril 2025.
 
@@ -524,29 +464,25 @@ Y.~Zhang, D.~Wu, and X.~Wang.
 
 \bibitem{challenges_advances_2023}
 Y.~Zhang, J.~Yu, and Y.~Hu.
-\newblock Challenges and advances in two-dimensional photoacoustic computed
-  tomography: a review.
+\newblock Challenges and advances in two-dimensional photoacoustic computed tomography: a review.
 \newblock {\em PMC - PubMed Central}, 2023.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{enhanced_pam_2024}
 Z.~Zhao, L.~Li, and L.~V. Wang.
-\newblock Enhanced photoacoustic microscopy with physics-embedded degeneration
-  learning.
+\newblock Enhanced photoacoustic microscopy with physics-embedded degeneration learning.
 \newblock {\em Opto-Electronic Advances}, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{hybrid_reconstruction_2024}
 X.~Zheng, Y.~Wang, and S.~Zhou.
-\newblock Hybrid reconstruction approach for polychromatic computed tomography
-  in highly limited-data scenarios.
+\newblock Hybrid reconstruction approach for polychromatic computed tomography in highly limited-data scenarios.
 \newblock {\em Sensors}, 24(21):6782, 2024.
 \newblock Accedido: 22 abril 2025.
 
 \bibitem{Zhou2024DataGuided}
 W.~Zhou and Y.~Xu.
-\newblock Data-guided physics-informed neural networks for solving inverse
-  problems in partial differential equations.
+\newblock Data-guided physics-informed neural networks for solving inverse problems in partial differential equations.
 \newblock {\em arXiv preprint arXiv:2407.10836}, 2024.
 
 \bibitem{pinns_medical_2024}
@@ -562,14 +498,12 @@ Y.~Zhou, J.~Gao, and D.~P. Papageorgiou.
 
 \bibitem{zhou2019unet++}
 Z.~Zhou, M.~M. Rahman~Siddiquee, N.~Tajbakhsh, and J.~Liang.
-\newblock {UNet++}: Redesigning skip connections to exploit multiscale features
-  in image segmentation.
+\newblock {UNet++}: Redesigning skip connections to exploit multiscale features in image segmentation.
 \newblock {\em IEEE Transactions on Medical Imaging}, 39(6):1856--1867, 2019.
 
 \bibitem{zou2019sufficient}
 F.~Zou, L.~Shen, Z.~Jie, W.~Zhang, and W.~Liu.
 \newblock A sufficient condition for convergences of adam and rmsprop.
-\newblock {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
-  Pattern Recognition}, pages 11127--11135, 2019.
+\newblock {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pages 11127--11135, 2019.
 
 \end{thebibliography}

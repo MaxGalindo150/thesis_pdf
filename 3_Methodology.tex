@@ -32,7 +32,7 @@ La densidad de energía electromagnética $H(\mathbf{x}, t)$ es modelada como:
 
 donde $\mathbf{x}^{\prime}$ es la posición de la fuente de la onda, $\mu(\mathbf{x}^{\prime}, t)$ es el coeficiente de absorción óptico de la muestra y $\phi(\mathbf{x}^{\prime}, t)$ es la tasa de fluencia del pulso láser. La tasa de fluencia puede ser descrita como el producto de la intensidad $I(\mathbf{x}^{\prime})$ y el perfil temporal $\theta(t)$ del pulso láser $\phi(\mathbf{x}^{\prime}, t) = I(\mathbf{x}^{\prime})\theta(t)$.
 
-\subsection{Ecuación de Onda Fotoacústica}
+\subsection{Ecuación de Onda Fotoacústica}\label{sec:waveequationPA}
 La ecuación de onda fotoacústica modela la propagación de la onda acústica generada $P(\mathbf{x}, t)$ producida por la expansión termoelástica de la muestra.
 
 Esta ecuación se obtiene desacoplando las ecuaciones \ref{diffusionequation} y \ref{waveequation}. Existen suposiciones físicas acerca del medio donde la onda se propaga, como la viscosidad, la absorción acústica es ignorada, la variación de la presión y densidad son pequeñas comparadas a los valores iniciales y la velocidad de las partículas es menor que la velocidad del sonido entre otras, que permiten simplificar la ecuación de onda acústica a:
@@ -43,7 +43,7 @@ Esta ecuación se obtiene desacoplando las ecuaciones \ref{diffusionequation} y 
 
 donde $c$ es la velocidad del sonido en el medio de propagación, y es definida como $c = \left(K_{T}\rho_{0}\frac{\beta^2 T_{0}}{C_{P}}\right)^{-1}$.
 
-\subsection{Problema Inverso del Efecto Fotoacústico}
+\subsection{Problema Inverso del Efecto Fotoacústico}\label{sec:problemaPA}
 El problema inverso fotoacústico (PA) implica resolver un problema de valor en la frontera para la ecuación de onda PA. La solución proporciona la distribución espacial de la absorción electromagnética durante el proceso de expansión termoelástica.
 
 Para definir el problema inverso PA, se asume que la densidad de energía electromagnética absorbida por la muestra, $H(\mathbf{x}',t)$, es separable en componentes espaciales y temporales:
@@ -86,7 +86,7 @@ Los supuestos matemáticos para garantizar la resolubilidad incluyen que la fuen
 
 Debido a la naturaleza termodinámica del efecto fotoacústico, el problema inverso PA es mal condicionado, lo que ha llevado al desarrollo de métodos de regularización, entre otros.
 
-\subsection{Deep Learning en Reconstrucción Fotoacústica}
+\subsection{Deep Learning en Reconstrucción Fotoacústica}\label{sec:deep_learning_PA}
 
 El uso de redes neuronales profundas en la reconstrucción de imágenes fotoacústicas se ha implementado de diferentes formas, tanto complementando una reconstrucción inicial con métodos clásicos como el DAS y removiendo los artefactos que este genera \cite{guan2020fully}, como también desde cero, tomando datos en crudo y generando imágenes a partir de estos \cite{Yang2021}.
 
